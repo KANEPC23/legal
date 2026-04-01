@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legal Practice Portal — Powered by Kane PC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0C1B2E;
+    --navy-mid: #14263D;
+    --navy-light: #1C3350;
+    --gold: #B8922A;
+    --gold-light: #D4A840;
+    --gold-pale: #F5EDD6;
+    --cream: #F9F6EF;
+    --white: #FFFFFF;
+    --text-primary: #0C1B2E;
+    --text-secondary: #5A6A7A;
+    --text-muted: #8A9AAA;
+    --border: rgba(12,27,46,0.10);
+    --border-strong: rgba(12,27,46,0.18);
+    --success-bg: #EAF5EE; --success-text: #1A6B3A;
+    --warning-bg: #FEF5E4; --warning-text: #92600A;
+    --danger-bg: #FCEAEA; --danger-text: #9B2222;
+    --info-bg: #E7F0FB; --info-text: #1A4A8A;
+  }
+
+  html, body { height: 100%; font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text-primary); font-size: 14px; }
+
+  /* ── LOGIN SCREEN ── */
+  #login-screen {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    background: var(--navy);
+    position: relative; overflow: hidden;
+  }
+  #login-screen::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(184,146,42,0.12) 0%, transparent 70%);
+  }
+  .login-rule {
+    width: 48px; height: 1px;
+    background: var(--gold); margin: 0 auto 28px;
+  }
+  .login-badge {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px; text-align: center;
+  }
+  .login-firm {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px; font-weight: 500; color: #fff;
+    text-align: center; line-height: 1.15; margin-bottom: 6px;
+  }
+  .login-tagline {
+    font-size: 13px; color: rgba(255,255,255,0.45);
+    text-align: center; margin-bottom: 48px; letter-spacing: 0.02em;
+  }
+  .login-cards {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; width: 100%; max-width: 520px;
+    padding: 0 24px;
+  }
+  .login-card {
+    border: 0.5px solid rgba(255,255,255,0.12);
+    border-radius: 12px; padding: 28px 20px;
+    text-align: center; cursor: pointer;
+    transition: all 0.2s;
+    background: rgba(255,255,255,0.04);
+    position: relative; overflow: hidden;
+  }
+  .login-card::after {
+    content: ''; position: absolute; inset: 0;
+    background: rgba(255,255,255,0.05);
+    opacity: 0; transition: opacity 0.2s;
+  }
+  .login-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+  .login-card:hover::after { opacity: 1; }
+  .login-card-icon { font-size: 28px; margin-bottom: 12px; }
+  .login-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-weight: 500; color: #fff; margin-bottom: 6px;
+  }
+  .login-card-sub { font-size: 11px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+  .login-card.atty { border-color: rgba(184,146,42,0.3); }
+  .login-card.atty:hover { border-color: var(--gold-light); }
+  .login-demo-note {
+    margin-top: 36px; font-size: 11px;
+    color: rgba(255,255,255,0.22); text-align: center;
+  }
+  .kanepc-credit {
+    margin-top: 40px; font-size: 11px;
+    color: rgba(255,255,255,0.2); text-align: center;
+    letter-spacing: 0.05em;
+  }
+  .kanepc-credit span { color: var(--gold); }
+
+  /* ── APP SHELL ── */
+  #app { display: none; flex-direction: column; min-height: 100vh; }
+
+  .topbar {
+    background: var(--navy); color: #fff;
+    padding: 0 28px; height: 58px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .topbar-left { display: flex; align-items: center; gap: 16px; }
+  .firm-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 500; color: #fff; letter-spacing: 0.01em;
+  }
+  .firm-divider { width: 1px; height: 22px; background: rgba(255,255,255,0.15); }
+  .portal-label { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.08em; text-transform: uppercase; }
+  .topbar-right { display: flex; align-items: center; gap: 12px; }
+  .user-chip {
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.08);
+    border: 0.5px solid rgba(255,255,255,0.12);
+    border-radius: 20px; padding: 4px 14px 4px 4px;
+    cursor: pointer;
+  }
+  .avatar {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--gold); color: var(--navy);
+    font-size: 10px; font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .avatar.client-av { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.7); }
+  .user-name { font-size: 12px; color: rgba(255,255,255,0.75); }
+  .role-badge {
+    font-size: 10px; padding: 2px 8px; border-radius: 8px;
+    letter-spacing: 0.04em;
+  }
+  .role-atty { background: rgba(184,146,42,0.25); color: var(--gold-light); border: 0.5px solid rgba(184,146,42,0.3); }
+  .role-client { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); border: 0.5px solid rgba(255,255,255,0.15); }
+  .logout-btn {
+    font-size: 11px; color: rgba(255,255,255,0.3);
+    cursor: pointer; padding: 4px 8px;
+    border-radius: 6px; transition: color 0.15s;
+    background: none; border: none;
+  }
+  .logout-btn:hover { color: rgba(255,255,255,0.7); }
+
+  .sub-bar {
+    background: var(--navy-mid);
+    padding: 6px 28px; display: flex;
+    align-items: center; justify-content: space-between;
+  }
+  .pa-pills { display: flex; gap: 6px; align-items: center; }
+  .pa-label { font-size: 10px; color: rgba(255,255,255,0.25); letter-spacing: 0.06em; text-transform: uppercase; margin-right: 4px; }
+  .pa-pill {
+    font-size: 11px; padding: 3px 12px; border-radius: 12px;
+    cursor: pointer; border: 0.5px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.45); transition: all 0.15s; background: transparent;
+  }
+  .pa-pill:hover { color: rgba(255,255,255,0.75); }
+  .pa-pill.active { background: var(--gold); color: var(--navy); border-color: var(--gold); font-weight: 500; }
+  .int-pills { display: flex; gap: 6px; align-items: center; }
+  .int-label { font-size: 10px; color: rgba(255,255,255,0.2); margin-right: 2px; }
+  .int-pill {
+    font-size: 10px; padding: 2px 9px; border-radius: 10px;
+    border: 0.5px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.3);
+  }
+  .int-sp { border-color: rgba(0,120,212,0.5); color: #60A8E8; }
+  .int-mc { border-color: rgba(39,174,96,0.5); color: #6DC98A; }
+  .int-lp { border-color: rgba(184,146,42,0.5); color: #D4A840; }
+
+  .tabs-bar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    display: flex; overflow-x: auto; padding: 0 20px;
+  }
+  .tab {
+    padding: 0 18px; height: 46px;
+    display: flex; align-items: center; gap: 7px;
+    font-size: 13px; cursor: pointer; white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    color: var(--text-secondary); transition: all 0.15s;
+    border-top: none; border-left: none; border-right: none;
+    background: none;
+  }
+  .tab:hover { color: var(--text-primary); }
+  .tab.active { color: var(--navy); border-bottom-color: var(--gold); font-weight: 500; }
+  .tab.court-tab.active { color: #B22222; border-bottom-color: #B22222; }
+  .tab-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #B22222; flex-shrink: 0;
+  }
+  .notif {
+    min-width: 18px; height: 18px; border-radius: 9px;
+    background: #B22222; color: #fff;
+    font-size: 10px; font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0 4px;
+  }
+
+  .main { flex: 1; padding: 28px; max-width: 1100px; margin: 0 auto; width: 100%; }
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* ── COMMON COMPONENTS ── */
+  .section-label {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-muted);
+    margin-bottom: 14px;
+  }
+  .card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px;
+  }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; font-weight: 500; color: var(--text-primary);
+    margin-bottom: 14px;
+  }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 22px; }
+  .stat-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 16px;
+  }
+  .stat-label { font-size: 11px; color: var(--text-muted); margin-bottom: 5px; }
+  .stat-val { font-size: 26px; font-weight: 300; color: var(--text-primary); line-height: 1; font-family: 'Cormorant Garamond', serif; }
+  .stat-sub { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+  .stat-up { color: #1A6B3A; }
+  .stat-warn { color: #92600A; }
+
+  .badge { font-size: 11px; padding: 3px 10px; border-radius: 10px; display: inline-block; }
+  .b-active { background: var(--success-bg); color: var(--success-text); }
+  .b-pending { background: var(--warning-bg); color: var(--warning-text); }
+  .b-review { background: var(--info-bg); color: var(--info-text); }
+  .b-urgent { background: var(--danger-bg); color: var(--danger-text); font-weight: 500; }
+  .b-closed { background: #F0EEE8; color: #7A7060; }
+
+  .divider { height: 1px; background: var(--border); margin: 4px 0; }
+
+  /* ── MATTER LIST ── */
+  .matter-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 11px 0; border-bottom: 1px solid var(--border); cursor: pointer;
+    transition: background 0.1s;
+  }
+  .matter-row:last-child { border-bottom: none; }
+  .matter-name { font-size: 13px; font-weight: 500; color: var(--text-primary); }
+  .matter-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+  /* ── FULL CASE LIST ── */
+  .case-table { width: 100%; border-collapse: collapse; }
+  .case-table th {
+    text-align: left; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-muted); padding: 0 12px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .case-table td { padding: 11px 12px; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .case-table tr:last-child td { border-bottom: none; }
+  .case-table tr:hover td { background: #FAFAF7; }
+  .case-num { font-size: 11px; color: var(--text-muted); font-family: monospace; }
+
+  /* ── DOCUMENTS ── */
+  .folder-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 22px; }
+  .folder-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px;
+    cursor: pointer; transition: border-color 0.15s;
+  }
+  .folder-card:hover { border-color: var(--gold); }
+  .folder-icon { font-size: 22px; margin-bottom: 7px; }
+  .folder-name { font-size: 13px; font-weight: 500; color: var(--text-primary); }
+  .folder-count { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+  .doc-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 0; border-bottom: 1px solid var(--border);
+    font-size: 13px; cursor: pointer;
+  }
+  .doc-row:last-child { border-bottom: none; }
+  .doc-icon { font-size: 18px; flex-shrink: 0; }
+  .doc-name { flex: 1; color: var(--text-primary); }
+  .doc-meta { font-size: 11px; color: var(--text-muted); white-space: nowrap; }
+  .doc-tag {
+    font-size: 10px; padding: 2px 8px; border-radius: 8px;
+    border: 0.5px solid var(--border-strong); color: var(--text-muted);
+    white-space: nowrap;
+  }
+  .doc-tag.shared { border-color: rgba(26,107,58,0.3); color: var(--success-text); background: var(--success-bg); }
+  .doc-tag.pending-sig { border-color: rgba(146,96,10,0.3); color: var(--warning-text); background: var(--warning-bg); }
+
+  /* ── DEADLINES ── */
+  .dl-table { width: 100%; border-collapse: collapse; }
+  .dl-table th {
+    text-align: left; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-muted); padding: 0 12px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .dl-table td { padding: 11px 12px; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .dl-table tr:last-child td { border-bottom: none; }
+  .date-chip {
+    font-size: 11px; padding: 4px 10px; border-radius: 8px;
+    font-weight: 500; text-align: center; white-space: nowrap;
+    background: #F0EEE8; color: var(--text-secondary);
+  }
+  .date-chip.hot { background: var(--danger-bg); color: var(--danger-text); }
+  .date-chip.warn { background: var(--warning-bg); color: var(--warning-text); }
+  .days-pill { font-size: 11px; padding: 3px 10px; border-radius: 10px; }
+  .days-hot { background: var(--danger-bg); color: var(--danger-text); }
+  .days-warn { background: var(--warning-bg); color: var(--warning-text); }
+  .days-ok { background: #F0EEE8; color: var(--text-muted); }
+
+  /* ── MESSAGES ── */
+  .msg-layout { display: grid; grid-template-columns: 220px 1fr; gap: 18px; }
+  .msg-sidebar { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .msg-sidebar-header { padding: 12px 14px; background: #FAFAF7; border-bottom: 1px solid var(--border); font-size: 11px; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.07em; }
+  .msg-thread-item {
+    padding: 12px 14px; border-bottom: 1px solid var(--border);
+    cursor: pointer; transition: background 0.1s;
+  }
+  .msg-thread-item:last-child { border-bottom: none; }
+  .msg-thread-item:hover, .msg-thread-item.active { background: var(--gold-pale); }
+  .msg-thread-name { font-size: 13px; font-weight: 500; color: var(--text-primary); }
+  .msg-thread-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+  .msg-thread-preview { font-size: 11px; color: var(--text-muted); margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .msg-unread { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+  .msg-pane { border: 1px solid var(--border); border-radius: 12px; display: flex; flex-direction: column; }
+  .msg-pane-header { padding: 14px 18px; border-bottom: 1px solid var(--border); background: #FAFAF7; border-radius: 12px 12px 0 0; }
+  .msg-pane-name { font-size: 14px; font-weight: 500; color: var(--text-primary); }
+  .msg-pane-matter { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+  .msg-body { flex: 1; padding: 18px; display: flex; flex-direction: column; gap: 14px; min-height: 240px; }
+  .msg { display: flex; gap: 10px; }
+  .msg.from-client { flex-direction: row-reverse; }
+  .msg-av { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; flex-shrink: 0; }
+  .msg-atty-av { background: var(--navy); color: var(--gold); }
+  .msg-client-av { background: var(--info-bg); color: var(--info-text); }
+  .msg-bubble { max-width: 62%; border-radius: 12px; padding: 10px 14px; font-size: 13px; line-height: 1.55; }
+  .msg-atty-bubble { background: #F0EEE8; color: var(--text-primary); }
+  .msg-client-bubble { background: var(--info-bg); color: var(--text-primary); }
+  .msg-time { font-size: 10px; color: var(--text-muted); margin-top: 4px; }
+  .msg-footer { padding: 12px 16px; border-top: 1px solid var(--border); display: flex; gap: 10px; }
+  .msg-input {
+    flex: 1; padding: 9px 14px; border: 1px solid var(--border);
+    border-radius: 8px; font-size: 13px; font-family: 'DM Sans', sans-serif;
+    color: var(--text-primary); background: var(--white); outline: none;
+  }
+  .msg-input:focus { border-color: var(--gold); }
+  .send-btn {
+    padding: 9px 18px; background: var(--navy); color: #fff;
+    border: none; border-radius: 8px; font-size: 12px;
+    font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background 0.15s;
+  }
+  .send-btn:hover { background: var(--navy-light); }
+
+  /* ── COURT MODE ── */
+  .court-alert {
+    background: #B22222; color: #fff; border-radius: 10px;
+    padding: 12px 18px; display: flex; align-items: center; gap: 12px;
+    margin-bottom: 20px;
+  }
+  .court-dot { width: 8px; height: 8px; border-radius: 50%; background: #fff; flex-shrink: 0; animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+  .court-alert-text { font-size: 13px; font-weight: 500; }
+  .court-alert-sub { font-size: 11px; opacity: 0.75; margin-top: 2px; }
+  .court-case-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px; margin-bottom: 14px;
+  }
+  .court-case-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+  .court-case-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; color: var(--text-primary); }
+  .court-case-room { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+  .court-time { font-size: 14px; font-weight: 500; color: #B22222; text-align: right; }
+  .court-type { font-size: 11px; color: var(--text-muted); text-align: right; margin-top: 3px; }
+  .court-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; }
+  .court-chip {
+    font-size: 11px; padding: 4px 12px; border-radius: 10px;
+    border: 1px solid var(--border); color: var(--text-secondary);
+    cursor: pointer; transition: border-color 0.15s;
+  }
+  .court-chip:hover { border-color: var(--gold); }
+  .court-chip.doc { border-color: rgba(26,74,138,0.25); color: var(--info-text); background: var(--info-bg); }
+  .court-chip.note { border-color: rgba(26,107,58,0.25); color: var(--success-text); background: var(--success-bg); }
+  .court-quick {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px; margin-top: 6px;
+  }
+  .court-quick-title { font-size: 12px; font-weight: 500; color: var(--text-primary); margin-bottom: 10px; }
+  .court-quick-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .court-quick-item { font-size: 12px; color: var(--text-secondary); }
+  .court-quick-label { font-size: 10px; color: var(--text-muted); }
+
+  /* ── CONTACTS ── */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .contact-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px; display: flex;
+    align-items: center; gap: 12px;
+  }
+  .contact-av { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; flex-shrink: 0; }
+  .av-judge { background: #F0EEE8; color: #5A4A30; }
+  .av-opp { background: var(--info-bg); color: var(--info-text); }
+  .av-clerk { background: var(--success-bg); color: var(--success-text); }
+  .contact-name { font-size: 13px; font-weight: 500; color: var(--text-primary); }
+  .contact-role { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+  .contact-phone { font-size: 11px; color: var(--info-text); margin-top: 3px; }
+
+  /* ── CLIENT PORTAL PANELS ── */
+  .client-welcome {
+    background: var(--navy); border-radius: 12px; padding: 22px 24px;
+    color: #fff; margin-bottom: 22px; position: relative; overflow: hidden;
+  }
+  .client-welcome::after {
+    content: ''; position: absolute; right: -20px; top: -20px;
+    width: 120px; height: 120px; border-radius: 50%;
+    background: rgba(184,146,42,0.12);
+  }
+  .client-welcome-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; color: #fff; margin-bottom: 4px; }
+  .client-welcome-matter { font-size: 13px; color: rgba(255,255,255,0.55); }
+  .client-welcome-atty { font-size: 12px; color: var(--gold-light); margin-top: 8px; }
+
+  /* ── SEARCH ── */
+  .search-input {
+    width: 100%; padding: 9px 14px; border: 1px solid var(--border);
+    border-radius: 8px; font-size: 13px; font-family: 'DM Sans', sans-serif;
+    background: var(--white); color: var(--text-primary); outline: none;
+    margin-bottom: 16px;
+  }
+  .search-input:focus { border-color: var(--gold); }
+
+  /* ── FOOTER ── */
+  .footer {
+    border-top: 1px solid var(--border); padding: 14px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--white);
+  }
+  .footer-brand { font-size: 11px; color: var(--text-muted); }
+  .footer-brand span { color: var(--gold); font-weight: 500; }
+  .footer-links { display: flex; gap: 16px; }
+  .footer-link { font-size: 11px; color: var(--text-muted); text-decoration: none; cursor: pointer; }
+  .footer-link:hover { color: var(--text-primary); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+    .two-col, .folder-grid, .contact-grid, .msg-layout { grid-template-columns: 1fr; }
+    .three-col { grid-template-columns: 1fr 1fr; }
+    .main { padding: 16px; }
+    .login-cards { grid-template-columns: 1fr; }
+    .sub-bar { flex-direction: column; gap: 6px; align-items: flex-start; }
+    .dl-table th:nth-child(3), .dl-table td:nth-child(3) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ LOGIN SCREEN ══════════════ -->
+<div id="login-screen">
+  <div class="login-badge">Secure Practice Portal</div>
+  <div class="login-firm" id="login-firm-name">Morrison &amp; Reed Law Group</div>
+  <div class="login-tagline">Powered by Kane PC · law.kanepc.com</div>
+  <div class="login-rule"></div>
+  <div class="login-cards">
+    <div class="login-card atty" onclick="enterApp('attorney')">
+      <div class="login-card-icon">⚖️</div>
+      <div class="login-card-title">Attorney Portal</div>
+      <div class="login-card-sub">Full case management, Court Mode, deadlines, documents &amp; client messaging</div>
+    </div>
+    <div class="login-card" onclick="enterApp('client')">
+      <div class="login-card-icon">👤</div>
+      <div class="login-card-title">Client Portal</div>
+      <div class="login-card-sub">View your matter, access shared documents and communicate securely with your attorney</div>
+    </div>
+  </div>
+  <div class="login-demo-note">Demo environment · No data is transmitted or stored</div>
+  <div class="kanepc-credit">Technology by <span>Kane PC</span> · White Plains, NY 10601 · (914) 607-3313</div>
+</div>
+
+<!-- ══════════════ APP ══════════════ -->
+<div id="app">
+
+  <div class="topbar">
+    <div class="topbar-left">
+      <div class="firm-logo" id="app-firm-name">Morrison &amp; Reed</div>
+      <div class="firm-divider"></div>
+      <div class="portal-label" id="portal-label">Attorney Portal</div>
+    </div>
+    <div class="topbar-right">
+      <div class="user-chip">
+        <div class="avatar" id="user-avatar">JM</div>
+        <div class="user-name" id="user-name">James Morrison, Esq.</div>
+      </div>
+      <span class="role-badge role-atty" id="role-badge">Attorney</span>
+      <button class="logout-btn" onclick="logout()">← Sign out</button>
+    </div>
+  </div>
+
+  <div class="sub-bar" id="sub-bar-atty">
+    <div class="pa-pills">
+      <span class="pa-label">Practice area:</span>
+      <button class="pa-pill active" onclick="setPa(this)">All Matters</button>
+      <button class="pa-pill" onclick="setPa(this)">Matrimonial</button>
+      <button class="pa-pill" onclick="setPa(this)">Criminal</button>
+      <button class="pa-pill" onclick="setPa(this)">Real Estate</button>
+    </div>
+    <div class="int-pills">
+      <span class="int-label">Synced with:</span>
+      <span class="int-pill int-sp">SharePoint</span>
+      <span class="int-pill int-mc">MyCase</span>
+      <span class="int-pill int-lp">Leap</span>
+    </div>
+  </div>
+
+  <div class="tabs-bar" id="tabs-atty">
+    <button class="tab active" onclick="showTab('dashboard',this)">◈ &nbsp;Dashboard</button>
+    <button class="tab" onclick="showTab('cases',this)">⊟ &nbsp;Cases</button>
+    <button class="tab" onclick="showTab('docs',this)">⊡ &nbsp;Documents</button>
+    <button class="tab" onclick="showTab('deadlines',this)">◷ &nbsp;Deadlines</button>
+    <button class="tab" onclick="showTab('messages',this)">⊠ &nbsp;Messages <span class="notif">5</span></button>
+    <button class="tab court-tab" onclick="showTab('court',this)"><span class="tab-dot"></span> &nbsp;Court Mode</button>
+    <button class="tab" onclick="showTab('contacts',this)">⊕ &nbsp;Contacts</button>
+  </div>
+
+  <div class="tabs-bar" id="tabs-client" style="display:none;">
+    <button class="tab active" onclick="showClientTab('c-overview',this)">◈ &nbsp;My Matter</button>
+    <button class="tab" onclick="showClientTab('c-docs',this)">⊡ &nbsp;My Documents</button>
+    <button class="tab" onclick="showClientTab('c-messages',this)">⊠ &nbsp;Messages <span class="notif">2</span></button>
+    <button class="tab" onclick="showClientTab('c-deadlines',this)">◷ &nbsp;Key Dates</button>
+  </div>
+
+  <div class="main">
+
+    <!-- ════ ATTORNEY PANELS ════ -->
+
+    <!-- DASHBOARD -->
+    <div class="panel active" id="panel-dashboard">
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-label">Active Matters</div>
+          <div class="stat-val">24</div>
+          <div class="stat-sub stat-up">↑ 3 this month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Upcoming Deadlines</div>
+          <div class="stat-val">8</div>
+          <div class="stat-sub stat-warn">⚠ 2 within 72 hrs</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Pending Signatures</div>
+          <div class="stat-val">11</div>
+          <div class="stat-sub">Awaiting client action</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Unread Messages</div>
+          <div class="stat-val">5</div>
+          <div class="stat-sub">From 3 clients</div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="card">
+          <div class="card-title">Recent Matters</div>
+          <div class="matter-row"><div><div class="matter-name">Hendricks v. Hendricks</div><div class="matter-sub">Matrimonial · Divorce &amp; Asset Division</div></div><span class="badge b-active">Active</span></div>
+          <div class="matter-row"><div><div class="matter-name">State v. Carlyle</div><div class="matter-sub">Criminal · DUI Defense</div></div><span class="badge b-urgent">Hearing Fri</span></div>
+          <div class="matter-row"><div><div class="matter-name">Patel — 1840 Gulf Dr. Closing</div><div class="matter-sub">Real Estate · Residential Purchase</div></div><span class="badge b-review">In Review</span></div>
+          <div class="matter-row"><div><div class="matter-name">Torres Custody Modification</div><div class="matter-sub">Matrimonial · Child Custody</div></div><span class="badge b-pending">Pending Filing</span></div>
+          <div class="matter-row"><div><div class="matter-name">Westbrook Commercial Lease</div><div class="matter-sub">Real Estate · Commercial</div></div><span class="badge b-review">In Review</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Upcoming Deadlines</div>
+          <div class="matter-row"><div style="display:flex;gap:12px;align-items:center"><div class="date-chip hot">Apr 3</div><div><div class="matter-name">State v. Carlyle — Motion to Suppress</div><div class="matter-sub">Criminal · 12th Circuit, Rm 4B</div></div></div></div>
+          <div class="matter-row"><div style="display:flex;gap:12px;align-items:center"><div class="date-chip hot">Apr 4</div><div><div class="matter-name">Torres — Response to Custody Petition</div><div class="matter-sub">Matrimonial · Family Court, Manatee</div></div></div></div>
+          <div class="matter-row"><div style="display:flex;gap:12px;align-items:center"><div class="date-chip warn">Apr 9</div><div><div class="matter-name">Patel — Title Commitment Deadline</div><div class="matter-sub">Real Estate · Sarasota County</div></div></div></div>
+          <div class="matter-row"><div style="display:flex;gap:12px;align-items:center"><div class="date-chip">Apr 15</div><div><div class="matter-name">Hendricks — Discovery Production</div><div class="matter-sub">Matrimonial · 12th Circuit</div></div></div></div>
+          <div class="matter-row"><div style="display:flex;gap:12px;align-items:center"><div class="date-chip">Apr 22</div><div><div class="matter-name">Westbrook — Lease Execution</div><div class="matter-sub">Real Estate · Sarasota County</div></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASES -->
+    <div class="panel" id="panel-cases">
+      <input class="search-input" placeholder="Search matters, clients, matter number…">
+      <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px;">
+        <button class="pa-pill active" style="font-size:12px;" onclick="setPa(this)">All</button>
+        <button class="pa-pill" style="font-size:12px;" onclick="setPa(this)">Active</button>
+        <button class="pa-pill" style="font-size:12px;" onclick="setPa(this)">Pending</button>
+        <button class="pa-pill" style="font-size:12px;" onclick="setPa(this)">Matrimonial</button>
+        <button class="pa-pill" style="font-size:12px;" onclick="setPa(this)">Criminal</button>
+        <button class="pa-pill" style="font-size:12px;" onclick="setPa(this)">Real Estate</button>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table class="case-table">
+          <thead><tr><th>Matter</th><th>Client</th><th>Practice Area</th><th>Opened</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><div class="matter-name">Hendricks v. Hendricks</div><div class="case-num">#2024-MAT-041</div></td><td>Patricia Hendricks</td><td>Matrimonial</td><td>Oct 2024</td><td><span class="badge b-active">Active</span></td></tr>
+            <tr><td><div class="matter-name">State v. Carlyle</div><div class="case-num">#2025-CRIM-017</div></td><td>Kevin Carlyle</td><td>Criminal</td><td>Jan 2025</td><td><span class="badge b-urgent">Hearing Fri</span></td></tr>
+            <tr><td><div class="matter-name">Patel — 1840 Gulf Dr.</div><div class="case-num">#2025-RE-008</div></td><td>Raj &amp; Priya Patel</td><td>Real Estate</td><td>Feb 2025</td><td><span class="badge b-review">In Review</span></td></tr>
+            <tr><td><div class="matter-name">Torres Custody Modification</div><div class="case-num">#2025-MAT-062</div></td><td>Maria Torres</td><td>Matrimonial</td><td>Mar 2025</td><td><span class="badge b-pending">Pending Filing</span></td></tr>
+            <tr><td><div class="matter-name">Westbrook Commercial Lease</div><div class="case-num">#2025-RE-014</div></td><td>Westbrook Holdings LLC</td><td>Real Estate</td><td>Mar 2025</td><td><span class="badge b-review">In Review</span></td></tr>
+            <tr><td><div class="matter-name">State v. Morales</div><div class="case-num">#2025-CRIM-031</div></td><td>Dario Morales</td><td>Criminal</td><td>Mar 2025</td><td><span class="badge b-active">Active</span></td></tr>
+            <tr><td><div class="matter-name">Nguyen Equitable Distribution</div><div class="case-num">#2025-MAT-055</div></td><td>Angela Nguyen</td><td>Matrimonial</td><td>Feb 2025</td><td><span class="badge b-active">Active</span></td></tr>
+            <tr><td><div class="matter-name">Kellerman v. Sunrise Dev.</div><div class="case-num">#2024-RE-097</div></td><td>Thomas Kellerman</td><td>Real Estate</td><td>Aug 2024</td><td><span class="badge b-closed">Closed</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- DOCUMENTS -->
+    <div class="panel" id="panel-docs">
+      <div class="section-label">Document Vault</div>
+      <div class="folder-grid">
+        <div class="folder-card"><div class="folder-icon">📁</div><div class="folder-name">Pleadings &amp; Motions</div><div class="folder-count">34 documents</div></div>
+        <div class="folder-card"><div class="folder-icon">📁</div><div class="folder-name">Discovery</div><div class="folder-count">18 documents</div></div>
+        <div class="folder-card"><div class="folder-icon">📁</div><div class="folder-name">Contracts &amp; Agreements</div><div class="folder-count">12 documents</div></div>
+        <div class="folder-card"><div class="folder-icon">📁</div><div class="folder-name">Client Correspondence</div><div class="folder-count">27 documents</div></div>
+        <div class="folder-card"><div class="folder-icon">📁</div><div class="folder-name">Court Orders &amp; Judgments</div><div class="folder-count">9 documents</div></div>
+        <div class="folder-card"><div class="folder-icon">🔗</div><div class="folder-name">Shared with Clients</div><div class="folder-count">15 documents · Secure link active</div></div>
+      </div>
+      <div class="section-label">Recent Documents</div>
+      <div class="card" style="padding:4px 16px;">
+        <div class="doc-row"><span class="doc-icon">📄</span><div class="doc-name">Carlyle_Motion_to_Suppress.pdf</div><span class="doc-meta">Apr 1 · 124 KB</span><span class="doc-tag">Drafting</span></div>
+        <div class="doc-row"><span class="doc-icon">📋</span><div class="doc-name">Torres_Custody_Petition_Response.docx</div><span class="doc-meta">Mar 31 · 88 KB</span><span class="doc-tag pending-sig">Awaiting Signature</span></div>
+        <div class="doc-row"><span class="doc-icon">📄</span><div class="doc-name">Patel_Title_Commitment_Review.pdf</div><span class="doc-meta">Mar 29 · 342 KB</span><span class="doc-tag shared">Shared ✓</span></div>
+        <div class="doc-row"><span class="doc-icon">📊</span><div class="doc-name">Hendricks_Asset_Inventory.xlsx</div><span class="doc-meta">Mar 28 · 56 KB</span><span class="doc-tag">Internal</span></div>
+        <div class="doc-row"><span class="doc-icon">📄</span><div class="doc-name">Westbrook_Commercial_Lease_v3.pdf</div><span class="doc-meta">Mar 27 · 218 KB</span><span class="doc-tag shared">Shared ✓</span></div>
+        <div class="doc-row"><span class="doc-icon">📋</span><div class="doc-name">Nguyen_Equitable_Distribution_Analysis.docx</div><span class="doc-meta">Mar 26 · 94 KB</span><span class="doc-tag">Internal</span></div>
+      </div>
+    </div>
+
+    <!-- DEADLINES -->
+    <div class="panel" id="panel-deadlines">
+      <div class="section-label">All Upcoming Deadlines</div>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table class="dl-table">
+          <thead><tr><th>Date</th><th>Matter / Event</th><th>Court / Location</th><th>Due In</th></tr></thead>
+          <tbody>
+            <tr><td><span class="date-chip hot">Apr 3</span></td><td><div class="matter-name">State v. Carlyle — Motion to Suppress filing</div><div class="case-num">Criminal · #2025-CRIM-017</div></td><td style="font-size:12px;color:var(--text-muted)">12th Circuit, Rm 4B</td><td><span class="days-pill days-hot">2 days</span></td></tr>
+            <tr><td><span class="date-chip hot">Apr 4</span></td><td><div class="matter-name">Torres — Response to Custody Petition</div><div class="case-num">Matrimonial · #2025-MAT-062</div></td><td style="font-size:12px;color:var(--text-muted)">Family Court, Manatee</td><td><span class="days-pill days-hot">3 days</span></td></tr>
+            <tr><td><span class="date-chip warn">Apr 9</span></td><td><div class="matter-name">Patel — Title Commitment deadline</div><div class="case-num">Real Estate · #2025-RE-008</div></td><td style="font-size:12px;color:var(--text-muted)">Sarasota County</td><td><span class="days-pill days-warn">8 days</span></td></tr>
+            <tr><td><span class="date-chip">Apr 15</span></td><td><div class="matter-name">Hendricks — Discovery production deadline</div><div class="case-num">Matrimonial · #2024-MAT-041</div></td><td style="font-size:12px;color:var(--text-muted)">12th Circuit</td><td><span class="days-pill days-ok">14 days</span></td></tr>
+            <tr><td><span class="date-chip">Apr 22</span></td><td><div class="matter-name">Westbrook — Lease execution &amp; exchange</div><div class="case-num">Real Estate · #2025-RE-014</div></td><td style="font-size:12px;color:var(--text-muted)">Sarasota County</td><td><span class="days-pill days-ok">21 days</span></td></tr>
+            <tr><td><span class="date-chip">May 5</span></td><td><div class="matter-name">State v. Morales — Preliminary hearing</div><div class="case-num">Criminal · #2025-CRIM-031</div></td><td style="font-size:12px;color:var(--text-muted)">12th Circuit, Rm 2A</td><td><span class="days-pill days-ok">34 days</span></td></tr>
+            <tr><td><span class="date-chip">May 12</span></td><td><div class="matter-name">Nguyen — Mediation session</div><div class="case-num">Matrimonial · #2025-MAT-055</div></td><td style="font-size:12px;color:var(--text-muted)">JAMS Sarasota</td><td><span class="days-pill days-ok">41 days</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- MESSAGES -->
+    <div class="panel" id="panel-messages">
+      <div class="msg-layout">
+        <div class="msg-sidebar">
+          <div class="msg-sidebar-header">Secure Messages</div>
+          <div class="msg-thread-item active">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+              <div class="msg-thread-name">Patricia Hendricks</div>
+              <div class="msg-unread"></div>
+            </div>
+            <div class="msg-thread-sub">Matrimonial · Apr 1</div>
+            <div class="msg-thread-preview">The lake house value looks off…</div>
+          </div>
+          <div class="msg-thread-item">
+            <div class="msg-thread-name">Kevin Carlyle</div>
+            <div class="msg-thread-sub">Criminal · Mar 31</div>
+            <div class="msg-thread-preview">Do I need to be there Friday?</div>
+          </div>
+          <div class="msg-thread-item">
+            <div class="msg-thread-name">Raj &amp; Priya Patel</div>
+            <div class="msg-thread-sub">Real Estate · Mar 30</div>
+            <div class="msg-thread-preview">Reviewed the title — a few questions</div>
+          </div>
+          <div class="msg-thread-item">
+            <div class="msg-thread-name">Maria Torres</div>
+            <div class="msg-thread-sub">Matrimonial · Mar 29</div>
+            <div class="msg-thread-preview">Signed and uploaded the form</div>
+          </div>
+        </div>
+        <div class="msg-pane">
+          <div class="msg-pane-header">
+            <div class="msg-pane-name">Patricia Hendricks</div>
+            <div class="msg-pane-matter">Hendricks v. Hendricks · Matter #2024-MAT-041 · Matrimonial</div>
+          </div>
+          <div class="msg-body">
+            <div class="msg">
+              <div class="msg-av msg-atty-av">JM</div>
+              <div><div class="msg-bubble msg-atty-bubble">Hi Patricia — I've uploaded the updated asset inventory to your document portal. Please review and let me know if anything needs correction before we proceed with discovery.</div><div class="msg-time">Mar 29 · 3:12 PM</div></div>
+            </div>
+            <div class="msg from-client">
+              <div class="msg-av msg-client-av">PH</div>
+              <div><div class="msg-bubble msg-client-bubble">Thank you. I reviewed it — the lake house value looks off. I believe it should be closer to $640K based on recent comps. Can we flag that?</div><div class="msg-time">Mar 30 · 9:44 AM</div></div>
+            </div>
+            <div class="msg">
+              <div class="msg-av msg-atty-av">JM</div>
+              <div><div class="msg-bubble msg-atty-bubble">Noted — I'll request a formal appraisal and attach it to the discovery package. This actually strengthens our position on equitable distribution.</div><div class="msg-time">Mar 30 · 11:02 AM</div></div>
+            </div>
+            <div class="msg from-client">
+              <div class="msg-av msg-client-av">PH</div>
+              <div><div class="msg-bubble msg-client-bubble">Perfect. Also — when do we expect the next court date? My work schedule is tricky in May.</div><div class="msg-time">Apr 1 · 8:30 AM</div></div>
+            </div>
+          </div>
+          <div class="msg-footer">
+            <input class="msg-input" placeholder="Reply securely to Patricia…">
+            <button class="send-btn">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COURT MODE -->
+    <div class="panel" id="panel-court">
+      <div class="court-alert">
+        <div class="court-dot"></div>
+        <div>
+          <div class="court-alert-text">Court Mode — Offline Ready</div>
+          <div class="court-alert-sub">All matters below are cached locally. Available without wifi. Last synced Apr 1 at 7:42 AM.</div>
+        </div>
+      </div>
+      <div class="section-label">Today's Docket — Wednesday, April 1</div>
+      <div class="court-case-card">
+        <div class="court-case-top">
+          <div>
+            <div class="court-case-name">State v. Carlyle</div>
+            <div class="court-case-room">12th Circuit Court · Courtroom 4B · Hon. Walter Randolph</div>
+          </div>
+          <div><div class="court-time">9:00 AM</div><div class="court-type">Motion Hearing · DUI Defense</div></div>
+        </div>
+        <div style="font-size:12px;color:var(--text-muted)">Criminal · Matter #2025-CRIM-017</div>
+        <div class="court-chips">
+          <span class="court-chip doc">📄 Motion to Suppress</span>
+          <span class="court-chip doc">📄 Police Report</span>
+          <span class="court-chip doc">📄 BAC Chain of Custody</span>
+          <span class="court-chip note">📝 Case Strategy Notes</span>
+          <span class="court-chip">👤 Carlyle: (941) 555-0182</span>
+          <span class="court-chip">⚖ ADA Ruiz: (941) 555-0199</span>
+        </div>
+      </div>
+      <div class="court-case-card">
+        <div class="court-case-top">
+          <div>
+            <div class="court-case-name">Torres Custody Modification</div>
+            <div class="court-case-room">Manatee County Family Court · Division F · Hon. Anne Paulsen</div>
+          </div>
+          <div><div class="court-time">2:30 PM</div><div class="court-type">Status Conference · Child Custody</div></div>
+        </div>
+        <div style="font-size:12px;color:var(--text-muted)">Matrimonial · Matter #2025-MAT-062</div>
+        <div class="court-chips">
+          <span class="court-chip doc">📄 Custody Petition</span>
+          <span class="court-chip doc">📄 Current Parenting Plan</span>
+          <span class="court-chip doc">📄 School &amp; Medical Records</span>
+          <span class="court-chip note">📝 Witness Prep Notes</span>
+          <span class="court-chip">👤 Torres: (941) 555-0271</span>
+          <span class="court-chip">⚖ Clarke &amp; Voss: (941) 555-0348</span>
+        </div>
+      </div>
+      <div class="court-quick">
+        <div class="court-quick-title">Quick Reference — 12th Circuit &amp; Manatee County Courts</div>
+        <div class="court-quick-grid">
+          <div><div class="court-quick-label">12th Circuit Clerk</div><div class="court-quick-item">(941) 555-3200</div></div>
+          <div><div class="court-quick-label">Judge Randolph Chambers</div><div class="court-quick-item">(941) 555-3241</div></div>
+          <div><div class="court-quick-label">Manatee Family Court</div><div class="court-quick-item">(941) 555-4100</div></div>
+          <div><div class="court-quick-label">Judge Paulsen Chambers</div><div class="court-quick-item">(941) 555-4118</div></div>
+          <div><div class="court-quick-label">State Attorney's Office</div><div class="court-quick-item">(941) 555-0190</div></div>
+          <div><div class="court-quick-label">FL E-Filing Portal</div><div class="court-quick-item">myflcourtaccess.com</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACTS -->
+    <div class="panel" id="panel-contacts">
+      <div class="section-label" style="margin-bottom:12px;">Judiciary</div>
+      <div class="contact-grid" style="margin-bottom:22px;">
+        <div class="contact-card"><div class="contact-av av-judge">WR</div><div><div class="contact-name">Hon. Walter Randolph</div><div class="contact-role">Judge · 12th Circuit, Rm 4B</div><div class="contact-phone">(941) 555-3241</div></div></div>
+        <div class="contact-card"><div class="contact-av av-judge">AP</div><div><div class="contact-name">Hon. Anne Paulsen</div><div class="contact-role">Judge · Manatee Family Court, Div F</div><div class="contact-phone">(941) 555-4118</div></div></div>
+      </div>
+      <div class="section-label" style="margin-bottom:12px;">Opposing Counsel</div>
+      <div class="contact-grid" style="margin-bottom:22px;">
+        <div class="contact-card"><div class="contact-av av-opp">MR</div><div><div class="contact-name">Maria Ruiz</div><div class="contact-role">ADA · State v. Carlyle</div><div class="contact-phone">(941) 555-0199</div></div></div>
+        <div class="contact-card"><div class="contact-av av-opp">CV</div><div><div class="contact-name">Clarke &amp; Voss, P.A.</div><div class="contact-role">Opposing Counsel · Torres Custody</div><div class="contact-phone">(941) 555-0348</div></div></div>
+        <div class="contact-card"><div class="contact-av av-opp">BW</div><div><div class="contact-name">Brian Walsh, Esq.</div><div class="contact-role">Opposing Counsel · Hendricks</div><div class="contact-phone">(941) 555-0412</div></div></div>
+        <div class="contact-card"><div class="contact-av av-opp">LF</div><div><div class="contact-name">Linden &amp; Foote, P.A.</div><div class="contact-role">Opposing Counsel · Westbrook</div><div class="contact-phone">(941) 555-0581</div></div></div>
+      </div>
+      <div class="section-label" style="margin-bottom:12px;">Court Offices &amp; Vendors</div>
+      <div class="contact-grid">
+        <div class="contact-card"><div class="contact-av av-clerk">CC</div><div><div class="contact-name">12th Circuit Clerk's Office</div><div class="contact-role">Sarasota &amp; Manatee Counties</div><div class="contact-phone">(941) 555-3200</div></div></div>
+        <div class="contact-card"><div class="contact-av av-clerk">TR</div><div><div class="contact-name">Title Republic, Inc.</div><div class="contact-role">Title Agent · Patel Closing</div><div class="contact-phone">(941) 555-0774</div></div></div>
+        <div class="contact-card"><div class="contact-av av-clerk">JS</div><div><div class="contact-name">JAMS Sarasota</div><div class="contact-role">Mediation · Nguyen Matter</div><div class="contact-phone">(941) 555-0920</div></div></div>
+        <div class="contact-card"><div class="contact-av av-clerk">KP</div><div><div class="contact-name">Kane PC Support</div><div class="contact-role">Technology Partner · 24/7 IT</div><div class="contact-phone">(914) 607-3313</div></div></div>
+      </div>
+    </div>
+
+    <!-- ════ CLIENT PANELS ════ -->
+
+    <!-- CLIENT OVERVIEW -->
+    <div class="panel" id="panel-c-overview">
+      <div class="client-welcome">
+        <div class="client-welcome-name">Welcome, Patricia</div>
+        <div class="client-welcome-matter">Hendricks v. Hendricks · Matter #2024-MAT-041 · Matrimonial</div>
+        <div class="client-welcome-atty">Your attorney: James Morrison, Esq. · (941) 555-0100</div>
+      </div>
+      <div class="two-col">
+        <div class="card">
+          <div class="card-title">Your Matter Status</div>
+          <div class="matter-row"><div class="matter-name">Case Type</div><div style="font-size:13px;color:var(--text-secondary)">Divorce &amp; Asset Division</div></div>
+          <div class="matter-row"><div class="matter-name">Status</div><span class="badge b-active">Active</span></div>
+          <div class="matter-row"><div class="matter-name">Opened</div><div style="font-size:13px;color:var(--text-secondary)">October 2024</div></div>
+          <div class="matter-row"><div class="matter-name">Next Step</div><div style="font-size:13px;color:var(--text-secondary)">Discovery Production — Apr 15</div></div>
+          <div class="matter-row"><div class="matter-name">Court</div><div style="font-size:13px;color:var(--text-secondary)">12th Circuit · Sarasota County</div></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Action Needed</div>
+          <div class="matter-row"><div><div class="matter-name">Sign Petition Response</div><div class="matter-sub">Torres_Custody_Petition_Response.docx</div></div><span class="badge b-urgent">Sign Now</span></div>
+          <div class="matter-row"><div><div class="matter-name">Review Asset Inventory</div><div class="matter-sub">Hendricks_Asset_Inventory.xlsx</div></div><span class="badge b-pending">Review</span></div>
+          <div class="matter-row" style="border-bottom:none;"><div><div class="matter-name">Confirm Apr 15 Availability</div><div class="matter-sub">Discovery deposition scheduling</div></div><span class="badge b-review">Confirm</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CLIENT DOCS -->
+    <div class="panel" id="panel-c-docs">
+      <div class="section-label">Documents Shared with You</div>
+      <div class="card" style="padding:4px 16px;">
+        <div class="doc-row"><span class="doc-icon">📄</span><div class="doc-name">Divorce_Petition_Filed.pdf</div><span class="doc-meta">Oct 2024 · 188 KB</span><span class="doc-tag shared">View</span></div>
+        <div class="doc-row"><span class="doc-icon">📋</span><div class="doc-name">Hendricks_Asset_Inventory.xlsx</div><span class="doc-meta">Mar 28 · 56 KB</span><span class="doc-tag pending-sig">Review Needed</span></div>
+        <div class="doc-row"><span class="doc-icon">📄</span><div class="doc-name">Discovery_Request_to_Opposing.pdf</div><span class="doc-meta">Mar 15 · 92 KB</span><span class="doc-tag shared">View</span></div>
+        <div class="doc-row"><span class="doc-icon">📋</span><div class="doc-name">Retainer_Agreement_Signed.pdf</div><span class="doc-meta">Oct 2024 · 44 KB</span><span class="doc-tag shared">View</span></div>
+        <div class="doc-row"><span class="doc-icon">📄</span><div class="doc-name">Court_Scheduling_Order.pdf</div><span class="doc-meta">Nov 2024 · 28 KB</span><span class="doc-tag shared">View</span></div>
+      </div>
+      <div style="margin-top:14px;padding:12px 16px;background:#FEF5E4;border-radius:10px;border:1px solid rgba(146,96,10,0.2);">
+        <div style="font-size:12px;font-weight:500;color:#92600A;margin-bottom:3px;">Document awaiting your signature</div>
+        <div style="font-size:12px;color:#92600A;">Torres_Custody_Petition_Response.docx — Please sign and return by April 4.</div>
+      </div>
+    </div>
+
+    <!-- CLIENT MESSAGES -->
+    <div class="panel" id="panel-c-messages">
+      <div class="msg-layout" style="grid-template-columns:1fr;">
+        <div class="msg-pane">
+          <div class="msg-pane-header">
+            <div class="msg-pane-name">James Morrison, Esq.</div>
+            <div class="msg-pane-matter">Hendricks v. Hendricks · Secure Client Messaging</div>
+          </div>
+          <div class="msg-body">
+            <div class="msg">
+              <div class="msg-av msg-atty-av">JM</div>
+              <div><div class="msg-bubble msg-atty-bubble">Hi Patricia — I've uploaded the updated asset inventory to your document portal. Please review and let me know if anything needs correction before we proceed with discovery.</div><div class="msg-time">Mar 29 · 3:12 PM</div></div>
+            </div>
+            <div class="msg from-client">
+              <div class="msg-av msg-client-av">PH</div>
+              <div><div class="msg-bubble msg-client-bubble">Thank you. I reviewed it — the lake house value looks off. I believe it should be closer to $640K based on recent comps. Can we flag that?</div><div class="msg-time">Mar 30 · 9:44 AM</div></div>
+            </div>
+            <div class="msg">
+              <div class="msg-av msg-atty-av">JM</div>
+              <div><div class="msg-bubble msg-atty-bubble">Noted — I'll request a formal appraisal and attach it to the discovery package. This actually strengthens our position on equitable distribution.</div><div class="msg-time">Mar 30 · 11:02 AM</div></div>
+            </div>
+          </div>
+          <div class="msg-footer">
+            <input class="msg-input" placeholder="Message your attorney securely…">
+            <button class="send-btn">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CLIENT DEADLINES -->
+    <div class="panel" id="panel-c-deadlines">
+      <div class="section-label">Key Dates — Your Matter</div>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table class="dl-table">
+          <thead><tr><th>Date</th><th>Event</th><th>What You Need to Do</th></tr></thead>
+          <tbody>
+            <tr><td><span class="date-chip hot">Apr 4</span></td><td><div class="matter-name">Response to Custody Petition due</div></td><td style="font-size:12px;color:var(--warning-text)">Sign document in portal</td></tr>
+            <tr><td><span class="date-chip warn">Apr 15</span></td><td><div class="matter-name">Discovery production deadline</div></td><td style="font-size:12px;color:var(--text-muted)">Confirm availability for deposition</td></tr>
+            <tr><td><span class="date-chip">May 12</span></td><td><div class="matter-name">Mediation session — JAMS Sarasota</div></td><td style="font-size:12px;color:var(--text-muted)">Attend in person — 9:00 AM</td></tr>
+            <tr><td><span class="date-chip">TBD</span></td><td><div class="matter-name">Trial date (to be scheduled)</div></td><td style="font-size:12px;color:var(--text-muted)">Attorney will notify you</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div><!-- /main -->
+
+  <div class="footer">
+    <div class="footer-brand">Secure Legal Portal powered by <span>Kane PC</span> · law.kanepc.com · (914) 607-3313</div>
+    <div class="footer-links">
+      <span class="footer-link">Privacy Policy</span>
+      <span class="footer-link">Terms of Use</span>
+      <span class="footer-link">Support</span>
+    </div>
+  </div>
+
+</div><!-- /app -->
+
+<script>
+var currentRole = 'attorney';
+
+function enterApp(role) {
+  currentRole = role;
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('app').style.display = 'flex';
+
+  if (role === 'attorney') {
+    document.getElementById('portal-label').textContent = 'Attorney Portal';
+    document.getElementById('user-avatar').textContent = 'JM';
+    document.getElementById('user-name').textContent = 'James Morrison, Esq.';
+    document.getElementById('role-badge').textContent = 'Attorney';
+    document.getElementById('role-badge').className = 'role-badge role-atty';
+    document.getElementById('sub-bar-atty').style.display = 'flex';
+    document.getElementById('tabs-atty').style.display = 'flex';
+    document.getElementById('tabs-client').style.display = 'none';
+    showTab('dashboard', document.querySelector('#tabs-atty .tab'));
+  } else {
+    document.getElementById('portal-label').textContent = 'Client Portal';
+    document.getElementById('user-avatar').textContent = 'PH';
+    document.getElementById('user-avatar').className = 'avatar client-av';
+    document.getElementById('user-name').textContent = 'Patricia Hendricks';
+    document.getElementById('role-badge').textContent = 'Client';
+    document.getElementById('role-badge').className = 'role-badge role-client';
+    document.getElementById('sub-bar-atty').style.display = 'none';
+    document.getElementById('tabs-atty').style.display = 'none';
+    document.getElementById('tabs-client').style.display = 'flex';
+    showClientTab('c-overview', document.querySelector('#tabs-client .tab'));
+  }
+}
+
+function logout() {
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('user-avatar').className = 'avatar';
+}
+
+function showTab(id, el) {
+  document.querySelectorAll('#tabs-atty .tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  el.classList.add('active');
+}
+
+function showClientTab(id, el) {
+  document.querySelectorAll('#tabs-client .tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  el.classList.add('active');
+}
+
+function setPa(el) {
+  el.closest('div').querySelectorAll('.pa-pill, .pa-badge').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+}
+</script>
+</body>
+</html>
