@@ -5,31 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
-<title>Peirce &amp; Salvato PLLC — Practice Portal</title>
+<meta name="robots" content="noindex,nofollow">
+<title>Hasapidis Law Offices — Appellate Practice Portal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --slate:#1C2B3A;
-  --slate-mid:#243648;
-  --slate-light:#2E4460;
-  --burg:#7B1E2D;
-  --burg-light:#9B2638;
-  --burg-pale:#F7EEF0;
-  --cream:#F8F6F1;
+  --slate:#1F1D1A;
+  --slate-mid:#2C2925;
+  --slate-light:#3B3732;
+  --burg:#6E2F2A;
+  --burg-light:#8A3C35;
+  --burg-pale:#F5EEEC;
+  --cream:#F6F4F0;
   --white:#FFFFFF;
-  --tp:#1C2B3A;
-  --ts:#5A6A7A;
-  --tm:#8A9AAA;
-  --border:rgba(28,43,58,0.09);
-  --border-s:rgba(28,43,58,0.16);
+  --tp:#1F1D1A;
+  --ts:#5E5A54;
+  --tm:#8B8885;
+  --border:rgba(31,29,26,0.09);
+  --border-s:rgba(31,29,26,0.16);
   --s-bg:#EAF5EE;--s-tx:#1A6B3A;
   --w-bg:#FEF5E4;--w-tx:#92600A;
   --d-bg:#FCEAEA;--d-tx:#9B2222;
   --i-bg:#E7F0FB;--i-tx:#1A4A8A;
 }
-html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--tp);font-size:14px;}
+html,body{height:100%;font-family:'Open Sans',sans-serif;background:var(--cream);color:var(--tp);font-size:14px;}
 
 /* LOGIN */
 #login-screen{
@@ -39,10 +40,10 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
 }
 #login-screen::before{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(123,30,45,0.18) 0%,transparent 70%);
+  background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(110,47,42,0.18) 0%,transparent 70%);
 }
 .login-eyebrow{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:18px;text-align:center;position:relative;}
-.login-firm{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:500;color:#fff;text-align:center;line-height:1.1;position:relative;}
+.login-firm{font-family:'Playfair Display',Georgia,serif;font-size:36px;font-weight:500;color:#fff;text-align:center;line-height:1.1;position:relative;}
 .login-firm span{font-style:italic;color:rgba(255,255,255,0.6);font-size:34px;}
 .login-rule{width:40px;height:1px;background:var(--burg-light);margin:22px auto;}
 .login-sub{font-size:12px;color:rgba(255,255,255,0.35);text-align:center;margin-bottom:44px;position:relative;}
@@ -53,9 +54,9 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
   transition:all 0.2s;background:rgba(255,255,255,0.04);
 }
 .login-card:hover{border-color:var(--burg-light);transform:translateY(-2px);background:rgba(255,255,255,0.07);}
-.login-card.atty{border-color:rgba(123,30,45,0.35);}
+.login-card.atty{border-color:rgba(110,47,42,0.35);}
 .lc-icon{font-size:26px;margin-bottom:10px;}
-.lc-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;color:#fff;margin-bottom:5px;}
+.lc-title{font-family:'Playfair Display',Georgia,serif;font-size:18px;font-weight:500;color:#fff;margin-bottom:5px;}
 .lc-sub{font-size:11px;color:rgba(255,255,255,0.35);line-height:1.5;}
 .login-note{margin-top:34px;font-size:11px;color:rgba(255,255,255,0.18);text-align:center;position:relative;}
 .kpc-credit{margin-top:32px;font-size:11px;color:rgba(255,255,255,0.18);text-align:center;position:relative;}
@@ -70,7 +71,7 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
   position:sticky;top:0;z-index:100;
 }
 .tl{display:flex;align-items:center;gap:14px;}
-.firm-mark{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:500;color:#fff;white-space:nowrap;}
+.firm-mark{font-family:'Playfair Display',Georgia,serif;font-size:17px;font-weight:500;color:#fff;white-space:nowrap;}
 .firm-mark em{font-style:italic;color:rgba(255,255,255,0.55);font-size:16px;}
 .tdiv{width:1px;height:20px;background:rgba(255,255,255,0.12);}
 .portal-lbl{font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:0.08em;text-transform:uppercase;}
@@ -81,15 +82,15 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
 .av-client{background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.6);}
 .uname{font-size:12px;color:rgba(255,255,255,0.7);}
 .rbadge{font-size:10px;padding:2px 8px;border-radius:8px;letter-spacing:0.04em;}
-.rbadge-atty{background:rgba(123,30,45,0.3);color:#D4758A;border:0.5px solid rgba(123,30,45,0.4);}
+.rbadge-atty{background:rgba(110,47,42,0.3);color:#D4758A;border:0.5px solid rgba(110,47,42,0.4);}
 .rbadge-client{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.4);border:0.5px solid rgba(255,255,255,0.1);}
-.logout-btn{font-size:11px;color:rgba(255,255,255,0.25);cursor:pointer;padding:4px 8px;border-radius:6px;transition:color .15s;background:none;border:none;font-family:'DM Sans',sans-serif;}
+.logout-btn{font-size:11px;color:rgba(255,255,255,0.25);cursor:pointer;padding:4px 8px;border-radius:6px;transition:color .15s;background:none;border:none;font-family:'Open Sans',sans-serif;}
 .logout-btn:hover{color:rgba(255,255,255,0.6);}
 
 .sub-bar{background:var(--slate-mid);padding:7px 28px;display:flex;align-items:center;justify-content:space-between;}
 .pa-pills{display:flex;gap:5px;align-items:center;flex-wrap:wrap;}
 .pa-lbl{font-size:10px;color:rgba(255,255,255,0.22);letter-spacing:0.06em;text-transform:uppercase;margin-right:4px;}
-.pa-pill{font-size:11px;padding:3px 11px;border-radius:12px;cursor:pointer;border:0.5px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);transition:all .15s;background:transparent;font-family:'DM Sans',sans-serif;}
+.pa-pill{font-size:11px;padding:3px 11px;border-radius:12px;cursor:pointer;border:0.5px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);transition:all .15s;background:transparent;font-family:'Open Sans',sans-serif;}
 .pa-pill:hover{color:rgba(255,255,255,0.7);}
 .pa-pill.active{background:var(--burg);color:#fff;border-color:var(--burg);}
 .main .pa-pill{color:var(--ts);border-color:var(--border-s);background:var(--white);}
@@ -99,11 +100,11 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
 .int-lbl{font-size:10px;color:rgba(255,255,255,0.18);margin-right:2px;}
 .int-pill{font-size:10px;padding:2px 9px;border-radius:10px;}
 .int-gd{border:0.5px solid rgba(66,133,244,0.5);color:#7BADEE;}
-.int-ts{border:0.5px solid rgba(123,30,45,0.6);color:#D4758A;}
+.int-ts{border:0.5px solid rgba(110,47,42,0.6);color:#D4758A;}
 .int-qb{border:0.5px solid rgba(39,174,96,0.4);color:#6DC98A;}
 
 .tabs-bar{background:var(--white);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;padding:0 20px;}
-.tab{padding:0 16px;height:46px;display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;color:var(--ts);transition:all .15s;background:none;border-top:none;border-left:none;border-right:none;font-family:'DM Sans',sans-serif;}
+.tab{padding:0 16px;height:46px;display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;color:var(--ts);transition:all .15s;background:none;border-top:none;border-left:none;border-right:none;font-family:'Open Sans',sans-serif;}
 .tab:hover{color:var(--tp);}
 .tab.active{color:var(--slate);border-bottom-color:var(--burg);font-weight:500;}
 .tab.court-tab.active{color:#B22222;border-bottom-color:#B22222;}
@@ -119,13 +120,13 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
 /* COMPONENTS */
 .section-lbl{font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--tm);margin-bottom:12px;}
 .card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:20px;}
-.card-title{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:500;color:var(--tp);margin-bottom:14px;}
+.card-title{font-family:'Playfair Display',Georgia,serif;font-size:16px;font-weight:500;color:var(--tp);margin-bottom:14px;}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 .three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
 .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;}
 .stat-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
 .stat-lbl{font-size:11px;color:var(--tm);margin-bottom:5px;}
-.stat-val{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;color:var(--tp);line-height:1;}
+.stat-val{font-family:'Playfair Display',Georgia,serif;font-size:25px;font-weight:400;color:var(--tp);line-height:1;}
 .stat-sub{font-size:11px;color:var(--tm);margin-top:4px;}
 .stat-up{color:#1A6B3A;}
 .stat-warn{color:#92600A;}
@@ -204,9 +205,9 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
 .mb-c{background:var(--i-bg);color:var(--tp);}
 .mtime{font-size:10px;color:var(--tm);margin-top:4px;}
 .msg-foot{padding:11px 16px;border-top:1px solid var(--border);display:flex;gap:10px;}
-.msg-input{flex:1;padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--tp);background:var(--white);outline:none;}
+.msg-input{flex:1;padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:'Open Sans',sans-serif;color:var(--tp);background:var(--white);outline:none;}
 .msg-input:focus{border-color:var(--burg);}
-.send-btn{padding:8px 16px;background:var(--slate);color:#fff;border:none;border-radius:8px;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;}
+.send-btn{padding:8px 16px;background:var(--slate);color:#fff;border:none;border-radius:8px;font-size:12px;font-family:'Open Sans',sans-serif;cursor:pointer;}
 .send-btn:hover{background:var(--slate-light);}
 
 /* COURT MODE */
@@ -216,7 +217,7 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
 .ca-sub{font-size:11px;opacity:.75;margin-top:2px;}
 .court-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:14px;}
 .cct{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;}
-.ccn{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;color:var(--tp);}
+.ccn{font-family:'Playfair Display',Georgia,serif;font-size:18px;font-weight:500;color:var(--tp);}
 .ccr{font-size:11px;color:var(--tm);margin-top:3px;}
 .ctime{font-size:14px;font-weight:500;color:#B22222;text-align:right;}
 .ctype{font-size:11px;color:var(--tm);text-align:right;margin-top:3px;}
@@ -246,34 +247,34 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
 /* ══ TIME ENTRY ══ */
 .time-layout{display:grid;grid-template-columns:1fr 340px;gap:20px;}
 .time-form{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:22px;}
-.time-form-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;color:var(--tp);margin-bottom:6px;}
+.time-form-title{font-family:'Playfair Display',Georgia,serif;font-size:18px;font-weight:500;color:var(--tp);margin-bottom:6px;}
 .time-form-sub{font-size:12px;color:var(--tm);margin-bottom:20px;}
 .form-row{margin-bottom:16px;}
 .form-label{font-size:11px;font-weight:500;color:var(--ts);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:6px;display:block;}
 .form-select,.form-input,.form-textarea{
   width:100%;padding:9px 12px;
   border:1px solid var(--border-s);border-radius:8px;
-  font-size:13px;font-family:'DM Sans',sans-serif;
+  font-size:13px;font-family:'Open Sans',sans-serif;
   color:var(--tp);background:var(--white);outline:none;
   transition:border-color .15s;
 }
 .form-select:focus,.form-input:focus,.form-textarea:focus{border-color:var(--burg);}
 .form-textarea{resize:vertical;min-height:80px;line-height:1.5;}
 .form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
-.hours-input{width:100%;padding:9px 12px;border:1px solid var(--border-s);border-radius:8px;font-size:15px;font-weight:500;font-family:'DM Sans',sans-serif;color:var(--tp);outline:none;}
+.hours-input{width:100%;padding:9px 12px;border:1px solid var(--border-s);border-radius:8px;font-size:15px;font-weight:500;font-family:'Open Sans',sans-serif;color:var(--tp);outline:none;}
 .hours-input:focus{border-color:var(--burg);}
 .hours-hint{font-size:10px;color:var(--tm);margin-top:4px;}
 .submit-row{display:flex;gap:10px;margin-top:6px;}
-.btn-primary{padding:10px 20px;background:var(--burg);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .15s;}
+.btn-primary{padding:10px 20px;background:var(--burg);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:500;font-family:'Open Sans',sans-serif;cursor:pointer;transition:background .15s;}
 .btn-primary:hover{background:var(--burg-light);}
-.btn-secondary{padding:10px 18px;background:var(--white);color:var(--tp);border:1px solid var(--border-s);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .15s;}
+.btn-secondary{padding:10px 18px;background:var(--white);color:var(--tp);border:1px solid var(--border-s);border-radius:8px;font-size:13px;font-family:'Open Sans',sans-serif;cursor:pointer;transition:all .15s;}
 .btn-secondary:hover{border-color:var(--burg);color:var(--burg);}
 
 .time-sidebar{display:flex;flex-direction:column;gap:14px;}
 .slip-preview{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:20px;}
 .slip-title{font-size:11px;font-weight:500;color:var(--tm);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px;}
 .slip-header{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:12px;border-bottom:1px solid var(--border);margin-bottom:12px;}
-.slip-firm{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:500;color:var(--tp);}
+.slip-firm{font-family:'Playfair Display',Georgia,serif;font-size:14px;font-weight:500;color:var(--tp);}
 .slip-addr{font-size:10px;color:var(--tm);margin-top:3px;line-height:1.5;}
 .slip-date{font-size:11px;color:var(--ts);text-align:right;}
 .slip-row{display:flex;justify-content:space-between;padding:4px 0;font-size:12px;}
@@ -282,9 +283,9 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
 .slip-desc{margin-top:10px;padding:10px;background:var(--cream);border-radius:8px;font-size:12px;color:var(--ts);line-height:1.5;min-height:48px;}
 .slip-total{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:10px;border-top:1px solid var(--border);}
 .slip-total-lbl{font-size:11px;color:var(--tm);}
-.slip-total-val{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:var(--burg);}
+.slip-total-val{font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:500;color:var(--burg);}
 .slip-actions{display:flex;flex-direction:column;gap:8px;margin-top:14px;}
-.slip-btn{width:100%;padding:9px 16px;border-radius:8px;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .15s;text-align:center;display:block;}
+.slip-btn{width:100%;padding:9px 16px;border-radius:8px;font-size:12px;font-family:'Open Sans',sans-serif;cursor:pointer;transition:all .15s;text-align:center;display:block;}
 .slip-btn-email{background:var(--burg);color:#fff;border:none;}
 .slip-btn-email:hover{background:var(--burg-light);}
 .slip-btn-copy{background:var(--white);color:var(--tp);border:1px solid var(--border-s);}
@@ -301,13 +302,13 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
 
 /* CLIENT */
 .client-welcome{background:var(--slate);border-radius:12px;padding:22px 24px;color:#fff;margin-bottom:20px;position:relative;overflow:hidden;}
-.client-welcome::after{content:'';position:absolute;right:-20px;top:-20px;width:110px;height:110px;border-radius:50%;background:rgba(123,30,45,0.2);}
-.cw-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:#fff;margin-bottom:4px;}
+.client-welcome::after{content:'';position:absolute;right:-20px;top:-20px;width:110px;height:110px;border-radius:50%;background:rgba(110,47,42,0.2);}
+.cw-name{font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:500;color:#fff;margin-bottom:4px;}
 .cw-matter{font-size:13px;color:rgba(255,255,255,0.5);}
 .cw-atty{font-size:12px;color:#D4758A;margin-top:8px;}
 
 /* SEARCH */
-.search-input{width:100%;padding:9px 13px;border:1px solid var(--border-s);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;background:var(--white);color:var(--tp);outline:none;margin-bottom:14px;}
+.search-input{width:100%;padding:9px 13px;border:1px solid var(--border-s);border-radius:8px;font-size:13px;font-family:'Open Sans',sans-serif;background:var(--white);color:var(--tp);outline:none;margin-bottom:14px;}
 .search-input:focus{border-color:var(--burg);}
 
 /* FOOTER */
@@ -323,20 +324,20 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
 
 /* ══ MATTER TIMER (topbar) ══ */
 .tmr{position:relative;}
-.tmr-btn{display:flex;align-items:center;gap:8px;height:32px;padding:0 13px;border-radius:16px;border:0.5px solid rgba(255,255,255,0.16);background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.8);font:500 12px 'DM Sans',sans-serif;cursor:pointer;transition:background .15s;}
+.tmr-btn{display:flex;align-items:center;gap:8px;height:32px;padding:0 13px;border-radius:16px;border:0.5px solid rgba(255,255,255,0.16);background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.8);font:500 12px 'Open Sans',sans-serif;cursor:pointer;transition:background .15s;}
 .tmr-btn:hover{background:rgba(255,255,255,0.12);}
 .tmr.running .tmr-btn{background:var(--burg);border-color:#C0475C;color:#fff;}
 .tmr.paused .tmr-btn{border-color:rgba(254,245,228,0.45);color:#F5D9A0;}
 .tmr-dot{width:7px;height:7px;border-radius:50%;background:#fff;flex-shrink:0;animation:pulse 1.4s infinite;}
 .tmr-clock{font-variant-numeric:tabular-nums;letter-spacing:.02em;}
 .tmr-mat{max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:400;opacity:.85;}
-.tmr-pop{position:absolute;right:0;top:42px;width:380px;max-width:calc(100vw - 32px);background:var(--white);color:var(--tp);border:1px solid var(--border-s);border-radius:12px;box-shadow:0 14px 36px rgba(28,43,58,.22);padding:16px;display:none;z-index:300;}
+.tmr-pop{position:absolute;right:0;top:42px;width:380px;max-width:calc(100vw - 32px);background:var(--white);color:var(--tp);border:1px solid var(--border-s);border-radius:12px;box-shadow:0 14px 36px rgba(31,29,26,.22);padding:16px;display:none;z-index:300;}
 .tmr-pop.open{display:block;}
-.tmr-pop h4{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:500;margin-bottom:2px;}
+.tmr-pop h4{font-family:'Playfair Display',Georgia,serif;font-size:17px;font-weight:500;margin-bottom:2px;}
 .tmr-pop .sub{font-size:11px;color:var(--tm);margin-bottom:12px;}
 .tmr-start{display:grid;grid-template-columns:1fr auto;gap:8px;margin-bottom:8px;}
 .tmr-start .form-select,.tmr-start .form-input{padding:8px 10px;font-size:12px;}
-.tmr-go{padding:0 14px;background:var(--burg);color:#fff;border:none;border-radius:8px;font:500 12px 'DM Sans',sans-serif;cursor:pointer;}
+.tmr-go{padding:0 14px;background:var(--burg);color:#fff;border:none;border-radius:8px;font:500 12px 'Open Sans',sans-serif;cursor:pointer;}
 .tmr-go:hover{background:var(--burg-light);}
 .tmr-list{margin-top:12px;border-top:1px solid var(--border);}
 .tmr-item{padding:10px 0;border-bottom:1px solid var(--border);}
@@ -348,7 +349,7 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
 .tmr-big{font-variant-numeric:tabular-nums;font-size:15px;font-weight:500;color:var(--tp);}
 .tmr-item.is-running .tmr-big{color:var(--burg);}
 .tmr-acts{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
-.mini-btn{padding:5px 10px;border-radius:7px;border:1px solid var(--border-s);background:var(--white);color:var(--tp);font:12px 'DM Sans',sans-serif;cursor:pointer;}
+.mini-btn{padding:5px 10px;border-radius:7px;border:1px solid var(--border-s);background:var(--white);color:var(--tp);font:12px 'Open Sans',sans-serif;cursor:pointer;}
 .mini-btn:hover{border-color:var(--burg);color:var(--burg);}
 .mini-btn.pri{background:var(--burg);border-color:var(--burg);color:#fff;}
 .mini-btn.pri:hover{background:var(--burg-light);color:#fff;}
@@ -368,7 +369,7 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
 /* ══ DOCKET CALENDAR ══ */
 .docket-layout{display:grid;grid-template-columns:1fr 330px;gap:16px;align-items:start;}
 .cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;gap:10px;flex-wrap:wrap;}
-.cal-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;}
+.cal-title{font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:500;}
 .cal-nav{display:flex;gap:6px;}
 .cal-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-top:1px solid var(--border);border-left:1px solid var(--border);}
 .cal-dow{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--tm);padding:6px 8px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);background:#FAFAF8;}
@@ -412,13 +413,13 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
 .rem-sec.red{color:#B22222;}
 
 /* ══ MATTER RECORD ══ */
-.md-overlay{position:fixed;inset:0;background:rgba(28,43,58,.45);display:none;z-index:400;justify-content:flex-end;}
+.md-overlay{position:fixed;inset:0;background:rgba(31,29,26,.45);display:none;z-index:400;justify-content:flex-end;}
 .md-overlay.open{display:flex;}
 .md-sheet{width:min(760px,100%);height:100%;background:var(--cream);display:flex;flex-direction:column;box-shadow:-10px 0 40px rgba(0,0,0,.2);}
 .md-head{background:var(--slate);color:#fff;padding:18px 22px;}
 .md-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
 .md-id{font-family:monospace;font-size:11px;color:rgba(255,255,255,.5);}
-.md-name{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;line-height:1.15;margin-top:3px;}
+.md-name{font-family:'Playfair Display',Georgia,serif;font-size:24px;font-weight:500;line-height:1.15;margin-top:3px;}
 .md-sub{font-size:12px;color:rgba(255,255,255,.55);margin-top:4px;}
 .md-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:22px;cursor:pointer;line-height:1;padding:2px 6px;}
 .md-close:hover{color:#fff;}
@@ -494,23 +495,23 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
 
 <!-- LOGIN -->
 <div id="login-screen">
-  <div class="login-eyebrow">8 Cottage Place · White Plains, NY 10601</div>
-  <div class="login-firm">Peirce &amp; Salvato <em>PLLC</em></div>
+  <div class="login-eyebrow">Scarsdale, New York · Ridgefield, Connecticut</div>
+  <div class="login-firm">Hasapidis <em>Law Offices</em></div>
   <div class="login-rule"></div>
-  <div class="login-sub">Trial Litigation &amp; Appellate Attorneys · Advocating Since 1990<br>Secure Practice Portal — Powered by Kane PC</div>
+  <div class="login-sub">New York &amp; Connecticut Civil Appellate Counsel<br>Secure Practice Portal — Powered by Kane PC</div>
   <div class="login-cards">
     <div class="login-card atty" onclick="enterApp('attorney')">
       <div class="lc-icon">⚖️</div>
       <div class="lc-title">Attorney &amp; Staff</div>
-      <div class="lc-sub">Full matter management, time entry, documents, court mode &amp; deadlines</div>
+      <div class="lc-sub">Appeals docket, deadline chains, time entry, records &amp; briefs, argument day</div>
     </div>
     <div class="login-card" onclick="enterApp('client')">
       <div class="lc-icon">👤</div>
-      <div class="lc-title">Client Portal</div>
-      <div class="lc-sub">View your matter, access shared documents &amp; message your attorney securely</div>
+      <div class="lc-title">Referring Counsel &amp; Clients</div>
+      <div class="lc-sub">Track the appeal, see key dates, access shared briefs &amp; message counsel securely</div>
     </div>
   </div>
-  <div class="login-note">Demo environment · No data is transmitted or stored</div>
+  <div class="login-note">Demo environment · fictional matters · no data is transmitted or stored</div>
   <div class="kpc-credit">Technology by <span>Kane PC</span> · White Plains, NY 10601 · (914) 607-3313</div>
 </div>
 
@@ -519,7 +520,7 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
   <div class="demo-ribbon">Demo environment · fictional seed data · nothing is transmitted or stored off this device</div>
   <div class="topbar">
     <div class="tl">
-      <div class="firm-mark">Peirce &amp; Salvato <em>PLLC</em></div>
+      <div class="firm-mark">Hasapidis <em>Law Offices</em></div>
       <div class="tdiv"></div>
       <div class="portal-lbl" id="portal-lbl">Attorney Portal</div>
     </div>
@@ -529,31 +530,29 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
         <div class="tmr-pop" id="tmr-pop" role="dialog" aria-label="Matter timers" onclick="event.stopPropagation()"></div>
       </div>
       <div class="user-chip">
-        <div class="av av-atty" id="user-av">RS</div>
-        <div class="uname" id="user-name">Richard A. Salvato, Esq.</div>
+        <div class="av av-atty" id="user-av">AH</div>
+        <div class="uname" id="user-name">Annette G. Hasapidis, Esq.</div>
       </div>
-      <span class="rbadge rbadge-atty" id="role-badge">Partner</span>
+      <span class="rbadge rbadge-atty" id="role-badge">Principal</span>
       <button class="logout-btn" onclick="logout()">← Sign out</button>
     </div>
   </div>
 
   <div class="sub-bar" id="sub-bar-atty">
     <div class="pa-pills">
-      <span class="pa-lbl">Practice area:</span>
-      <button class="pa-pill active" onclick="setPa(this)">All Matters</button>
-      <button class="pa-pill" onclick="setPa(this)">General Liability</button>
-      <button class="pa-pill" onclick="setPa(this)">Premises</button>
-      <button class="pa-pill" onclick="setPa(this)">Labor Law</button>
-      <button class="pa-pill" onclick="setPa(this)">Products</button>
-      <button class="pa-pill" onclick="setPa(this)">SIU / Fraud</button>
-      <button class="pa-pill" onclick="setPa(this)">Municipal</button>
-      <button class="pa-pill" onclick="setPa(this)">Commercial</button>
+      <span class="pa-lbl">Courts:</span>
+      <button class="pa-pill active" onclick="setPa(this)">All Courts</button>
+      <button class="pa-pill" onclick="setPa(this)">App. Div. 1st</button>
+      <button class="pa-pill" onclick="setPa(this)">App. Div. 2d</button>
+      <button class="pa-pill" onclick="setPa(this)">NY Court of Appeals</button>
+      <button class="pa-pill" onclick="setPa(this)">2d Circuit</button>
+      <button class="pa-pill" onclick="setPa(this)">CT Appellate</button>
     </div>
     <div class="int-pills">
-      <span class="int-lbl">Connected:</span>
-      <span class="int-pill int-gd">Google Drive</span>
-      <span class="int-pill int-ts">Timeslips</span>
-      <span class="int-pill int-qb">QuickBooks</span>
+      <span class="int-lbl">Integrations (demo):</span>
+      <span class="int-pill int-gd">NYSCEF</span>
+      <span class="int-pill int-ts">ProLaw export</span>
+      <span class="int-pill int-qb">Outlook</span>
     </div>
   </div>
 
@@ -564,14 +563,14 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
     <button class="tab" data-tab="docket" onclick="showTab('docket',this)">▦ &nbsp;Docket</button>
     <button class="tab" data-tab="deadlines" onclick="showTab('deadlines',this)">◷ &nbsp;Deadlines</button>
     <button class="tab time-tab" data-tab="timeentry" onclick="showTab('timeentry',this)">⏱ &nbsp;Time Entry</button>
-    <button class="tab" data-tab="messages" onclick="showTab('messages',this)">⊠ &nbsp;Messages <span class="notif">4</span></button>
-    <button class="tab court-tab" data-tab="court" onclick="showTab('court',this)"><span class="tdot"></span>&nbsp; Court Mode</button>
+    <button class="tab" data-tab="messages" onclick="showTab('messages',this)">⊠ &nbsp;Messages <span class="notif">2</span></button>
+    <button class="tab court-tab" data-tab="court" onclick="showTab('court',this)"><span class="tdot"></span>&nbsp; Argument Day</button>
     <button class="tab" data-tab="contacts" onclick="showTab('contacts',this)">⊕ &nbsp;Contacts</button>
   </div>
 
   <div class="tabs-bar" id="tabs-client" style="display:none;">
-    <button class="tab active" onclick="showClientTab('c-overview',this)">◈ &nbsp;My Matter</button>
-    <button class="tab" onclick="showClientTab('c-docs',this)">⊡ &nbsp;My Documents</button>
+    <button class="tab active" onclick="showClientTab('c-overview',this)">◈ &nbsp;Appeal Status</button>
+    <button class="tab" onclick="showClientTab('c-docs',this)">⊡ &nbsp;Shared Documents</button>
     <button class="tab" onclick="showClientTab('c-messages',this)">⊠ &nbsp;Messages <span class="notif">1</span></button>
     <button class="tab" onclick="showClientTab('c-dates',this)">◷ &nbsp;Key Dates</button>
   </div>
@@ -581,20 +580,15 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
     <!-- DASHBOARD -->
     <div class="panel active" id="panel-dashboard">
       <div class="stat-grid">
-        <div class="stat-card"><div class="stat-lbl">Active Matters</div><div class="stat-val">47</div><div class="stat-sub stat-up">↑ 5 this month</div></div>
+        <div class="stat-card"><div class="stat-lbl">Open Appeals</div><div class="stat-val" id="st-open">—</div><div class="stat-sub stat-up" id="st-open-sub">—</div></div>
         <div class="stat-card"><div class="stat-lbl">Deadlines · Next 30 Days</div><div class="stat-val" id="st-upcoming">—</div><div class="stat-sub stat-warn" id="st-72">—</div></div>
-        <div class="stat-card"><div class="stat-lbl">Time Slips Pending</div><div class="stat-val">8</div><div class="stat-sub">Awaiting billing review</div></div>
+        <div class="stat-card"><div class="stat-lbl">Unbilled WIP</div><div class="stat-val" id="st-wip">—</div><div class="stat-sub">Across open matters</div></div>
         <div class="stat-card" style="cursor:pointer" onclick="goTab('docket')"><div class="stat-lbl">Overdue Reminders</div><div class="stat-val" id="st-overdue" style="color:#9B2222">—</div><div class="stat-sub">Need a disposition →</div></div>
       </div>
       <div class="two-col">
         <div class="card">
           <div class="card-title">Recent Matters</div>
-          <div class="mrow"><div><div class="mname">Chen v. Metro North Railroad</div><div class="msub">Labor Law § 240/241 · White Plains</div></div><span class="badge b-trial">Trial Prep</span></div>
-          <div class="mrow"><div><div class="mname">Rodriguez v. City of White Plains</div><div class="msub">Municipal Defense · Civil Rights § 1983</div></div><span class="badge b-urgent">Dep. Tomorrow</span></div>
-          <div class="mrow"><div><div class="mname">SIU — Flores Claim #2025-SIU-041</div><div class="msub">Insurance Fraud · Staged Accident</div></div><span class="badge b-active">Investigation</span></div>
-          <div class="mrow"><div><div class="mname">Williams v. Costco Wholesale</div><div class="msub">Premises Liability · Slip &amp; Fall</div></div><span class="badge b-review">Discovery</span></div>
-          <div class="mrow"><div><div class="mname">Kenmore Ave. Construction Defects</div><div class="msub">Construction Defects · White Plains</div></div><span class="badge b-pending">Expert Disclosure</span></div>
-          <div class="mrow"><div><div class="mname">Park Ave. Realty v. Sunrise Dev.</div><div class="msub">Commercial Litigation · Breach of Contract</div></div><span class="badge b-review">Motion Practice</span></div>
+          <div id="dash-matters"></div>
         </div>
         <div class="card">
           <div class="card-title">Upcoming Deadlines</div>
@@ -605,22 +599,19 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
 
     <!-- MATTERS -->
     <div class="panel" id="panel-matters">
-      <input class="search-input" id="matter-search" placeholder="Search matters, clients, matter ID, index number…" oninput="renderMatters()">
+      <input class="search-input" id="matter-search" placeholder="Search matters, referring counsel, matter ID, docket number…" oninput="renderMatters()">
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;">
         <button class="pa-pill active" style="font-size:12px;" data-area="All" onclick="filterArea(this)">All</button>
-        <button class="pa-pill" style="font-size:12px;" data-area="Labor Law" onclick="filterArea(this)">Labor Law</button>
-        <button class="pa-pill" style="font-size:12px;" data-area="Premises" onclick="filterArea(this)">Premises</button>
-        <button class="pa-pill" style="font-size:12px;" data-area="Municipal" onclick="filterArea(this)">Municipal</button>
-        <button class="pa-pill" style="font-size:12px;" data-area="SIU / Fraud" onclick="filterArea(this)">SIU / Fraud</button>
-        <button class="pa-pill" style="font-size:12px;" data-area="Products" onclick="filterArea(this)">Products</button>
+        <button class="pa-pill" style="font-size:12px;" data-area="Matrimonial & Family" onclick="filterArea(this)">Matrimonial &amp; Family</button>
+        <button class="pa-pill" style="font-size:12px;" data-area="Medical Malpractice" onclick="filterArea(this)">Medical Malpractice</button>
+        <button class="pa-pill" style="font-size:12px;" data-area="Personal Injury" onclick="filterArea(this)">Personal Injury</button>
+        <button class="pa-pill" style="font-size:12px;" data-area="Employment" onclick="filterArea(this)">Employment</button>
         <button class="pa-pill" style="font-size:12px;" data-area="Commercial" onclick="filterArea(this)">Commercial</button>
-        <button class="pa-pill" style="font-size:12px;" data-area="Construction" onclick="filterArea(this)">Construction</button>
-        <button class="pa-pill" style="font-size:12px;" data-area="Defamation" onclick="filterArea(this)">Defamation</button>
-        <button class="pa-pill" style="font-size:12px;" data-area="Appeals" onclick="filterArea(this)">Appeals</button>
+        <button class="pa-pill" style="font-size:12px;" data-area="Trial Support" onclick="filterArea(this)">Trial Support</button>
       </div>
       <div class="card" style="padding:0;overflow-x:auto;">
         <table class="case-tbl">
-          <thead><tr><th>Matter</th><th class="hide-sm">Client / Insured</th><th class="hide-sm">Practice Area</th><th>Attorney</th><th>Status</th><th style="width:44px" aria-label="Timer"></th></tr></thead>
+          <thead><tr><th>Matter</th><th class="hide-sm">Client Sort</th><th class="hide-sm">Court / Posture</th><th>Attorney</th><th>Status</th><th style="width:44px" aria-label="Timer"></th></tr></thead>
           <tbody id="matters-body"></tbody>
         </table>
       </div>
@@ -628,23 +619,23 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
 
     <!-- DOCUMENTS -->
     <div class="panel" id="panel-docs">
-      <div class="section-lbl">Document Vault — Synced with Google Drive</div>
+      <div class="section-lbl">Document Vault — Records, Briefs &amp; Motions</div>
       <div class="folder-grid">
-        <div class="folder-card"><div class="fi">📁</div><div class="fn">Pleadings &amp; Motions</div><div class="fc">58 documents · Google Drive</div></div>
-        <div class="folder-card"><div class="fi">📁</div><div class="fn">Discovery &amp; Depositions</div><div class="fc">44 documents · Google Drive</div></div>
-        <div class="folder-card"><div class="fi">📁</div><div class="fn">Expert Reports &amp; Disclosure</div><div class="fc">19 documents</div></div>
-        <div class="folder-card"><div class="fi">📁</div><div class="fn">Court Orders &amp; Decisions</div><div class="fc">23 documents</div></div>
-        <div class="folder-card"><div class="fi">📁</div><div class="fn">SIU Investigation Files</div><div class="fc">12 documents · Restricted</div></div>
-        <div class="folder-card"><div class="fi">🔗</div><div class="fn">Shared with Client</div><div class="fc">18 documents · Secure link</div></div>
+        <div class="folder-card"><div class="fi">📚</div><div class="fn">Records on Appeal</div><div class="fc">41 volumes · NYSCEF-ready PDF</div></div>
+        <div class="folder-card"><div class="fi">📁</div><div class="fn">Briefs &amp; Appendices</div><div class="fc">63 documents · drafts versioned</div></div>
+        <div class="folder-card"><div class="fi">📁</div><div class="fn">Motions — App. Div. / Ct. of Appeals</div><div class="fc">22 documents</div></div>
+        <div class="folder-card"><div class="fi">📁</div><div class="fn">Trial Transcripts &amp; Exhibits</div><div class="fc">118 documents</div></div>
+        <div class="folder-card"><div class="fi">⚖️</div><div class="fn">Decisions &amp; Orders</div><div class="fc">37 documents</div></div>
+        <div class="folder-card"><div class="fi">🔗</div><div class="fn">Shared with Referring Counsel</div><div class="fc">16 documents · secure link</div></div>
       </div>
       <div class="section-lbl">Recent Documents</div>
       <div class="card" style="padding:4px 16px;">
-        <div class="doc-row"><span class="di">📄</span><div class="dn">Chen_Expert_Disclosure_Opposition.pdf</div><span class="dm">Apr 1 · 248 KB</span><span class="dtag gdrive">Google Drive</span></div>
-        <div class="doc-row"><span class="di">📋</span><div class="dn">Rodriguez_Harris_Deposition_Notice.docx</div><span class="dm">Mar 31 · 76 KB</span><span class="dtag sig">Pending Service</span></div>
-        <div class="doc-row"><span class="di">📄</span><div class="dn">Flores_SIU_Investigation_Report_v2.pdf</div><span class="dm">Mar 30 · 512 KB</span><span class="dtag">Internal · Restricted</span></div>
-        <div class="doc-row"><span class="di">📊</span><div class="dn">Williams_Incident_Report_Analysis.xlsx</div><span class="dm">Mar 28 · 66 KB</span><span class="dtag gdrive">Google Drive</span></div>
-        <div class="doc-row"><span class="di">📄</span><div class="dn">ParkAve_MSJ_Opposition_Brief.pdf</div><span class="dm">Mar 27 · 184 KB</span><span class="dtag shared">Shared ✓</span></div>
-        <div class="doc-row"><span class="di">📋</span><div class="dn">Kenmore_Expert_Witness_CV_Amended.docx</div><span class="dm">Mar 26 · 102 KB</span><span class="dtag gdrive">Google Drive</span></div>
+        <div class="doc-row"><span class="di">📋</span><div class="dn">Marchetti_Appellant_Brief_DRAFT_v4.docx</div><span class="dm">Today · 312 KB</span><span class="dtag sig">Draft — internal</span></div>
+        <div class="doc-row"><span class="di">📄</span><div class="dn">Ruiz_Oral_Argument_Outline.pdf</div><span class="dm">Yesterday · 88 KB</span><span class="dtag">Argument prep</span></div>
+        <div class="doc-row"><span class="di">📄</span><div class="dn">Danforth_Appellant_Brief_SERVED.pdf</div><span class="dm">Received via NYSCEF · 1.4 MB</span><span class="dtag gdrive">NYSCEF</span></div>
+        <div class="doc-row"><span class="di">📚</span><div class="dn">Marchetti_Record_on_Appeal_Vol_I-III.pdf</div><span class="dm">Compiled · 22.8 MB</span><span class="dtag">Record</span></div>
+        <div class="doc-row"><span class="di">📄</span><div class="dn">Kaplan_Judgment_with_Notice_of_Entry.pdf</div><span class="dm">Served via NYSCEF · 204 KB</span><span class="dtag gdrive">NYSCEF</span></div>
+        <div class="doc-row"><span class="di">📄</span><div class="dn">Harlow_Respondent_Brief_FILED.pdf</div><span class="dm">Filed · 640 KB</span><span class="dtag shared">Shared ✓</span></div>
       </div>
     </div>
 
@@ -701,24 +692,11 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
         <div>
           <div class="time-form">
             <div class="time-form-title">Submit Time Entry</div>
-            <div class="time-form-sub">Complete the slip below. Click "Email to Billing" to send directly to the billing coordinator for Timeslips entry — or copy the formatted slip to paste manually.</div>
+            <div class="time-form-sub">Complete the slip below. Use the ⏱ timer or enter hours directly. "Email to Billing" opens a pre-filled email draft; "Copy Slip" gives a formatted slip for ProLaw entry.</div>
             <div class="form-row-2">
               <div class="form-row" style="margin-bottom:0">
                 <label class="form-label">Timekeeper</label>
-                <select class="form-select" id="te-atty" onchange="updatePreview()">
-                  <option value="">— Select attorney —</option>
-                  <option value="Robert A. Peirce" data-rate="425">Robert A. Peirce, Esq. — $425/hr</option>
-                  <option value="Richard A. Salvato" data-rate="425">Richard A. Salvato, Esq. — $425/hr</option>
-                  <option value="Marc A. Rousseau" data-rate="325">Marc A. Rousseau, Esq. — $325/hr</option>
-                  <option value="Daniel T. Hughes" data-rate="325">Daniel T. Hughes, Esq. — $325/hr</option>
-                  <option value="Jennifer M. Lanni" data-rate="325">Jennifer M. Lanni, Esq. — $325/hr</option>
-                  <option value="Roland T. Koke" data-rate="325">Roland T. Koke, Esq. — $325/hr</option>
-                  <option value="Kelly M. Zic" data-rate="300">Kelly M. Zic, Esq. — $300/hr</option>
-                  <option value="Alessandra L. Cortina" data-rate="300">Alessandra L. Cortina, Esq. — $300/hr</option>
-                  <option value="Tammy M. Mazzullo" data-rate="145">Tammy M. Mazzullo, Paralegal — $145/hr</option>
-                  <option value="Desiree M. D'Addio" data-rate="145">Desiree M. D'Addio, Paralegal — $145/hr</option>
-                  <option value="Susan L. Panek" data-rate="145">Susan L. Panek, Paralegal — $145/hr</option>
-                </select>
+                <select class="form-select" id="te-atty" onchange="updatePreview()"></select>
               </div>
               <div class="form-row" style="margin-bottom:0">
                 <label class="form-label">Date of Service</label>
@@ -786,7 +764,7 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
             </div>
             <div class="form-row">
               <label class="form-label">Description of Work Performed</label>
-              <textarea class="form-textarea" id="te-desc" placeholder="Briefly describe the work performed. This will appear on the time slip and in Timeslips billing records…" onchange="updatePreview()" oninput="updatePreview()"></textarea>
+              <textarea class="form-textarea" id="te-desc" placeholder="Briefly describe the work performed. This narrative appears on the invoice…" onchange="updatePreview()" oninput="updatePreview()"></textarea>
             </div>
             <div class="submit-row">
               <button class="btn-primary" onclick="emailSlip()">📧 Email to Billing</button>
@@ -802,8 +780,8 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
             <div class="slip-title">Time Slip Preview</div>
             <div class="slip-header">
               <div>
-                <div class="slip-firm">Peirce &amp; Salvato PLLC</div>
-                <div class="slip-addr">8 Cottage Place<br>White Plains, NY 10601<br>(914) 946-8200</div>
+                <div class="slip-firm">Hasapidis Law Offices</div>
+                <div class="slip-addr">111 Brook Street<br>Scarsdale, NY 10583<br>(914) 533-3049</div>
               </div>
               <div class="slip-date" id="prev-date">—</div>
             </div>
@@ -820,7 +798,7 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
               <button class="slip-btn slip-btn-email" onclick="emailSlip()">📧 Email to Billing Coordinator</button>
               <button class="slip-btn slip-btn-copy" onclick="copySlip()">📋 Copy Formatted Slip</button>
             </div>
-            <div style="margin-top:10px;font-size:10px;color:var(--tm);text-align:center;line-height:1.5;">Slip emails to <strong>billing@peircesalvato.com</strong><br>for Timeslips entry by billing coordinator</div>
+            <div style="margin-top:10px;font-size:10px;color:var(--tm);text-align:center;line-height:1.5;">Opens a pre-filled email draft — you choose the recipient.<br>Production build posts slips straight to billing.</div>
           </div>
 
           <div class="recent-slips">
@@ -836,24 +814,23 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
       <div class="msg-layout">
         <div class="msg-sb">
           <div class="msg-sb-hd">Secure Messages</div>
-          <div class="msg-ti active"><div style="display:flex;justify-content:space-between;align-items:flex-start;"><div class="mtn">Metro North Legal Dept.</div><div class="unread-dot"></div></div><div class="mts">Chen Matter · Apr 1</div><div class="mtp">Expert disclosure — our position…</div></div>
-          <div class="msg-ti"><div class="mtn">Hartford Insurance — Claims</div><div class="mts">Flores SIU · Mar 31</div><div class="mtp">EUO scheduling confirmed</div></div>
-          <div class="msg-ti"><div class="mtn">Corp. Counsel, White Plains</div><div class="mts">Rodriguez Matter · Mar 30</div><div class="mtp">Cmdr. Harris availability Apr 4</div></div>
-          <div class="msg-ti"><div class="mtn">Costco Legal — Jennifer Walsh</div><div class="mts">Williams Matter · Mar 29</div><div class="mtp">MSJ brief attached for review</div></div>
+          <div class="msg-ti active"><div style="display:flex;justify-content:space-between;align-items:flex-start;"><div class="mtn">Lowell &amp; Brandt, PLLC</div><div class="unread-dot"></div></div><div class="mts">Marchetti Appeal · Today</div><div class="mtp">Brief draft — client comments…</div></div>
+          <div class="msg-ti"><div style="display:flex;justify-content:space-between;align-items:flex-start;"><div class="mtn">Corwin Feld LLP</div><div class="unread-dot"></div></div><div class="mts">Danforth Appeal · Yesterday</div><div class="mtp">Appellant's brief served — next steps</div></div>
+          <div class="msg-ti"><div class="mtn">Brennan Trial Group</div><div class="mts">Ruiz Appeal · Mon</div><div class="mtp">Argument logistics, 45 Monroe Place</div></div>
+          <div class="msg-ti"><div class="mtn">Theresa Delaney</div><div class="mts">Matter of Delaney · Fri</div><div class="mtp">Feasibility review — cost estimate</div></div>
         </div>
         <div class="msg-pane">
           <div class="msg-ph">
-            <div class="msg-pn">Metro North Railroad — Legal Department</div>
-            <div class="msg-pm">Chen v. Metro North Railroad · Index #2023-12847 · Labor Law § 240</div>
+            <div class="msg-pn">Lowell &amp; Brandt, PLLC — Referring Counsel</div>
+            <div class="msg-pm">Marchetti v. Marchetti · App. Div. 2d Dept. · Matrimonial — equitable distribution</div>
           </div>
           <div class="msg-body">
-            <div class="msg"><div class="mav mav-a">RS</div><div><div class="mbubble mb-a">Metro North — plaintiff's expert report came in yesterday. The biomechanical expert is opining on the scaffold collapse. We need to calendar our rebuttal deadline and discuss whether to retain a competing structural engineer. Can you confirm your client's position on settlement before I proceed?</div><div class="mtime">Mar 29 · 4:18 PM</div></div></div>
-            <div class="msg fc"><div class="mav mav-c">MN</div><div><div class="mbubble mb-c">Received. We've reviewed the report internally — the biomechanical conclusions are aggressive. Our position remains defense through trial unless you're seeing something different. What's your read on the expert?</div><div class="mtime">Mar 30 · 9:22 AM</div></div></div>
-            <div class="msg"><div class="mav mav-a">RS</div><div><div class="mbubble mb-a">Our structural engineer has reviewed preliminarily — we believe we can effectively rebut on the scaffold configuration argument. I'd recommend we proceed toward trial. I'll have a full response memo to you by end of week.</div><div class="mtime">Mar 30 · 2:45 PM</div></div></div>
-            <div class="msg fc"><div class="mav mav-c">MN</div><div><div class="mbubble mb-c">Agreed. Please proceed. Memo by Friday works. Also please confirm billing codes on the expert coordination time — our claims team needs it for the reserve file.</div><div class="mtime">Apr 1 · 8:50 AM</div></div></div>
+            <div class="msg"><div class="mav mav-a">AH</div><div><div class="mbubble mb-a">Draft v4 of the appellant's brief is in the shared folder. Point I now leads with the valuation of the business interest — that's our strongest issue on the standard of review. I've trimmed the maintenance argument to a single point.</div><div class="mtime">Yesterday · 5:42 PM</div></div></div>
+            <div class="msg fc"><div class="mav mav-c">LB</div><div><div class="mbubble mb-c">Reviewed with the client this morning. She's comfortable dropping the counsel-fee issue. One question — does the record include the forensic accountant's supplemental report? It was marked at trial but I'm not sure it was received.</div><div class="mtime">Today · 10:15 AM</div></div></div>
+            <div class="msg"><div class="mav mav-a">AH</div><div><div class="mbubble mb-a">Good catch. It was marked for identification only — Tr. 412. I'll address it so we don't rely on anything outside the record. Perfection deadline is on the docket; we're on track to file well ahead of it.</div><div class="mtime">Today · 11:02 AM</div></div></div>
           </div>
           <div class="msg-foot">
-            <input class="msg-input" placeholder="Reply securely to Metro North Legal…">
+            <input class="msg-input" placeholder="Reply securely to Lowell &amp; Brandt…">
             <button class="send-btn">Send</button>
           </div>
         </div>
@@ -864,48 +841,44 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
     <div class="panel" id="panel-court">
       <div class="court-alert">
         <div class="ca-dot"></div>
-        <div><div class="ca-txt">Court Mode — Offline Ready</div><div class="ca-sub">All matters below cached locally. Available without wifi. Last synced today at 7:55 AM.</div></div>
+        <div><div class="ca-txt">Argument Day — Offline Ready</div><div class="ca-sub">Briefs, record cites and outlines below are cached on this device. Available without wifi in the courthouse.</div></div>
       </div>
       <div class="section-lbl" id="court-date">Today's Appearances</div>
       <div class="court-card">
         <div class="cct">
-          <div><div class="ccn">Rodriguez v. City of White Plains</div><div class="ccr">Westchester Supreme Court · Part 8 · Hon. Patricia Donahue</div></div>
-          <div><div class="ctime">10:00 AM</div><div class="ctype">Preliminary Conference · Municipal Defense</div></div>
+          <div><div class="ccn">Ruiz v. Hudson Ridge Apartments, LLC</div><div class="ccr">Appellate Division, Second Department · 45 Monroe Place, Brooklyn</div></div>
+          <div><div class="ctime">10:00 AM</div><div class="ctype">Oral Argument · Appellant · 15 min. requested</div></div>
         </div>
-        <div style="font-size:12px;color:var(--tm);">Municipal Defense / § 1983 · Index #2024-08312 · Lead: Robert A. Peirce</div>
+        <div style="font-size:12px;color:var(--tm);">Personal injury — premises · App. Div. Docket #2025-08814 · Referring: Brennan Trial Group</div>
         <div class="cc-chips">
-          <span class="cchip doc">📄 Complaint &amp; Answer</span>
-          <span class="cchip doc">📄 Preliminary Conference Order</span>
-          <span class="cchip doc">📄 Rodriguez Discovery Demands</span>
-          <span class="cchip note">📝 Conference Strategy Notes</span>
-          <span class="cchip" style="border-color:var(--burg);color:var(--burg)" onclick="startTimer('1107-011','Attend preliminary conference')">⏱ Start timer</span>
-          <span class="cchip">👤 Corp. Counsel: (914) 422-1400</span>
-          <span class="cchip">⚖ Plaintiff atty: Cohen &amp; Stein (914) 555-0282</span>
+          <span class="cchip doc">📄 Appellant's Brief</span>
+          <span class="cchip doc">📄 Respondent's Brief</span>
+          <span class="cchip doc">📄 Reply Brief</span>
+          <span class="cchip doc">📚 Record on Appeal (R. 1–1,184)</span>
+          <span class="cchip note">📝 Argument Outline &amp; Hot-Bench Q&amp;A</span>
+          <span class="cchip" style="border-color:var(--burg);color:var(--burg)" onclick="startTimer('302-007','Prepare for and attend oral argument')">⏱ Start timer</span>
         </div>
       </div>
       <div class="court-card">
         <div class="cct">
-          <div><div class="ccn">Williams v. Costco Wholesale</div><div class="ccr">Westchester Supreme Court · Part 22 · Hon. Lawrence Ecker</div></div>
-          <div><div class="ctime">2:15 PM</div><div class="ctype">Discovery Conference · Premises Liability</div></div>
+          <div><div class="ccn">Abernathy v. Northfield Supermarkets, Inc.</div><div class="ccr">Westchester County Supreme Court · Trial Part</div></div>
+          <div><div class="ctime">2:15 PM</div><div class="ctype">Charge Conference · Trial Support for Lead Counsel</div></div>
         </div>
-        <div style="font-size:12px;color:var(--tm);">Premises Liability · Index #2024-14209 · Lead: Marc A. Rousseau</div>
+        <div style="font-size:12px;color:var(--tm);">Preserving issues for appeal · Index #61442/2024 · Referring: Sato &amp; Mulroney LLP</div>
         <div class="cc-chips">
-          <span class="cchip doc">📄 Incident Report (Costco Internal)</span>
-          <span class="cchip doc">📄 Plaintiff's Discovery Demands</span>
-          <span class="cchip doc">📄 Our Discovery Responses</span>
-          <span class="cchip note">📝 Surveillance Footage Status</span>
-          <span class="cchip" style="border-color:var(--burg);color:var(--burg)" onclick="startTimer('1188-007','Attend discovery conference')">⏱ Start timer</span>
-          <span class="cchip">👤 Costco Legal: Jennifer Walsh (914) 555-0388</span>
-          <span class="cchip">⚖ Plaintiff: Murphy &amp; Foy (914) 555-0441</span>
+          <span class="cchip doc">📄 Proposed Jury Charges</span>
+          <span class="cchip doc">📄 Verdict Sheet — draft</span>
+          <span class="cchip note">📝 Objections to preserve (PJI 2:90)</span>
+          <span class="cchip" style="border-color:var(--burg);color:var(--burg)" onclick="startTimer('360-001','Attend charge conference')">⏱ Start timer</span>
         </div>
       </div>
       <div class="court-quick">
-        <div class="cq-title">Quick Reference — Westchester Supreme Court</div>
+        <div class="cq-title">Quick Reference — Appellate Courts</div>
         <div class="cq-grid">
-          <div><div class="cq-lbl">Clerk's Office</div><div class="cq-val">(914) 824-5300</div></div>
-          <div><div class="cq-lbl">Hon. Patricia Donahue (Pt. 8)</div><div class="cq-val">(914) 824-5308</div></div>
-          <div><div class="cq-lbl">Hon. Lawrence Ecker (Pt. 22)</div><div class="cq-val">(914) 824-5322</div></div>
-          <div><div class="cq-lbl">White Plains Corp. Counsel</div><div class="cq-val">(914) 422-1400</div></div>
+          <div><div class="cq-lbl">App. Div., Second Dept.</div><div class="cq-val">45 Monroe Place, Brooklyn, NY</div></div>
+          <div><div class="cq-lbl">App. Div., First Dept.</div><div class="cq-val">27 Madison Avenue, New York, NY</div></div>
+          <div><div class="cq-lbl">NY Court of Appeals</div><div class="cq-val">20 Eagle Street, Albany, NY</div></div>
+          <div><div class="cq-lbl">U.S. Court of Appeals, 2d Cir.</div><div class="cq-val">40 Foley Square, New York, NY</div></div>
           <div><div class="cq-lbl">NYS E-Filing (NYSCEF)</div><div class="cq-val">iapps.courts.state.ny.us</div></div>
           <div><div class="cq-lbl">Kane PC IT Support</div><div class="cq-val">(914) 607-3313</div></div>
         </div>
@@ -914,30 +887,26 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
 
     <!-- CONTACTS -->
     <div class="panel" id="panel-contacts">
-      <div class="section-lbl" style="margin-bottom:12px;">Partners</div>
+      <div class="section-lbl" style="margin-bottom:12px;">Firm</div>
       <div class="contact-grid" style="margin-bottom:18px;">
-        <div class="contact-card"><div class="cav av-s">RP</div><div><div class="cname">Robert A. Peirce, Esq.</div><div class="crole">Partner · White Plains · SIU, Municipal, Premises</div><div class="cphone">Ext. 700 · robert.a.peirce@peircesalvato.com</div></div></div>
-        <div class="contact-card"><div class="cav av-s">RS</div><div><div class="cname">Richard A. Salvato, Esq.</div><div class="crole">Partner · White Plains · Labor Law, Commercial, Defamation</div><div class="cphone">Ext. 701 · richard.a.salvato@peircesalvato.com</div></div></div>
+        <div class="contact-card"><div class="cav av-s">AH</div><div><div class="cname">Annette G. Hasapidis, Esq.</div><div class="crole">Principal · Civil Appellate Counsel · NY &amp; CT</div><div class="cphone">(914) 533-3049 · (203) 403-3746 · agh@hasapidislaw.com</div></div></div>
+        <div class="contact-card"><div class="cav av-c">MS</div><div><div class="cname">Maria L. Santos <span class="rule">demo staff</span></div><div class="crole">Paralegal · Records &amp; Filing</div><div class="cphone">Ext. 102</div></div></div>
+        <div class="contact-card"><div class="cav av-s">DO</div><div><div class="cname">Daniel R. Ostrowski, Esq. <span class="rule">demo staff</span></div><div class="crole">Associate · Research &amp; Briefing</div><div class="cphone">Ext. 101</div></div></div>
       </div>
-      <div class="section-lbl" style="margin-bottom:12px;">Attorneys</div>
+      <div class="section-lbl" style="margin-bottom:12px;">Offices</div>
       <div class="contact-grid" style="margin-bottom:18px;">
-        <div class="contact-card"><div class="cav av-s">MR</div><div><div class="cname">Marc A. Rousseau, Esq.</div><div class="crole">Attorney · White Plains</div><div class="cphone">Ext. 713 · marc.a.rousseau@peircesalvato.com</div></div></div>
-        <div class="contact-card"><div class="cav av-s">DH</div><div><div class="cname">Daniel T. Hughes, Esq.</div><div class="crole">Attorney · White Plains</div><div class="cphone">Ext. 716 · daniel.t.hughes@peircesalvato.com</div></div></div>
-        <div class="contact-card"><div class="cav av-s">JL</div><div><div class="cname">Jennifer M. Lanni, Esq.</div><div class="crole">Attorney · White Plains</div><div class="cphone">Ext. 718 · jennifer.m.lanni@peircesalvato.com</div></div></div>
-        <div class="contact-card"><div class="cav av-s">RK</div><div><div class="cname">Roland T. Koke, Esq.</div><div class="crole">Attorney · White Plains</div><div class="cphone">Ext. 720 · roland.t.koke@peircesalvato.com</div></div></div>
+        <div class="contact-card"><div class="cav av-j">NY</div><div><div class="cname">Scarsdale Office</div><div class="crole">111 Brook Street, Scarsdale, NY 10583</div><div class="cphone">(914) 533-3049</div></div></div>
+        <div class="contact-card"><div class="cav av-j">CT</div><div><div class="cname">Ridgefield Office</div><div class="crole">38C Grove Street, First Floor, Ridgefield, CT 06877</div><div class="cphone">(203) 403-3746</div></div></div>
       </div>
-      <div class="section-lbl" style="margin-bottom:12px;">Paralegals &amp; Staff</div>
+      <div class="section-lbl" style="margin-bottom:12px;">Referring Counsel <span class="rule">fictional</span></div>
       <div class="contact-grid" style="margin-bottom:18px;">
-        <div class="contact-card"><div class="cav av-c">SC</div><div><div class="cname">Sharon Childs</div><div class="crole">Office Manager</div><div class="cphone">Ext. 722 · sc.peircelaw@gmail.com</div></div></div>
-        <div class="contact-card"><div class="cav av-c">TM</div><div><div class="cname">Tammy M. Mazzullo</div><div class="crole">Litigation Paralegal · Billing Coordinator</div><div class="cphone">Ext. 719 · tmm.peircelaw@gmail.com</div></div></div>
-        <div class="contact-card"><div class="cav av-c">DD</div><div><div class="cname">Desiree M. D'Addio</div><div class="crole">Litigation Paralegal</div><div class="cphone">Ext. 734 · dmd.peircelaw@gmail.com</div></div></div>
-        <div class="contact-card"><div class="cav av-c">SP</div><div><div class="cname">Susan L. Panek</div><div class="crole">Litigation Paralegal</div><div class="cphone">Ext. 738 · slp.peircelaw@gmail.com</div></div></div>
+        <div class="contact-card"><div class="cav av-o">LB</div><div><div class="cname">Lowell &amp; Brandt, PLLC</div><div class="crole">Matrimonial · Marchetti</div></div></div>
+        <div class="contact-card"><div class="cav av-o">CF</div><div><div class="cname">Corwin Feld LLP</div><div class="crole">Med mal defense · Danforth, Harlow</div></div></div>
+        <div class="contact-card"><div class="cav av-o">BT</div><div><div class="cname">Brennan Trial Group</div><div class="crole">Plaintiff PI · Ruiz, Ferrante</div></div></div>
+        <div class="contact-card"><div class="cav av-o">SM</div><div><div class="cname">Sato &amp; Mulroney LLP</div><div class="crole">Trial support · Abernathy</div></div></div>
       </div>
-      <div class="section-lbl" style="margin-bottom:12px;">Judiciary — Active Courts</div>
+      <div class="section-lbl" style="margin-bottom:12px;">Technology</div>
       <div class="contact-grid">
-        <div class="contact-card"><div class="cav av-j">PD</div><div><div class="cname">Hon. Patricia Donahue</div><div class="crole">Westchester Supreme · Part 8</div><div class="cphone">(914) 824-5308</div></div></div>
-        <div class="contact-card"><div class="cav av-j">LE</div><div><div class="cname">Hon. Lawrence Ecker</div><div class="crole">Westchester Supreme · Part 22</div><div class="cphone">(914) 824-5322</div></div></div>
-        <div class="contact-card"><div class="cav av-j">WC</div><div><div class="cname">Westchester Co. Clerk</div><div class="crole">Supreme Court · NYSCEF</div><div class="cphone">(914) 824-5300</div></div></div>
         <div class="contact-card"><div class="cav av-c">KP</div><div><div class="cname">Kane PC IT Support</div><div class="crole">Technology Partner · 24/7</div><div class="cphone">(914) 607-3313</div></div></div>
       </div>
     </div>
@@ -945,60 +914,60 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
     <!-- CLIENT PANELS -->
     <div class="panel" id="panel-c-overview">
       <div class="client-welcome">
-        <div class="cw-name">Welcome, Metro North Legal</div>
-        <div class="cw-matter">Chen v. Metro North Railroad · Index #2023-12847 · Labor Law § 240</div>
-        <div class="cw-atty">Lead Attorney: Richard A. Salvato, Esq. · (914) 946-8200 Ext. 701</div>
+        <div class="cw-name">Welcome, Lowell &amp; Brandt</div>
+        <div class="cw-matter">Marchetti v. Marchetti · App. Div. 2d Dept. #2026-03122 · Matrimonial appeal</div>
+        <div class="cw-atty">Appellate Counsel: Annette G. Hasapidis, Esq. · (914) 533-3049</div>
       </div>
       <div class="two-col">
         <div class="card">
-          <div class="card-title">Matter Status</div>
-          <div class="mrow"><div class="mname">Case Type</div><div style="font-size:13px;color:var(--ts)">Labor Law § 240 — Scaffold Injury</div></div>
-          <div class="mrow"><div class="mname">Status</div><span class="badge b-trial">Trial Preparation</span></div>
-          <div class="mrow"><div class="mname">Opened</div><div style="font-size:13px;color:var(--ts)">August 2023</div></div>
+          <div class="card-title">Appeal Status</div>
+          <div class="mrow"><div class="mname">Posture</div><div style="font-size:13px;color:var(--ts)">Appellant — from judgment of divorce</div></div>
+          <div class="mrow"><div class="mname">Stage</div><span class="badge b-review">Perfecting Appeal</span></div>
+          <div class="mrow"><div class="mname">Record</div><div style="font-size:13px;color:var(--ts)">Compiled · 3 volumes</div></div>
           <div class="mrow"><div class="mname">Next Event</div><div style="font-size:13px;color:var(--ts)" id="client-next">—</div></div>
-          <div class="mrow"><div class="mname">Court</div><div style="font-size:13px;color:var(--ts)">SDNY · White Plains Division</div></div>
+          <div class="mrow"><div class="mname">Court</div><div style="font-size:13px;color:var(--ts)">Appellate Division, Second Dept.</div></div>
         </div>
         <div class="card">
           <div class="card-title">Action Items</div>
-          <div class="mrow"><div><div class="mname">Review Expert Rebuttal Memo</div><div class="msub">Due from attorney by Friday Apr 4</div></div><span class="badge b-pending">Pending</span></div>
-          <div class="mrow"><div><div class="mname">Confirm Trial Reserve Position</div><div class="msub">Claims team approval needed</div></div><span class="badge b-urgent">Needed</span></div>
-          <div class="mrow" style="border-bottom:none;"><div><div class="mname">Billing Code Approval</div><div class="msub">Expert coordination — L130</div></div><span class="badge b-review">Review</span></div>
+          <div class="mrow"><div><div class="mname">Review brief draft v4</div><div class="msub">Client comments requested</div></div><span class="badge b-pending">Pending</span></div>
+          <div class="mrow"><div><div class="mname">Confirm CPLR 5531 statement</div><div class="msub">Party names &amp; trial dates</div></div><span class="badge b-urgent">Needed</span></div>
+          <div class="mrow" style="border-bottom:none;"><div><div class="mname">Printing &amp; filing estimate</div><div class="msub">Record + brief copies</div></div><span class="badge b-review">Review</span></div>
         </div>
       </div>
     </div>
 
     <div class="panel" id="panel-c-docs">
-      <div class="section-lbl">Documents Shared with Your Organization</div>
+      <div class="section-lbl">Documents Shared with Referring Counsel</div>
       <div class="card" style="padding:4px 16px;">
-        <div class="doc-row"><span class="di">📄</span><div class="dn">Complaint_and_Verified_Answer.pdf</div><span class="dm">Sep 2023 · 214 KB</span><span class="dtag shared">View</span></div>
-        <div class="doc-row"><span class="di">📄</span><div class="dn">Plaintiff_Expert_Report_Biomechanical.pdf</div><span class="dm">Mar 30 · 1.2 MB</span><span class="dtag shared">View</span></div>
-        <div class="doc-row"><span class="di">📋</span><div class="dn">Defense_Expert_Rebuttal_Summary.docx</div><span class="dm">In preparation</span><span class="dtag sig">Pending</span></div>
-        <div class="doc-row"><span class="di">📄</span><div class="dn">Discovery_Responses_Set_II.pdf</div><span class="dm">Feb 2024 · 388 KB</span><span class="dtag shared">View</span></div>
-        <div class="doc-row"><span class="di">📋</span><div class="dn">Billing_Summary_Q1_2025.pdf</div><span class="dm">Apr 1 · 44 KB</span><span class="dtag shared">View</span></div>
+        <div class="doc-row"><span class="di">📄</span><div class="dn">Notice_of_Appeal_FILED.pdf</div><span class="dm">Filed · 96 KB</span><span class="dtag shared">View</span></div>
+        <div class="doc-row"><span class="di">📚</span><div class="dn">Record_on_Appeal_Vol_I-III.pdf</div><span class="dm">Compiled · 22.8 MB</span><span class="dtag shared">View</span></div>
+        <div class="doc-row"><span class="di">📋</span><div class="dn">Appellant_Brief_DRAFT_v4.docx</div><span class="dm">Today · for comment</span><span class="dtag sig">Comment</span></div>
+        <div class="doc-row"><span class="di">📄</span><div class="dn">CPLR_5531_Statement_DRAFT.pdf</div><span class="dm">Today · 44 KB</span><span class="dtag sig">Confirm</span></div>
+        <div class="doc-row"><span class="di">📋</span><div class="dn">Fee_and_Cost_Estimate.pdf</div><span class="dm">Engagement · 58 KB</span><span class="dtag shared">View</span></div>
       </div>
     </div>
 
     <div class="panel" id="panel-c-messages">
       <div class="msg-pane" style="border-radius:12px;">
         <div class="msg-ph">
-          <div class="msg-pn">Richard A. Salvato, Esq.</div>
-          <div class="msg-pm">Chen v. Metro North · Secure Client Messaging</div>
+          <div class="msg-pn">Annette G. Hasapidis, Esq.</div>
+          <div class="msg-pm">Marchetti v. Marchetti · Secure Messaging</div>
         </div>
         <div class="msg-body">
-          <div class="msg"><div class="mav mav-a">RS</div><div><div class="mbubble mb-a">Metro North — plaintiff's expert report came in yesterday. The biomechanical expert is opining on the scaffold collapse. We need to calendar our rebuttal deadline and discuss whether to retain a competing structural engineer.</div><div class="mtime">Mar 29 · 4:18 PM</div></div></div>
-          <div class="msg fc"><div class="mav mav-c">MN</div><div><div class="mbubble mb-c">Received. Our position remains defense through trial unless you're seeing something different. What's your read on the expert's conclusions?</div><div class="mtime">Mar 30 · 9:22 AM</div></div></div>
-          <div class="msg"><div class="mav mav-a">RS</div><div><div class="mbubble mb-a">We believe we can effectively rebut on the scaffold configuration argument. I'd recommend we proceed toward trial. Full memo to you by Friday.</div><div class="mtime">Mar 30 · 2:45 PM</div></div></div>
+          <div class="msg"><div class="mav mav-a">AH</div><div><div class="mbubble mb-a">Draft v4 of the appellant's brief is in the shared folder. Point I now leads with the valuation of the business interest — our strongest issue on the standard of review.</div><div class="mtime">Yesterday · 5:42 PM</div></div></div>
+          <div class="msg fc"><div class="mav mav-c">LB</div><div><div class="mbubble mb-c">Reviewed with the client. She's comfortable dropping the counsel-fee issue. Does the record include the forensic accountant's supplemental report?</div><div class="mtime">Today · 10:15 AM</div></div></div>
+          <div class="msg"><div class="mav mav-a">AH</div><div><div class="mbubble mb-a">It was marked for identification only (Tr. 412) — I'll address it so we stay within the record. We're on track to perfect well ahead of the deadline.</div><div class="mtime">Today · 11:02 AM</div></div></div>
         </div>
         <div class="msg-foot">
-          <input class="msg-input" placeholder="Message your attorney securely…">
+          <input class="msg-input" placeholder="Message appellate counsel securely…">
           <button class="send-btn">Send</button>
         </div>
       </div>
     </div>
 
     <div class="panel" id="panel-c-dates">
-      <div class="section-lbl">Key Dates — Chen v. Metro North</div>
-      <div class="card" style="padding:0;overflow:hidden;">
+      <div class="section-lbl">Key Dates — Marchetti v. Marchetti</div>
+      <div class="card" style="padding:0;overflow-x:auto;">
         <table class="dl-tbl">
           <thead><tr><th>Date</th><th>Event</th><th>Action Required</th></tr></thead>
           <tbody id="client-dates"></tbody>
@@ -1034,7 +1003,7 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <div class="footer">
-    <div class="fbrand">Secure Practice Portal — Peirce &amp; Salvato PLLC · Powered by <span>Kane PC</span> · White Plains, NY 10601 · (914) 607-3313</div>
+    <div class="fbrand">Secure Practice Portal — Hasapidis Law Offices · Scarsdale, NY · Ridgefield, CT · Powered by <span>Kane PC</span> · (914) 607-3313</div>
     <div class="flinks">
       <span class="flink">Privacy</span>
       <span class="flink">Terms</span>
@@ -1045,13 +1014,15 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);c
 
 <script>
 /* ═══════════════════════════════════════════════════════════════════
-   Peirce & Salvato Practice Portal — DEMO BUILD
-   All matters, people and figures below are fictional seed data.
+   Hasapidis Law Offices Practice Portal — DEMO BUILD
+   Firm name, offices and Ms. Hasapidis's contact details are from the firm's
+   public website. Every matter, party, referring firm, staff member, rate and
+   figure below is fictional seed data.
    Timer state and submitted slips persist in this browser only
    (localStorage); nothing leaves the device.
    ═══════════════════════════════════════════════════════════════════ */
 var currentRole='attorney';
-var ME='Salvato';
+var ME='Hasapidis';
 
 /* ── utilities ── */
 function $(id){return document.getElementById(id);}
@@ -1074,29 +1045,28 @@ function money(n){var neg=n<-0.004;var v='$'+Math.abs(n).toFixed(2).replace(/\B(
 function store(k,v){try{if(v===undefined){var r=localStorage.getItem(k);return r?JSON.parse(r):null;}localStorage.setItem(k,JSON.stringify(v));}catch(e){return null;}}
 function toast(msg){var t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(function(){t.classList.remove('show');},3800);}
 
-/* ── people ── */
+/* ── people (rates are demo values) ── */
 var PEOPLE={
-  Peirce:{full:'Robert A. Peirce',rate:425},Salvato:{full:'Richard A. Salvato',rate:425},
-  Rousseau:{full:'Marc A. Rousseau',rate:325},Hughes:{full:'Daniel T. Hughes',rate:325},
-  Lanni:{full:'Jennifer M. Lanni',rate:325},Koke:{full:'Roland T. Koke',rate:325},
-  Zic:{full:'Kelly M. Zic',rate:300},Cortina:{full:'Alessandra L. Cortina',rate:300},
-  Mazzullo:{full:'Tammy M. Mazzullo',rate:145}
+  Hasapidis:{full:'Annette G. Hasapidis',title:'Esq. — Principal',rate:475},
+  Ostrowski:{full:'Daniel R. Ostrowski',title:'Esq. — Associate (demo)',rate:295},
+  Santos:{full:'Maria L. Santos',title:'Paralegal (demo)',rate:150}
 };
 
-/* ── matters (fictional) ── fin: fees wip/billed/paid, hard billed/paid, soft wip/billed/paid, trust, budget */
+/* ── matters (fictional) ── client = referring firm or litigant, ProLaw-style client-matter IDs
+   fin: fees wip/billed/paid, hard billed/paid, soft wip/billed/paid, trust, budget */
 var MATTERS=[
- {id:'1042-003',name:'Chen v. Metro North Railroad',short:'Chen v. Metro North',index:'Index #2023-12847',client:'Metro North / MTA',area:'Labor Law',areaLbl:'Labor Law § 240',atty:'Salvato',st:['b-trial','Trial Prep'],venue:'SDNY · White Plains',opened:'Aug 14, 2023',opp:'Brennan & Ruiz LLP',fin:{fw:3612.5,fb:48210,fp:44100,hb:6120.4,hp:6120.4,sw:84.1,sb:1310.22,sp:1180.4,trust:0,budget:85000}},
- {id:'1107-011',name:'Rodriguez v. City of White Plains',short:'Rodriguez v. White Plains',index:'Index #2024-08312',client:'City of White Plains',area:'Municipal',areaLbl:'Municipal Defense · § 1983',atty:'Peirce',st:['b-urgent','Dep. Tomorrow'],venue:'Westchester Sup. Ct. · Part 8',opened:'Mar 4, 2024',opp:'Cohen & Stein',fin:{fw:2125,fb:22950,fp:22950,hb:1840,hp:1840,sw:31.5,sb:402.75,sp:402.75,trust:0,budget:40000}},
- {id:'1210-041',name:'SIU — Flores #2025-SIU-041',short:'Flores SIU #041',index:'Claim #FL-2025-0041',client:'Hartford Insurance',area:'SIU / Fraud',areaLbl:'SIU / Insurance Fraud',atty:'Peirce',st:['b-active','Investigation'],venue:'Hartford Ins. — Claims Office',opened:'Jan 21, 2025',opp:'Claimant pro se',fin:{fw:1530,fb:8925,fp:6375,hb:950,hp:0,sw:12.4,sb:96.3,sp:96.3,trust:0,budget:15000}},
- {id:'1188-007',name:'Williams v. Costco Wholesale',short:'Williams v. Costco',index:'Index #2024-14209',client:'Costco Wholesale Corp.',area:'Premises',areaLbl:'Premises Liability',atty:'Rousseau',st:['b-review','Discovery'],venue:'Westchester Sup. Ct. · Part 22',opened:'Jun 10, 2024',opp:'Murphy & Foy',fin:{fw:1690,fb:18525,fp:15925,hb:2210.75,hp:2210.75,sw:44.8,sb:388.1,sp:302.6,trust:0,budget:30000}},
- {id:'1301-002',name:'Kenmore Ave. Construction Defects',short:'Kenmore Construction',index:'Index #2024-0882',client:'Kenmore Development LLC',area:'Construction',areaLbl:'Construction Defects',atty:'Hughes',st:['b-pending','Expert Disclosure'],venue:'Westchester Sup. Ct.',opened:'Feb 2, 2024',opp:'Lindqvist Partners',fin:{fw:975,fb:31200,fp:27950,hb:14800,hp:9800,sw:20,sb:610,sp:610,trust:12500,budget:60000}},
- {id:'1156-019',name:'Park Ave. Realty v. Sunrise Dev.',short:'Park Ave. Realty',index:'Index #2024-09741',client:'Park Ave. Realty LLC',area:'Commercial',areaLbl:'Commercial Litigation',atty:'Salvato',st:['b-review','Motion Practice'],venue:'NY Supreme Court · Commercial Div.',opened:'Apr 22, 2024',opp:'Garber Holt LLP',fin:{fw:4462.5,fb:39100,fp:31025,hb:2430,hp:2430,sw:66.2,sb:744.9,sp:520.1,trust:25000,budget:70000}},
- {id:'1322-004',name:'Moretti v. Stop & Shop',short:'Moretti v. Stop & Shop',index:'Index #2025-02108',client:'Stop & Shop / Ahold',area:'Premises',areaLbl:'Premises Liability',atty:'Lanni',st:['b-active','Active'],venue:'Westchester Sup. Ct.',opened:'May 6, 2025',opp:'Rinaldi Law',fin:{fw:812.5,fb:6825,fp:6825,hb:410,hp:410,sw:9.6,sb:58.2,sp:58.2,trust:0,budget:20000}},
- {id:'1245-013',name:'DeMarco Products Recall',short:'DeMarco Products',index:'Index #2024-SDNY-3341',client:'DeMarco Industries',area:'Products',areaLbl:'Products Liability',atty:'Rousseau',st:['b-review','Discovery'],venue:'SDNY',opened:'Sep 9, 2024',opp:'Whitcomb & Aldana',fin:{fw:2600,fb:27950,fp:24050,hb:8900,hp:8900,sw:112,sb:930.4,sp:930.4,trust:0,budget:55000}},
- {id:'1119-022',name:'Westchester County v. Gallo',short:'County v. Gallo',index:'Index #2024-11220',client:'Westchester County',area:'Municipal',areaLbl:'Municipal Defense',atty:'Peirce',st:['b-active','Active'],venue:'Westchester Sup. Ct. · Part 3',opened:'Jul 30, 2024',opp:'Sandoval & Pike',fin:{fw:1275,fb:11900,fp:11900,hb:620,hp:620,sw:18,sb:144,sp:144,trust:0,budget:25000}},
- {id:'1340-001',name:'Nakamura v. Empire State Properties',short:'Nakamura v. Empire State',index:'Index #2025-03845',client:'Empire State Properties',area:'Labor Law',areaLbl:'Labor Law § 241',atty:'Koke',st:['b-active','Active'],venue:'Westchester Sup. Ct.',opened:'Jun 18, 2025',opp:'Halloran Vance',fin:{fw:1462.5,fb:9750,fp:8125,hb:760,hp:760,sw:14,sb:120.5,sp:120.5,trust:0,budget:35000}},
- {id:'1367-001',name:'Delgado v. Ridgeway Towers Assn.',short:'Delgado (Appeal)',index:'App. Div. 2d Dept. #2026-04417',client:'Ridgeway Towers Assn.',area:'Appeals',areaLbl:'Appellate · Appellant',atty:'Salvato',st:['b-review','Perfecting Appeal'],venue:'Appellate Division, Second Dept.',opened:'Jun 12, 2026',opp:'Kessler Moran PLLC',fin:{fw:5100,fb:12750,fp:12750,hb:2380,hp:2380,sw:40,sb:210.6,sp:210.6,trust:10000,budget:45000}},
- {id:'1372-002',name:'Okafor v. Tarrytown Marine Co.',short:'Okafor (Appeal)',index:'App. Div. 2d Dept. #2026-02963',client:'Tarrytown Marine Co.',area:'Appeals',areaLbl:'Appellate · Respondent',atty:'Zic',st:['b-urgent','Brief Due'],venue:'Appellate Division, Second Dept.',opened:'Mar 3, 2026',opp:'Avery & Lund LLP',fin:{fw:3300,fb:7800,fp:7800,hb:540,hp:540,sw:22,sb:76,sp:76,trust:0,budget:30000}}
+ {id:'214-031',name:'Marchetti v. Marchetti',short:'Marchetti',index:'App. Div. 2d Dept. #2026-03122',client:'Lowell & Brandt, PLLC (214)',area:'Matrimonial & Family',areaLbl:'App. Div. 2d · Appellant',atty:'Hasapidis',st:['b-review','Perfecting Appeal'],venue:'Appellate Division, Second Dept.',opened:'May 19, 2026',opp:'Fenwick & Doyle, LLP',fin:{fw:6412.5,fb:14250,fp:14250,hb:1860,hp:1860,sw:42,sb:188.4,sp:188.4,trust:7500,budget:40000}},
+ {id:'214-036',name:'Danforth v. Westbrook Medical Group, P.C.',short:'Danforth',index:'App. Div. 2d Dept. #2026-02240',client:'Corwin Feld LLP (214)',area:'Medical Malpractice',areaLbl:'App. Div. 2d · Respondent',atty:'Hasapidis',st:['b-urgent','Brief Due'],venue:'Appellate Division, Second Dept.',opened:'Mar 2, 2026',opp:'Avery & Lund LLP',fin:{fw:5225,fb:9500,fp:9500,hb:0,hp:0,sw:31,sb:74.2,sp:74.2,trust:0,budget:35000}},
+ {id:'302-007',name:'Ruiz v. Hudson Ridge Apartments, LLC',short:'Ruiz',index:'App. Div. 2d Dept. #2025-08814',client:'Brennan Trial Group (302)',area:'Personal Injury',areaLbl:'App. Div. 2d · Appellant',atty:'Hasapidis',st:['b-trial','Argument Today'],venue:'Appellate Division, Second Dept.',opened:'Sep 8, 2025',opp:'Garber Holt LLP',fin:{fw:3087.5,fb:28500,fp:24700,hb:3420,hp:3420,sw:58,sb:402.6,sp:402.6,trust:0,budget:45000}},
+ {id:'315-002',name:'Kaplan v. Tri-County Transit Authority',short:'Kaplan',index:'Index #58210/2023 (Sup. Ct. Westchester)',client:'Kaplan, Steven (315)',area:'Personal Injury',areaLbl:'Pre-appeal · Notice of Appeal',atty:'Hasapidis',st:['b-pending','Notice of Appeal'],venue:'Appellate Division, Second Dept.',opened:'Oct 29, 2026',opp:'Transit Authority Law Dept.',fin:{fw:1662.5,fb:2500,fp:2500,hb:0,hp:0,sw:0,sb:0,sp:0,trust:5000,budget:30000}},
+ {id:'288-014',name:'Bellamy v. Harbor Point Hospital',short:'Bellamy',index:'App. Div. 1st Dept. #2026-01877',client:'Corwin Feld LLP (288)',area:'Medical Malpractice',areaLbl:'App. Div. 1st · Respondent',atty:'Ostrowski',st:['b-review','Record Settlement'],venue:'Appellate Division, First Dept.',opened:'Apr 14, 2026',opp:'Mehta Rosen PLLC',fin:{fw:2360,fb:7375,fp:5900,hb:640,hp:640,sw:18,sb:96,sp:96,trust:0,budget:30000}},
+ {id:'330-001',name:'Okonkwo v. Ardent Logistics, Inc.',short:'Okonkwo',index:'2d Cir. No. 26-1148',client:'Okonkwo, Grace (330)',area:'Employment',areaLbl:'2d Circuit · Appellant',atty:'Hasapidis',st:['b-review','Briefing'],venue:'U.S. Court of Appeals, Second Circuit',opened:'Jul 7, 2026',opp:'Whitcomb & Aldana',fin:{fw:4037.5,fb:11875,fp:11875,hb:505,hp:505,sw:22,sb:130,sp:130,trust:2500,budget:50000}},
+ {id:'241-019',name:'Matter of Delaney v. Delaney',short:'Delaney',index:'Family Ct. Docket V-04117-25',client:'Delaney, Theresa (241)',area:'Matrimonial & Family',areaLbl:'Feasibility review',atty:'Hasapidis',st:['b-pending','Feasibility Review'],venue:'Appellate Division, Second Dept.',opened:'Nov 3, 2026',opp:'Self-represented',fin:{fw:950,fb:0,fp:0,hb:0,hp:0,sw:0,sb:0,sp:0,trust:2500,budget:6000}},
+ {id:'276-005',name:'Greystone Capital LLC v. Pinnacle Builders Corp.',short:'Greystone',index:'App. Div. 1st Dept. #2026-04551',client:'Greystone Capital LLC (276)',area:'Commercial',areaLbl:'App. Div. 1st · Respondent',atty:'Ostrowski',st:['b-review','Motion to Dismiss Appeal'],venue:'Appellate Division, First Dept.',opened:'Aug 20, 2026',opp:'Lindqvist Partners',fin:{fw:2950,fb:8850,fp:8850,hb:0,hp:0,sw:12,sb:48,sp:48,trust:0,budget:25000}},
+ {id:'302-011',name:'Ferrante v. Village of Pelham Manor',short:'Ferrante',index:'App. Div. 2d Dept. #2024-11902',client:'Brennan Trial Group (302)',area:'Personal Injury',areaLbl:'Ct. of Appeals · Leave motion',atty:'Hasapidis',st:['b-urgent','Leave Motion'],venue:'New York Court of Appeals',opened:'Feb 11, 2025',opp:'Village Attorney',fin:{fw:2137.5,fb:21850,fp:21850,hb:2210,hp:2210,sw:16,sb:310,sp:310,trust:0,budget:40000}},
+ {id:'355-003',name:'Rosen v. Rosen',short:'Rosen (CT)',index:'CT Super. Ct. FST-FA24-6031188',client:'Rosen, Alan (355)',area:'Matrimonial & Family',areaLbl:'CT Appellate · Appellee',atty:'Hasapidis',st:['b-active','Engaged'],venue:'Connecticut Appellate Court',opened:'Oct 6, 2026',opp:'Whitlock & Pryor LLC',fin:{fw:1425,fb:4750,fp:4750,hb:0,hp:0,sw:0,sb:0,sp:0,trust:10000,budget:35000}},
+ {id:'360-001',name:'Abernathy v. Northfield Supermarkets, Inc.',short:'Abernathy',index:'Index #61442/2024 (Sup. Ct. Westchester)',client:'Sato & Mulroney LLP (360)',area:'Trial Support',areaLbl:'Trial support · Issue preservation',atty:'Hasapidis',st:['b-trial','In Trial'],venue:'Westchester Supreme Court',opened:'Oct 20, 2026',opp:'Halloran Vance',fin:{fw:3800,fb:2850,fp:2850,hb:0,hp:0,sw:0,sb:0,sp:0,trust:0,budget:15000}},
+ {id:'214-040',name:'Harlow v. Crestview Nursing & Rehab Center',short:'Harlow',index:'App. Div. 2d Dept. #2025-06630',client:'Corwin Feld LLP (214)',area:'Medical Malpractice',areaLbl:'App. Div. 2d · Respondent',atty:'Hasapidis',st:['b-active','Argued — Awaiting Decision'],venue:'Appellate Division, Second Dept.',opened:'Jun 2, 2025',opp:'Kessler Moran PLLC',fin:{fw:0,fb:26125,fp:26125,hb:1980,hp:1980,sw:0,sb:288,sp:288,trust:0,budget:38000}}
 ];
 function matter(id){for(var i=0;i<MATTERS.length;i++)if(MATTERS[i].id===id)return MATTERS[i];return null;}
 
@@ -1129,31 +1099,31 @@ function docketChain(m,key,dateStr,byMail){
 }
 
 function seedDocket(){
-  seed(-8,'1188-007','filing',"Defendant's discovery responses served",{done:true});
-  seed(-5,'1042-003','filing','Expert exchange served (CPLR 3101(d))',{done:true});
-  seed(-3,'1322-004','deadline','L/D to serve supplemental bill of particulars');
-  seed(-2,'1156-019','deadline','Confirm stipulation adjourning motion — so-ordered copy');
-  seed(-1,'1340-001','deadline','L/D to respond to post-deposition demands');
-  seed(0,'1107-011','appearance','Preliminary Conference — Hon. Donahue, Part 8',{time:'10:00 AM'});
-  seed(0,'1188-007','appearance','Discovery Conference — Hon. Ecker, Part 22',{time:'2:15 PM'});
-  seed(1,'1107-011','deposition','Deposition of Cmdr. Harris',{time:'10:00 AM'});
-  seed(2,'1042-003','deadline','L/D — rebuttal expert disclosure');
-  seed(4,'1156-019','appearance','Oral argument — motion to dismiss counterclaims',{time:'9:30 AM'});
-  seed(6,'1210-041','appointment','Examination Under Oath — claimant',{time:'11:00 AM'});
-  seed(9,'1188-007','deadline','L/D — opposition to summary judgment motion');
-  seed(13,'1119-022','appearance','Compliance conference — Part 3',{time:'9:30 AM'});
-  seed(17,'1301-002','deadline','L/D — defense expert disclosure');
-  seed(20,'1322-004','appointment','Mediation — NAM White Plains',{time:'10:00 AM'});
-  seed(24,'1156-019','deadline','L/D — Note of Issue');
-  seed(37,'1340-001','deposition','Deposition of site supervisor',{time:'10:00 AM'});
-  seed(49,'1245-013','deadline','Close of fact discovery');
-  // appellate chains, built by the same calculator the attorney uses
-  docketChain('1367-001','noe',iso(addDays(today(),-178)),false);
-  docketChain('1367-001','noa',iso(addDays(today(),-152)),false);
-  DOCKET.filter(function(e){return e.m==='1367-001'&&/Notice of Appeal$/.test(e.title);}).forEach(function(e){e.done=true;e.doneOn=iso(addDays(today(),-152));});
-  docketChain('1372-002','abr',iso(addDays(today(),-20)),false);
-  seed(-30,'1367-001','filing','Record on Appeal — Volumes I–III compiled',{done:true});
-  seed(12,'1367-001','deadline',"Internal: Appellant's brief to partner for review");
+  // Appellate chains — built by the same calculator the attorney uses
+  docketChain('214-031','noe',iso(addDays(today(),-178)),false);   // Marchetti: judgment served
+  docketChain('214-031','noa',iso(addDays(today(),-150)),false);   // Notice of appeal filed → perfect in 6 months
+  docketChain('214-036','abr',iso(addDays(today(),-18)),false);    // Danforth: appellant's brief served → our brief due
+  docketChain('315-002','noe',iso(addDays(today(),-12)),true);     // Kaplan: judgment w/ NOE served by mail
+  docketChain('302-007','abr',iso(addDays(today(),-160)),false);   // Ruiz: briefing complete
+  // chain deadlines already in the past were met
+  DOCKET.forEach(function(e){if(e.parent&&e.date<todayIso()){e.done=true;e.doneOn=e.date;}});
+
+  seed(-30,'214-031','filing','Record on Appeal compiled — Vols. I–III',{done:true});
+  seed(-9,'214-040','filing','Oral argument held — panel of four',{done:true});
+  seed(-6,'288-014','filing','Proposed record served for settlement',{done:true});
+  seed(-3,'214-031','deadline','Confirm CPLR 5531 statement with referring counsel');
+  seed(-1,'241-019','deadline','Send feasibility letter & cost estimate',{atty:'Ostrowski'});
+  seed(0,'302-007','appearance','Oral argument — App. Div. 2d Dept., 45 Monroe Place',{time:'10:00 AM'});
+  seed(0,'360-001','appearance','Charge conference — Westchester Sup. Ct.',{time:'2:15 PM'});
+  seed(1,'330-001','appointment','Call with client — 2d Cir. brief outline',{time:'4:00 PM'});
+  var leave=seed(3,'302-011','deadline','L/D — motion for leave to appeal to Court of Appeals');leave.rule='CPLR 5513(b)';
+  seed(5,'276-005','deadline','L/D — opposition to motion to dismiss appeal',{atty:'Ostrowski'});
+  var ca=seed(8,'330-001','deadline',"Appellant's brief & joint appendix due");ca.rule='2d Cir. scheduling order';
+  seed(10,'214-031','deadline','Internal: brief to referring counsel for final review');
+  seed(16,'288-014','deadline','L/D — settle record (stipulation or motion)',{atty:'Ostrowski'});
+  seed(22,'355-003','appointment','Client meeting — Ridgefield office',{time:'11:00 AM'});
+  seed(29,'360-001','appointment','Post-trial motion strategy — with lead counsel',{time:'3:00 PM'});
+  seed(41,'241-019','appointment','Engagement decision — client',{time:'10:30 AM',atty:'Ostrowski'});
 }
 
 /* ── timers ── */
@@ -1256,16 +1226,16 @@ function renderTimerPop(){
 function tick(){
   document.querySelectorAll('[data-clock]').forEach(function(el){var t=getT(el.getAttribute('data-clock'));if(t)el.textContent=fmtClock(tElapsed(t));});
   var a=activeTimer();
-  document.title=(a?'⏱ '+fmtClock(tElapsed(a))+' · ':'')+'Peirce & Salvato PLLC — Practice Portal';
+  document.title=(a?'⏱ '+fmtClock(tElapsed(a))+' · ':'')+'Hasapidis Law Offices — Appellate Practice Portal';
 }
 
 /* ── slips ── */
 var SEED_SLIPS=[
- {who:'Salvato',m:'1042-003',hrs:2.5,code:'L330 — Deposition'},
- {who:'Peirce',m:'1210-041',hrs:1.8,code:'L110 — Investigation'},
- {who:'Rousseau',m:'1188-007',hrs:3.2,code:'L320 — Doc Review'},
- {who:'Mazzullo',m:'1156-019',hrs:4.0,code:'L310 — Discovery'},
- {who:'Hughes',m:'1301-002',hrs:1.5,code:'L130 — Expert Coord.'}
+ {who:'Hasapidis',m:'214-031',hrs:3.4,code:'L520 — Brief drafting'},
+ {who:'Hasapidis',m:'302-007',hrs:2.6,code:'L530 — Argument prep'},
+ {who:'Ostrowski',m:'276-005',hrs:1.9,code:'L510 — Motion research'},
+ {who:'Santos',m:'288-014',hrs:4.0,code:'L520 — Record assembly'},
+ {who:'Hasapidis',m:'214-036',hrs:1.2,code:'L120 — Issue analysis'}
 ];
 var SLIPS=store('ps-demo-slips')||[];
 function initials(full){var p=full.split(' ');return p[0].charAt(0)+'. '+p[p.length-1];}
@@ -1286,16 +1256,16 @@ function enterApp(role){
   $('tmr').style.display=role==='attorney'?'':'none';
   if(role==='attorney'){
     $('portal-lbl').textContent='Attorney Portal';
-    $('user-av').textContent='RS';$('user-av').className='av av-atty';
-    $('user-name').textContent='Richard A. Salvato, Esq.';
-    $('role-badge').textContent='Partner';$('role-badge').className='rbadge rbadge-atty';
+    $('user-av').textContent='AH';$('user-av').className='av av-atty';
+    $('user-name').textContent='Annette G. Hasapidis, Esq.';
+    $('role-badge').textContent='Principal';$('role-badge').className='rbadge rbadge-atty';
     $('sub-bar-atty').style.display='flex';$('tabs-atty').style.display='flex';$('tabs-client').style.display='none';
     goTab('dashboard');
   } else {
-    $('portal-lbl').textContent='Client Portal';
-    $('user-av').textContent='MN';$('user-av').className='av av-client';
-    $('user-name').textContent='Metro North Legal Dept.';
-    $('role-badge').textContent='Client';$('role-badge').className='rbadge rbadge-client';
+    $('portal-lbl').textContent='Referring Counsel Portal';
+    $('user-av').textContent='LB';$('user-av').className='av av-client';
+    $('user-name').textContent='Lowell & Brandt, PLLC';
+    $('role-badge').textContent='Referring Counsel';$('role-badge').className='rbadge rbadge-client';
     $('sub-bar-atty').style.display='none';$('tabs-atty').style.display='none';$('tabs-client').style.display='flex';
     showClientTab('c-overview',document.querySelector('#tabs-client .tab'));
   }
@@ -1422,22 +1392,28 @@ function renderDash(){
     return '<div class="mrow" onclick="openMatter(\''+e.m+'\')"><div style="display:flex;gap:10px;align-items:center"><div class="dchip '+dchipCls(e)+'" style="min-width:54px">'+fmtShort(e.date)+'</div><div><div class="mname">'+esc(m.short+' — '+e.title)+'</div><div class="msub">'+esc(m.areaLbl+' · '+m.venue)+(e.time?' · '+e.time:'')+'</div></div></div></div>';
   }).join('');
   $('court-date').textContent="Today's Appearances — "+fmtLong(t);
+  $('st-open').textContent=MATTERS.length;
+  $('st-open-sub').textContent=MATTERS.filter(function(m){return /Respondent|Appellee/.test(m.areaLbl);}).length+' respondent · '+MATTERS.filter(function(m){return /Appellant/.test(m.areaLbl);}).length+' appellant';
+  $('st-wip').textContent='$'+Math.round(MATTERS.reduce(function(a,m){return a+m.fin.fw+m.fin.sw+slipWip(m.id);},0)/1000)+'k';
+  $('dash-matters').innerHTML=MATTERS.slice(0,6).map(function(m){
+    return '<div class="mrow" onclick="openMatter(\''+m.id+'\')"><div><div class="mname">'+esc(m.name)+'</div><div class="msub">'+esc(m.areaLbl+' · '+m.client)+'</div></div><span class="badge '+m.st[0]+'">'+esc(m.st[1])+'</span></div>';
+  }).join('');
 }
 function renderClientDates(){
-  var evs=DOCKET.filter(function(e){return e.m==='1042-003'&&!e.done&&e.type!=='filing';}).sort(byDate);
+  var evs=DOCKET.filter(function(e){return e.m==='214-031'&&!e.done&&e.type!=='filing';}).sort(byDate);
   $('client-next').textContent=evs.length?evs[0].title.replace(/^L\/D — /,'')+' — '+fmtShort(evs[0].date):'—';
   $('client-dates').innerHTML=evs.map(function(e){return '<tr><td><span class="dchip '+dchipCls(e)+'">'+fmtShort(e.date)+'</span></td><td><div class="mname">'+esc(e.title.replace(/^L\/D — /,''))+'</div></td><td style="font-size:12px;color:var(--w-tx);">Attorney preparing — no action needed from you</td></tr>';}).join('')
-    +'<tr><td><span class="dchip">TBD</span></td><td><div class="mname">Trial date — SDNY White Plains</div></td><td style="font-size:12px;color:var(--ts);">Reserve position to be confirmed</td></tr>'
-    +'<tr><td><span class="dchip">Monthly</span></td><td><div class="mname">Billing statement — Timeslips export</div></td><td style="font-size:12px;color:var(--ts);">Reviewed &amp; approved by claims</td></tr>';
+    +'<tr><td><span class="dchip">TBD</span></td><td><div class="mname">Calendar for oral argument — App. Div. 2d Dept.</div></td><td style="font-size:12px;color:var(--ts);">Set by the Court after briefing closes</td></tr>'
+    +'<tr><td><span class="dchip">Monthly</span></td><td><div class="mname">Billing statement</div></td><td style="font-size:12px;color:var(--ts);">Itemized by 0.1 hr with narrative</td></tr>';
 }
 function renderDocketViews(){renderCal();renderReminders();renderDeadlines();renderDash();renderClientDates();if(MD.id&&MD.tab==='events')mdTab('events');}
 
 /* ── matter record ── */
 var MD={id:null,tab:'general'};
 var NOTES={
- '1042-003':[{at:'Nov 3 · 4:40 PM',by:'Salvato',t:'Client confirmed defense-through-trial posture. Structural engineer retained for rebuttal; draft due before disclosure L/D.'}],
- '1367-001':[{at:'Oct 28 · 11:05 AM',by:'Salvato',t:'Record on appeal compiled (3 vols). Brief outline circulated. Consider CPLR 5519 stay — bond quote requested from carrier.'}],
- '1372-002':[{at:'Nov 2 · 9:15 AM',by:'Zic',t:"Appellant's brief received via NYSCEF. Main issue: charge on comparative fault. Respondent's brief assigned — draft to partner one week before L/D."}]
+ '214-031':[{at:'Nov 6 · 4:40 PM',by:'Hasapidis',t:'Lead with valuation of the business interest (abuse of discretion vs. against the weight). Forensic supplemental report marked for ID only — Tr. 412; do not rely on it.'}],
+ '214-036':[{at:'Oct 24 · 9:15 AM',by:'Hasapidis',t:"Appellant's brief received via NYSCEF. Main issue: expert's standard-of-care testimony. Respondent's brief — first draft one week before L/D."}],
+ '302-007':[{at:'Nov 9 · 6:10 PM',by:'Hasapidis',t:'Argument: open on notice — constructive notice not shown by the record (R. 611–640). Expect the panel to ask about the recurring-condition theory.'}]
 };
 function openMatter(id){
   var m=matter(id);if(!m)return;
@@ -1554,8 +1530,8 @@ function updatePreview(){
 function buildSlipText(){
   var d=slipData();
   var dateDisplay=d.date?parseIso(d.date).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}):'[Date not set]';
-  return 'PEIRCE & SALVATO PLLC — TIME SLIP\n'
-    +'8 Cottage Place, White Plains, NY 10601 | (914) 946-8200\n'
+  return 'HASAPIDIS LAW OFFICES — TIME SLIP\n'
+    +'111 Brook Street, Scarsdale, NY 10583 | (914) 533-3049\n'
     +'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'
     +'Date of Service : '+dateDisplay+'\n'
     +'Timekeeper      : '+(d.atty||'[Not Selected]')+'\n'
@@ -1569,8 +1545,8 @@ function buildSlipText(){
     +'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'
     +'BILLABLE AMOUNT : '+money(d.hours*d.rate)+'\n'
     +'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'
-    +'Submitted via Peirce & Salvato Practice Portal\n'
-    +'Please enter into Timeslips — contact Kane PC IT: (914) 607-3313';
+    +'Submitted via Hasapidis Law Offices Practice Portal (demo)\n'
+    +'For ProLaw entry — Kane PC IT: (914) 607-3313';
 }
 function slipReady(){
   var d=slipData();
@@ -1586,7 +1562,7 @@ function emailSlip(){
   var slip=buildSlipText();
   var subject=encodeURIComponent('Time Slip — '+d.atty+' — '+d.m.id+' — '+new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}));
   recordSlip(d);
-  window.location.href='mailto:billing@peircesalvato.com?subject='+subject+'&body='+encodeURIComponent(slip);
+  window.location.href='mailto:?subject='+subject+'&body='+encodeURIComponent(slip);
 }
 function copySlip(){
   var d=slipReady();if(!d)return;
@@ -1613,6 +1589,7 @@ window.addEventListener('storage',function(e){if(e.key==='ps-demo-timers'){TS=st
 (function init(){
   seedDocket();
   $('te-matter').innerHTML=matterOptions('');
+  $('te-atty').innerHTML='<option value="">— Select timekeeper —</option>'+Object.keys(PEOPLE).map(function(k){var p=PEOPLE[k];return '<option value="'+esc(p.full)+'" data-rate="'+p.rate+'">'+esc(p.full+', '+p.title+' — $'+p.rate+'/hr')+'</option>';}).join('');
   $('te-date').value=todayIso();
   calToday();
   renderMatters();renderSlips();renderReminders();renderDeadlines();renderDash();renderClientDates();
