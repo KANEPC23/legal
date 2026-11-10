@@ -1,7 +1,7 @@
 # legal
-KANE PC Legal and case management app — single-file demo (law.kanepc.com).
+KANE PC Legal and case management app — single-file demo (law.kanepc.com), branded for Hasapidis Law Offices (civil appellate practice, NY & CT).
 
-**Demo only:** fictional seed data, DEMO ribbon, no backend. Timer state and
+**Demo only:** firm name, offices and the principal's public contact details come from nyappellateattorneys.com; every matter, party, referring firm, staff member, rate and figure is fictional seed data, DEMO ribbon, no backend. Timer state and
 submitted slips persist in the viewer's browser (localStorage) and nowhere else.
 
 ## Demo features
