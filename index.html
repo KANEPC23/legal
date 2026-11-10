@@ -362,6 +362,44 @@ html,body{height:100%;font-family:'Open Sans',sans-serif;background:var(--cream)
 .row-timer:hover{background:var(--burg);color:#fff;border-color:var(--burg);}
 .row-timer.on{background:var(--burg);color:#fff;border-color:var(--burg);animation:pulse 1.6s infinite;}
 
+/* ══ BILLING / PAYMENT LINKS ══ */
+.acct{font-size:10px;padding:2px 8px;border-radius:8px;white-space:nowrap;font-weight:500;}
+.acct-op{background:#F0EEE8;color:#5A4A30;}
+.acct-tr{background:var(--i-bg);color:var(--i-tx);}
+.b-draft{background:#F0EEE8;color:var(--ts);}
+.b-sent{background:var(--i-bg);color:var(--i-tx);}
+.b-viewed{background:var(--w-bg);color:var(--w-tx);}
+.b-paid{background:var(--s-bg);color:var(--s-tx);}
+.b-over{background:var(--d-bg);color:var(--d-tx);font-weight:500;}
+.bill-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
+.bill-acts{display:flex;gap:6px;flex-wrap:wrap;}
+.feed-item{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);font-size:12px;}
+.feed-item:last-child{border-bottom:none;}
+.feed-dot{width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0;}
+.feed-time{font-size:10px;color:var(--tm);margin-top:2px;}
+.modal-overlay{position:fixed;inset:0;background:rgba(31,29,26,.5);display:none;z-index:450;align-items:center;justify-content:center;padding:16px;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--white);border-radius:14px;width:min(560px,100%);max-height:calc(100vh - 32px);overflow-y:auto;box-shadow:0 20px 50px rgba(0,0,0,.3);}
+.modal-hd{padding:18px 20px 12px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;gap:10px;}
+.modal-hd h3{font-family:'Playfair Display',Georgia,serif;font-size:19px;font-weight:500;}
+.modal-bd{padding:16px 20px;}
+.modal-ft{padding:12px 20px 18px;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.seg label{border:1px solid var(--border-s);border-radius:10px;padding:10px 12px;cursor:pointer;font-size:12px;line-height:1.4;display:block;}
+.seg label b{display:block;font-size:13px;font-weight:600;color:var(--tp);margin-bottom:2px;}
+.seg input{position:absolute;opacity:0;pointer-events:none;}
+.seg input:checked+label{border-color:var(--burg);box-shadow:inset 0 0 0 1px var(--burg);background:var(--burg-pale);}
+.chk{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;}
+.chk label{display:flex;gap:6px;align-items:center;cursor:pointer;}
+.chk input{accent-color:var(--burg);}
+.guard{font-size:11px;line-height:1.5;padding:9px 11px;border-radius:8px;background:var(--i-bg);color:var(--i-tx);margin-top:4px;}
+.guard.op{background:#F0EEE8;color:#5A4A30;}
+.link-box{display:flex;gap:8px;align-items:center;background:var(--cream);border:1px dashed var(--border-s);border-radius:8px;padding:9px 11px;font-family:monospace;font-size:12px;word-break:break-all;}
+.hosted{border:1px solid var(--border-s);border-radius:12px;padding:18px;text-align:center;}
+.hosted .amt{font-family:'Playfair Display',Georgia,serif;font-size:30px;margin:6px 0 2px;}
+.pay-btn{width:100%;padding:12px;background:var(--burg);color:#fff;border:none;border-radius:9px;font:600 14px 'Open Sans',sans-serif;cursor:pointer;margin-top:12px;}
+.pay-btn:hover{background:var(--burg-light);}
+
 /* TOAST */
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--slate);color:#fff;font-size:13px;padding:11px 18px;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:all .25s;z-index:500;max-width:calc(100vw - 32px);}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
@@ -563,6 +601,7 @@ html,body{height:100%;font-family:'Open Sans',sans-serif;background:var(--cream)
     <button class="tab" data-tab="docket" onclick="showTab('docket',this)">▦ &nbsp;Docket</button>
     <button class="tab" data-tab="deadlines" onclick="showTab('deadlines',this)">◷ &nbsp;Deadlines</button>
     <button class="tab time-tab" data-tab="timeentry" onclick="showTab('timeentry',this)">⏱ &nbsp;Time Entry</button>
+    <button class="tab" data-tab="billing" onclick="showTab('billing',this)">$ &nbsp;Billing</button>
     <button class="tab" data-tab="messages" onclick="showTab('messages',this)">⊠ &nbsp;Messages <span class="notif">2</span></button>
     <button class="tab court-tab" data-tab="court" onclick="showTab('court',this)"><span class="tdot"></span>&nbsp; Argument Day</button>
     <button class="tab" data-tab="contacts" onclick="showTab('contacts',this)">⊕ &nbsp;Contacts</button>
@@ -573,6 +612,7 @@ html,body{height:100%;font-family:'Open Sans',sans-serif;background:var(--cream)
     <button class="tab" onclick="showClientTab('c-docs',this)">⊡ &nbsp;Shared Documents</button>
     <button class="tab" onclick="showClientTab('c-messages',this)">⊠ &nbsp;Messages <span class="notif">1</span></button>
     <button class="tab" onclick="showClientTab('c-dates',this)">◷ &nbsp;Key Dates</button>
+    <button class="tab" onclick="showClientTab('c-billing',this)">$ &nbsp;Billing <span class="notif" id="c-bill-notif">1</span></button>
   </div>
 
   <div class="main">
@@ -809,6 +849,33 @@ html,body{height:100%;font-family:'Open Sans',sans-serif;background:var(--cream)
       </div>
     </div>
 
+    <!-- BILLING -->
+    <div class="panel" id="panel-billing">
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-lbl">Outstanding A/R</div><div class="stat-val" id="bl-ar">—</div><div class="stat-sub stat-warn" id="bl-ar-sub">—</div></div>
+        <div class="stat-card"><div class="stat-lbl">Collected · last 30 days</div><div class="stat-val" id="bl-paid">—</div><div class="stat-sub stat-up">Via payment links</div></div>
+        <div class="stat-card"><div class="stat-lbl">IOLA Trust balances</div><div class="stat-val" id="bl-trust">—</div><div class="stat-sub">Client funds — Rule 1.15</div></div>
+        <div class="stat-card"><div class="stat-lbl">Links awaiting payment</div><div class="stat-val" id="bl-open">—</div><div class="stat-sub">Sent or viewed</div></div>
+      </div>
+      <div class="two-col" style="grid-template-columns:1fr 320px;align-items:start">
+        <div class="card" style="padding:0;overflow-x:auto;">
+          <div class="bill-head" style="padding:16px 18px 0">
+            <div class="card-title" style="margin:0">Invoices &amp; Payment Requests</div>
+            <button class="btn-primary" style="padding:8px 14px;font-size:12px" onclick="openPayLink()">+ New payment link</button>
+          </div>
+          <table class="case-tbl" style="margin-top:8px">
+            <thead><tr><th>Request</th><th class="hide-sm">Deposits to</th><th style="text-align:right">Amount</th><th>Status</th><th></th></tr></thead>
+            <tbody id="bill-body"></tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-title" style="margin-bottom:6px">Payment activity</div>
+          <div style="font-size:11px;color:var(--tm);margin-bottom:8px">Status changes come from the processor's signed webhook — never from the browser.</div>
+          <div id="bill-feed"></div>
+        </div>
+      </div>
+    </div>
+
     <!-- MESSAGES -->
     <div class="panel" id="panel-messages">
       <div class="msg-layout">
@@ -965,6 +1032,12 @@ html,body{height:100%;font-family:'Open Sans',sans-serif;background:var(--cream)
       </div>
     </div>
 
+    <div class="panel" id="panel-c-billing">
+      <div class="section-lbl">Invoices &amp; Payments — Marchetti v. Marchetti</div>
+      <div id="c-bill-list"></div>
+      <div style="font-size:11px;color:var(--tm);margin-top:12px;line-height:1.6">Payments are processed on the payment processor's secure hosted page. Card and bank details never pass through this portal.</div>
+    </div>
+
     <div class="panel" id="panel-c-dates">
       <div class="section-lbl">Key Dates — Marchetti v. Marchetti</div>
       <div class="card" style="padding:0;overflow-x:auto;">
@@ -976,6 +1049,22 @@ html,body{height:100%;font-family:'Open Sans',sans-serif;background:var(--cream)
     </div>
 
   </div><!-- /main -->
+
+  <!-- PAYMENT LINK MODAL -->
+  <div class="modal-overlay" id="pl-overlay" onclick="closeModal('pl-overlay')">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="pl-title" onclick="event.stopPropagation()">
+      <div class="modal-hd"><div><h3 id="pl-title">New payment link</h3><div style="font-size:12px;color:var(--tm);margin-top:2px">The client pays on the processor's secure hosted page.</div></div><button class="md-close" style="color:var(--tm)" onclick="closeModal('pl-overlay')" aria-label="Close">×</button></div>
+      <div class="modal-bd" id="pl-body"></div>
+      <div class="modal-ft" id="pl-foot"></div>
+    </div>
+  </div>
+  <!-- HOSTED CHECKOUT PREVIEW -->
+  <div class="modal-overlay" id="hc-overlay" onclick="closeModal('hc-overlay')">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Payment" onclick="event.stopPropagation()" style="width:min(420px,100%)">
+      <div class="modal-hd"><div><h3>Secure payment</h3><div style="font-size:11px;color:var(--tm);margin-top:2px">Demo preview of the processor's hosted checkout</div></div><button class="md-close" style="color:var(--tm)" onclick="closeModal('hc-overlay')" aria-label="Close">×</button></div>
+      <div class="modal-bd" id="hc-body"></div>
+    </div>
+  </div>
 
   <!-- MATTER RECORD -->
   <div class="md-overlay" id="md-overlay" onclick="closeMatter()">
@@ -1431,7 +1520,8 @@ function renderMdActions(){
   $('md-actions').innerHTML=(on?'<button class="mini-btn pri" onclick="pauseTimer(\''+t.id+'\')">❚❚ Pause timer · <span data-clock="'+t.id+'">'+fmtClock(tElapsed(t))+'</span></button><button class="mini-btn" onclick="stopTimer(\''+t.id+'\')">■ Stop &amp; draft slip</button>'
       :'<button class="mini-btn pri" onclick="startTimer(\''+m.id+'\')">▶ '+(t?'Resume timer · '+fmtClock(tElapsed(t)):'Start timer')+'</button>')
     +'<button class="mini-btn" onclick="mdTab(\'events\')">+ Docket event</button>'
-    +'<button class="mini-btn" onclick="mdTab(\'inquiry\')">$ Inquiry</button>';
+    +'<button class="mini-btn" onclick="mdTab(\'inquiry\')">$ Inquiry</button>'
+    +'<button class="mini-btn" onclick="closeMatter();openPayLink();$(\'pl-matter\').value=\''+m.id+'\'">↗ Payment link</button>';
 }
 function closeMatter(){$('md-overlay').classList.remove('open');document.body.style.overflow='';MD.id=null;}
 function mdTab(tab){
@@ -1506,6 +1596,145 @@ function runCalc(){
   renderDocketViews();mdTab('events');
   toast('Docketed '+r.made.length+' deadline'+(r.made.length>1?'s':'')+': '+r.made.map(function(e){return fmtShort(e.date);}).join(', '));
 }
+
+/* ── billing & payment links ──
+   DEMO ONLY: no processor keys, no network calls (CSP connect-src 'none').
+   Production: an Edge Function creates the payment link server-side with the
+   secret key; the processor's signed webhook is the ONLY thing that marks a
+   request paid. Trust (IOLA) requests settle to the trust account with fees
+   charged to Operating — never deducted from client funds (Rule 1.15). */
+var INVOICES=[],_inv=118,FEED=[];
+function invId(trust){return (trust?'RET-':'INV-')+new Date().getFullYear()+'-'+(_inv++);}
+function token(){var c='ABCDEFGHJKLMNPQRSTUVWXYZ23456789',t='';for(var i=0;i<10;i++)t+=c.charAt(Math.floor(Math.random()*c.length));return t;}
+function feed(kind,text){FEED.unshift({kind:kind,text:text,at:Date.now()});FEED=FEED.slice(0,12);}
+function addInv(o){o.id=o.id||invId(o.acct==='trust');o.token=o.token||(o.status==='draft'?'':token());INVOICES.push(o);return o;}
+function seedBilling(){
+  addInv({m:'302-007',acct:'operating',amt:3800,desc:'Appellate services — briefing & record (Aug–Sep)',issued:iso(addDays(today(),-42)),due:iso(addDays(today(),-12)),status:'viewed',email:'ap@brennantrial.example',methods:['card','ach']});
+  addInv({m:'288-014',acct:'operating',amt:1475,desc:'Record settlement — October',issued:iso(addDays(today(),-10)),due:iso(addDays(today(),5)),status:'sent',email:'billing@corwinfeld.example',methods:['ach']});
+  addInv({m:'214-031',acct:'operating',amt:MATTERS[0].fin.fw,desc:'Appellate services — brief drafting (October)',issued:'',due:'',status:'draft',email:'accounts@lowellbrandt.example',methods:['card','ach'],fromWip:true});
+  addInv({m:'315-002',acct:'trust',amt:5000,desc:'Advance retainer — appeal from judgment',issued:iso(addDays(today(),-3)),due:iso(addDays(today(),4)),status:'sent',email:'s.kaplan@client.example',methods:['card','ach']});
+  addInv({m:'241-019',acct:'trust',amt:2500,desc:'Feasibility review retainer',issued:iso(addDays(today(),-8)),due:iso(addDays(today(),-1)),status:'paid',paidOn:iso(addDays(today(),-6)),email:'t.delaney@client.example',methods:['card']});
+  addInv({m:'214-040',acct:'operating',amt:4180,desc:'Oral argument & post-argument letter',issued:iso(addDays(today(),-30)),due:iso(addDays(today(),-15)),status:'paid',paidOn:iso(addDays(today(),-16)),email:'billing@corwinfeld.example',methods:['ach']});
+  FEED=[
+    {kind:'viewed',text:'INV-2026-118 viewed by Brennan Trial Group',at:Date.now()-2*3600e3},
+    {kind:'sent',text:'RET-2026-121 sent to Kaplan — $5,000.00 → IOLA Trust',at:Date.now()-3*86400e3},
+    {kind:'paid',text:'RET-2026-122 paid by ACH — $2,500.00 deposited to IOLA Trust',at:Date.now()-6*86400e3},
+    {kind:'paid',text:'INV-2026-123 paid — $4,180.00 deposited to Operating',at:Date.now()-16*86400e3}
+  ];
+}
+function invEff(i){return (i.status==='sent'||i.status==='viewed')&&i.due&&i.due<todayIso()?'overdue':i.status;}
+var ST_LBL={draft:['b-draft','Draft'],sent:['b-sent','Link sent'],viewed:['b-viewed','Viewed'],paid:['b-paid','Paid'],overdue:['b-over','Overdue']};
+function acctChip(a){return a==='trust'?'<span class="acct acct-tr">IOLA Trust</span>':'<span class="acct acct-op">Operating</span>';}
+function demoUrl(i){return 'demo://pay/'+i.token;}
+function renderBilling(){
+  var open=INVOICES.filter(function(i){return i.status==='sent'||i.status==='viewed';});
+  var arOp=open.filter(function(i){return i.acct==='operating';});
+  $('bl-ar').textContent=money(arOp.reduce(function(a,i){return a+i.amt;},0)).replace(/\.\d\d$/,'');
+  $('bl-ar-sub').textContent=open.filter(function(i){return invEff(i)==='overdue';}).length+' overdue';
+  var since=iso(addDays(today(),-30));
+  $('bl-paid').textContent=money(INVOICES.filter(function(i){return i.status==='paid'&&i.paidOn>=since;}).reduce(function(a,i){return a+i.amt;},0)).replace(/\.\d\d$/,'');
+  $('bl-trust').textContent=money(MATTERS.reduce(function(a,m){return a+m.fin.trust;},0)).replace(/\.\d\d$/,'');
+  $('bl-open').textContent=open.length;
+  var order={overdue:0,viewed:1,sent:2,draft:3,paid:4};
+  $('bill-body').innerHTML=INVOICES.slice().sort(function(a,b){return order[invEff(a)]-order[invEff(b)];}).map(function(i){
+    var m=matter(i.m),st=ST_LBL[invEff(i)];
+    var act=i.status==='draft'?'<button class="mini-btn pri" onclick="openPayLink(\''+i.id+'\')">Send link</button>'
+      :i.status==='paid'?'<span style="font-size:11px;color:var(--tm)">'+fmtShort(i.paidOn)+'</span>'
+      :'<button class="mini-btn" onclick="resendLink(\''+i.id+'\')">Resend</button> <button class="mini-btn ghost" onclick="simulatePaid(\''+i.id+'\')" title="Demo: simulate the processor webhook">Simulate paid</button>';
+    return '<tr><td><div class="mname">'+esc(i.id)+' · '+esc(m.short)+'</div><div class="cnum">'+esc(i.desc)+(i.due?' · due '+fmtShort(i.due):'')+'</div></td>'
+      +'<td class="hide-sm">'+acctChip(i.acct)+'</td><td style="text-align:right;font-variant-numeric:tabular-nums">'+money(i.amt)+'</td>'
+      +'<td><span class="badge '+st[0]+'">'+st[1]+'</span></td><td style="white-space:nowrap">'+act+'</td></tr>';
+  }).join('');
+  var col={paid:'#2E8B57',viewed:'#B07A12',sent:'#3A6FB8',created:'#8B8885'};
+  $('bill-feed').innerHTML=FEED.map(function(f){return '<div class="feed-item"><span class="feed-dot" style="background:'+(col[f.kind]||'#8B8885')+'"></span><div><div>'+esc(f.text)+'</div><div class="feed-time">'+new Date(f.at).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})+'</div></div></div>';}).join('');
+  renderClientBilling();
+}
+
+/* modal: new / send payment link */
+var PL={id:null};
+function closeModal(id){$(id).classList.remove('open');document.body.style.overflow='';}
+function openPayLink(id){
+  var inv=id?INVOICES.filter(function(i){return i.id===id;})[0]:null;PL.id=id||null;
+  var acct=inv?inv.acct:'operating';
+  $('pl-title').textContent=inv?'Send '+inv.id:'New payment link';
+  $('pl-body').innerHTML=
+    '<div class="form-row"><label class="form-label" for="pl-matter">Matter</label><select class="form-select" id="pl-matter"'+(inv?' disabled':'')+'>'+matterOptions(inv?inv.m:'')+'</select></div>'
+    +'<div class="form-row"><span class="form-label">Deposit to</span><div class="seg">'
+    +'<input type="radio" name="pl-acct" id="pl-op" value="operating"'+(acct==='operating'?' checked':'')+(inv?' disabled':'')+' onchange="plGuard()"><label for="pl-op"><b>Operating</b>Earned fees &amp; costs — invoice payment</label>'
+    +'<input type="radio" name="pl-acct" id="pl-tr" value="trust"'+(acct==='trust'?' checked':'')+(inv?' disabled':'')+' onchange="plGuard()"><label for="pl-tr"><b>IOLA Trust</b>Advance retainer / unearned funds</label>'
+    +'</div><div class="guard" id="pl-guard"></div></div>'
+    +'<div class="form-row-2"><div><label class="form-label" for="pl-amt">Amount</label><input class="form-input" id="pl-amt" type="number" min="1" step="0.01" value="'+(inv?inv.amt.toFixed(2):'')+'" placeholder="0.00"></div>'
+    +'<div><label class="form-label" for="pl-due">Due date</label><input class="form-input" id="pl-due" type="date" value="'+(inv&&inv.due?inv.due:iso(addDays(today(),14)))+'"></div></div>'
+    +'<div class="form-row"><label class="form-label" for="pl-desc">Description (shown to payer)</label><input class="form-input" id="pl-desc" value="'+esc(inv?inv.desc:'')+'" placeholder="e.g. Appellate services — October"></div>'
+    +'<div class="form-row"><label class="form-label" for="pl-email">Payer email</label><input class="form-input" id="pl-email" type="email" value="'+esc(inv?inv.email:'')+'" placeholder="accounts@referringfirm.com"></div>'
+    +'<div class="form-row" style="margin-bottom:4px"><span class="form-label">Accept</span><div class="chk"><label><input type="checkbox" id="pl-card"'+(!inv||inv.methods.indexOf('card')>-1?' checked':'')+'> Card</label><label><input type="checkbox" id="pl-ach"'+(!inv||inv.methods.indexOf('ach')>-1?' checked':'')+'> ACH / eCheck (lower fee)</label></div></div>';
+  $('pl-foot').innerHTML='<button class="btn-secondary" onclick="closeModal(\'pl-overlay\')">Cancel</button><button class="btn-primary" onclick="createLink()">Create &amp; send link</button>';
+  plGuard();
+  $('pl-overlay').classList.add('open');document.body.style.overflow='hidden';
+}
+function plAcct(){var r=document.querySelector('input[name="pl-acct"]:checked');return r?r.value:'operating';}
+function plGuard(){
+  var g=$('pl-guard');
+  if(plAcct()==='trust'){g.className='guard';g.innerHTML='🔒 Settles to the <b>IOLA Trust</b> account in full. Processing fees are charged to <b>Operating</b> — never deducted from client funds (Rule 1.15). Funds stay in trust until earned and billed.';}
+  else{g.className='guard op';g.innerHTML='Settles to <b>Operating</b>. Use for earned fees and costs on an issued invoice.';}
+}
+function createLink(){
+  var m=$('pl-matter').value,amt=parseFloat($('pl-amt').value),email=$('pl-email').value.trim(),desc=$('pl-desc').value.trim();
+  var methods=[];if($('pl-card').checked)methods.push('card');if($('pl-ach').checked)methods.push('ach');
+  if(!m||!(amt>0)||!desc||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)||!methods.length){toast('Matter, amount, description, a valid payer email and at least one method are required.');return;}
+  var inv;
+  if(PL.id){inv=INVOICES.filter(function(i){return i.id===PL.id;})[0];inv.amt=amt;inv.desc=desc;inv.email=email;inv.methods=methods;inv.token=token();}
+  else{inv=addInv({m:m,acct:plAcct(),amt:amt,desc:desc,email:email,methods:methods,status:'draft'});inv.token=token();}
+  inv.status='sent';inv.issued=todayIso();inv.due=$('pl-due').value||iso(addDays(today(),14));
+  if(inv.fromWip){var f=matter(inv.m).fin;f.fw=Math.max(0,f.fw-inv.amt);f.fb+=inv.amt;inv.fromWip=false;}
+  else if(inv.acct==='operating'&&!PL.id){matter(inv.m).fin.fb+=inv.amt;}
+  feed('sent',inv.id+' sent to '+inv.email+' — '+money(inv.amt)+' → '+(inv.acct==='trust'?'IOLA Trust':'Operating'));
+  $('pl-title').textContent='Link ready — '+inv.id;
+  $('pl-body').innerHTML='<div style="font-size:13px;margin-bottom:10px">'+esc(matter(inv.m).name)+' · <b>'+money(inv.amt)+'</b> '+acctChip(inv.acct)+'</div>'
+    +'<div class="link-box"><span style="flex:1">'+esc(demoUrl(inv))+'</span><button class="mini-btn" onclick="copyText(\''+demoUrl(inv)+'\')">Copy</button></div>'
+    +'<div style="font-size:11px;color:var(--tm);margin-top:8px;line-height:1.5">Demo link — not a live payment page. In production this is a single-use processor link that expires on the due date.</div>';
+  $('pl-foot').innerHTML='<button class="btn-secondary" onclick="emailLink(\''+inv.id+'\')">✉ Open email draft</button><button class="btn-primary" onclick="closeModal(\'pl-overlay\')">Done</button>';
+  renderBilling();if(MD.id&&MD.tab==='inquiry')mdTab('inquiry');
+  toast('Payment link created for '+matter(inv.m).short+'.');
+}
+function copyText(t){if(navigator.clipboard)navigator.clipboard.writeText(t).then(function(){toast('Copied.');});}
+function emailLink(id){
+  var i=INVOICES.filter(function(x){return x.id===id;})[0],m=matter(i.m);
+  var body='Hello,\n\nPlease find a secure payment link for '+m.name+' ('+i.id+').\n\nAmount: '+money(i.amt)+'\nFor: '+i.desc+'\nDue: '+fmtLong(i.due)+'\n\nPay securely: '+demoUrl(i)+'\n\nThank you,\nHasapidis Law Offices\n111 Brook Street, Scarsdale, NY 10583';
+  window.location.href='mailto:'+encodeURIComponent(i.email)+'?subject='+encodeURIComponent('Payment request '+i.id+' — '+m.name)+'&body='+encodeURIComponent(body);
+}
+function resendLink(id){var i=INVOICES.filter(function(x){return x.id===id;})[0];feed('sent','Reminder sent for '+i.id+' to '+i.email);renderBilling();toast('Reminder queued for '+i.email+'.');}
+/* Demo stand-in for the processor webhook (payment succeeded). */
+function simulatePaid(id,method){
+  var i=INVOICES.filter(function(x){return x.id===id;})[0];if(!i||i.status==='paid')return;
+  i.status='paid';i.paidOn=todayIso();var f=matter(i.m).fin;
+  if(i.acct==='trust')f.trust+=i.amt;else f.fp+=i.amt;
+  feed('paid',i.id+' paid'+(method?' by '+method:'')+' — '+money(i.amt)+' deposited to '+(i.acct==='trust'?'IOLA Trust':'Operating'));
+  renderBilling();if(MD.id&&MD.tab==='inquiry')mdTab('inquiry');
+  toast('Payment received — '+money(i.amt)+' → '+(i.acct==='trust'?'IOLA Trust':'Operating')+'.');
+}
+/* client / referring-counsel side */
+function renderClientBilling(){
+  var mine=INVOICES.filter(function(i){return i.m==='214-031'&&i.status!=='draft';});
+  var due=mine.filter(function(i){return i.status!=='paid';}).length;
+  $('c-bill-notif').textContent=due;$('c-bill-notif').style.display=due?'':'none';
+  $('c-bill-list').innerHTML=mine.length?mine.map(function(i){var st=ST_LBL[invEff(i)];
+    return '<div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap"><div><div class="mname">'+esc(i.id)+' — '+esc(i.desc)+'</div><div class="msub">Issued '+fmtShort(i.issued)+' · due '+fmtShort(i.due)+'</div></div>'
+      +'<div style="display:flex;gap:10px;align-items:center"><b style="font-variant-numeric:tabular-nums">'+money(i.amt)+'</b><span class="badge '+st[0]+'">'+st[1]+'</span>'
+      +(i.status!=='paid'?'<button class="btn-primary" style="padding:8px 14px;font-size:12px" onclick="openHosted(\''+i.id+'\')">Pay now</button>':'')+'</div></div>';
+  }).join(''):'<div class="card" style="font-size:13px;color:var(--tm)">No open invoices. Payment requests from counsel will appear here.</div>';
+}
+function openHosted(id){
+  var i=INVOICES.filter(function(x){return x.id===id;})[0];
+  if(i.status==='sent'){i.status='viewed';feed('viewed',i.id+' viewed by '+i.email);renderBilling();}
+  $('hc-body').innerHTML='<div class="hosted"><div style="font-size:12px;color:var(--tm)">Hasapidis Law Offices</div><div class="amt">'+money(i.amt)+'</div><div style="font-size:12px;color:var(--ts)">'+esc(i.id)+' · '+esc(i.desc)+'</div>'
+    +'<div class="guard op" style="margin-top:14px;text-align:left">In production this is the processor\'s own secure page (PCI-compliant). Card and bank details are entered there — never in this portal.</div>'
+    +(i.methods.indexOf('ach')>-1?'<button class="pay-btn" onclick="hostedPay(\''+i.id+'\',\'ACH\')">Pay by bank (ACH)</button>':'')
+    +(i.methods.indexOf('card')>-1?'<button class="pay-btn" style="background:var(--slate)" onclick="hostedPay(\''+i.id+'\',\'card\')">Pay by card</button>':'')
+    +'<div style="font-size:10px;color:var(--tm);margin-top:10px">Demo — no payment is processed and no details are collected.</div></div>';
+  $('hc-overlay').classList.add('open');document.body.style.overflow='hidden';
+}
+function hostedPay(id,method){closeModal('hc-overlay');simulatePaid(id,method);}
 
 /* ── time entry ── */
 function setSelectByValue(id,val){var el=$(id);for(var i=0;i<el.options.length;i++)if(el.options[i].value===val){el.selectedIndex=i;return;}}
@@ -1583,7 +1812,7 @@ function clearForm(){
 
 /* ── boot ── */
 document.addEventListener('click',function(){closeTmrPop();});
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeTmrPop();closeMatter();}});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeTmrPop();closeMatter();closeModal('pl-overlay');closeModal('hc-overlay');}});
 window.addEventListener('storage',function(e){if(e.key==='ps-demo-timers'){TS=store('ps-demo-timers')||{timers:[]};renderTimer(true);renderMatters();if($('md-overlay').classList.contains('open'))renderMdActions();}});
 (function init(){
   seedDocket();
@@ -1591,7 +1820,8 @@ window.addEventListener('storage',function(e){if(e.key==='ps-demo-timers'){TS=st
   $('te-atty').innerHTML='<option value="">— Select timekeeper —</option>'+Object.keys(PEOPLE).map(function(k){var p=PEOPLE[k];return '<option value="'+esc(p.full)+'" data-rate="'+p.rate+'">'+esc(p.full+', '+p.title)+'</option>';}).join('');
   $('te-date').value=todayIso();
   calToday();
-  renderMatters();renderSlips();renderReminders();renderDeadlines();renderDash();renderClientDates();
+  seedBilling();
+  renderMatters();renderSlips();renderReminders();renderDeadlines();renderDash();renderClientDates();renderBilling();
   renderTimer();tick();setInterval(tick,1000);
 })();
 </script>
