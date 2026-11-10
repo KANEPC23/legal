@@ -757,9 +757,9 @@ html,body{height:100%;font-family:'Open Sans',sans-serif;background:var(--cream)
                 <div class="hours-hint" id="hours-hint">Enter in tenths (e.g. 1.5 = 1 hr 30 min) — or use the ⏱ timer</div>
               </div>
               <div>
-                <label class="form-label">Rate (auto-filled)</label>
-                <input class="hours-input" type="text" id="te-rate" placeholder="$0/hr" readonly style="background:#FAFAF8;color:var(--ts);">
-                <div class="hours-hint">Rate pulled from timekeeper selection</div>
+                <label class="form-label">Billing Increment</label>
+                <input class="hours-input" type="text" id="te-rate" value="0.1 hr (6 min)" readonly style="background:#FAFAF8;color:var(--ts);">
+                <div class="hours-hint">Billed at the firm's standard rates</div>
               </div>
             </div>
             <div class="form-row">
@@ -791,7 +791,7 @@ html,body{height:100%;font-family:'Open Sans',sans-serif;background:var(--cream)
             <div class="slip-row"><span class="slip-key">Hours</span><span class="slip-val" id="prev-hours">—</span></div>
             <div class="slip-desc" id="prev-desc" style="color:var(--tm);font-style:italic;">Description will appear here…</div>
             <div class="slip-total">
-              <span class="slip-total-lbl">Billable Amount</span>
+              <span class="slip-total-lbl">Billable Time</span>
               <span class="slip-total-val" id="prev-total">$0.00</span>
             </div>
             <div class="slip-actions">
@@ -1017,7 +1017,8 @@ html,body{height:100%;font-family:'Open Sans',sans-serif;background:var(--cream)
    Hasapidis Law Offices Practice Portal — DEMO BUILD
    Firm name, offices and Ms. Hasapidis's contact details are from the firm's
    public website. Every matter, party, referring firm, staff member, rate and
-   figure below is fictional seed data.
+   figure below is fictional seed data. Rates stay internal (they drive
+   WIP totals) and are never displayed.
    Timer state and submitted slips persist in this browser only
    (localStorage); nothing leaves the device.
    ═══════════════════════════════════════════════════════════════════ */
@@ -1443,7 +1444,7 @@ function mdTab(tab){
       +'<dt>Client sort</dt><dd>'+esc(m.client)+'</dd>'
       +'<dt>Description</dt><dd>'+esc(m.name+', '+m.index)+'</dd>'
       +'<dt>Practice area</dt><dd>'+esc(m.areaLbl)+'</dd>'
-      +'<dt>Lead attorney</dt><dd>'+esc(PEOPLE[m.atty].full)+' · $'+PEOPLE[m.atty].rate+'/hr</dd>'
+      +'<dt>Lead attorney</dt><dd>'+esc(PEOPLE[m.atty].full)+'</dd>'
       +'<dt>Court / venue</dt><dd>'+esc(m.venue)+'</dd>'
       +'<dt>Opposing counsel</dt><dd>'+esc(m.opp)+'</dd>'
       +'<dt>Opened</dt><dd>'+m.opened+'</dd>'
@@ -1472,7 +1473,7 @@ function mdTab(tab){
       +'<div class="section-lbl">Events &amp; deadlines</div>'
       +(roots.length?'<ul class="ev-tree">'+roots.map(node).join('')+'</ul>':'<div style="font-size:12px;color:var(--tm)">No events docketed.</div>');
   } else if(tab==='inquiry'){
-    var f=m.fin,rate=PEOPLE[ME].rate,t=timerFor(m.id),live=t?Math.ceil(tElapsed(t)/360000)/10*rate:0,sw=slipWip(m.id);
+    var f=m.fin,rate=PEOPLE[ME].rate,t=timerFor(m.id),liveHrs=t?Math.ceil(tElapsed(t)/360000)/10:0,sw=slipWip(m.id);
     var fw=f.fw+sw,ar=function(bl,pd){return bl-pd;};
     var tot={w:fw+f.sw,b:f.fb+f.hb+f.sb,p:f.fp+f.hp+f.sp};
     var spent=tot.w+tot.b,remain=f.budget-spent;
@@ -1481,7 +1482,7 @@ function mdTab(tab){
       +row('Fees',fw,f.fb,f.fp)+row('Hard costs',0,f.hb,f.hp)+row('Soft costs',f.sw,f.sb,f.sp)+row('Total',tot.w,tot.b,tot.p,'tot')
       +'</tbody></table>'
       +(sw?'<div style="font-size:11px;color:var(--burg);margin-top:8px">Includes '+money(sw)+' from slips submitted in this session.</div>':'')
-      +(live?'<div style="font-size:11px;color:var(--burg);margin-top:4px">⏱ Open timer on this matter: '+money(live)+' not yet slipped.</div>':'')
+      +(liveHrs?'<div style="font-size:11px;color:var(--burg);margin-top:4px">⏱ Open timer on this matter: '+liveHrs.toFixed(1)+' hrs not yet slipped.</div>':'')
       +'</div><div class="three-col" style="margin-top:14px">'
       +'<div class="stat-card"><div class="stat-lbl">Trust (IOLA) balance</div><div class="stat-val" style="font-size:22px">'+money(f.trust)+'</div><div class="stat-sub">Escrow — Rule 1.15</div></div>'
       +'<div class="stat-card"><div class="stat-lbl">Budget</div><div class="stat-val" style="font-size:22px">'+money(f.budget)+'</div><div class="stat-sub">Client-approved</div></div>'
@@ -1516,7 +1517,6 @@ function slipData(){
 }
 function updatePreview(){
   var d=slipData();
-  $('te-rate').value=d.rate?'$'+d.rate+'/hr':'';
   $('prev-date').textContent=d.date?parseIso(d.date).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}):'—';
   $('prev-atty').textContent=d.atty||'—';
   $('prev-matter').textContent=d.m?d.m.id+' · '+d.m.name:'—';
@@ -1525,7 +1525,7 @@ function updatePreview(){
   $('prev-desc').textContent=d.desc||'Description will appear here…';
   $('prev-desc').style.fontStyle=d.desc?'normal':'italic';
   $('prev-desc').style.color=d.desc?'var(--ts)':'var(--tm)';
-  $('prev-total').textContent=money(d.hours*d.rate);
+  $('prev-total').textContent=d.hours.toFixed(1)+' hrs';
 }
 function buildSlipText(){
   var d=slipData();
@@ -1535,7 +1535,6 @@ function buildSlipText(){
     +'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'
     +'Date of Service : '+dateDisplay+'\n'
     +'Timekeeper      : '+(d.atty||'[Not Selected]')+'\n'
-    +'Billing Rate    : $'+d.rate+'/hr\n'
     +'Matter          : '+(d.m?d.m.id+' — '+d.m.name+' ('+d.m.index+')':'[Not Selected]')+'\n'
     +'Billing Code    : '+(d.code||'[Not Selected]')+'\n'
     +'Hours           : '+d.hours.toFixed(1)+'\n'
@@ -1543,7 +1542,7 @@ function buildSlipText(){
     +'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'
     +'Description:\n'+(d.desc||'[No description provided]')+'\n'
     +'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'
-    +'BILLABLE AMOUNT : '+money(d.hours*d.rate)+'\n'
+    +'BILLABLE HOURS  : '+d.hours.toFixed(1)+' (standard rate)\n'
     +'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'
     +'Submitted via Hasapidis Law Offices Practice Portal (demo)\n'
     +'For ProLaw entry — Kane PC IT: (914) 607-3313';
@@ -1589,7 +1588,7 @@ window.addEventListener('storage',function(e){if(e.key==='ps-demo-timers'){TS=st
 (function init(){
   seedDocket();
   $('te-matter').innerHTML=matterOptions('');
-  $('te-atty').innerHTML='<option value="">— Select timekeeper —</option>'+Object.keys(PEOPLE).map(function(k){var p=PEOPLE[k];return '<option value="'+esc(p.full)+'" data-rate="'+p.rate+'">'+esc(p.full+', '+p.title+' — $'+p.rate+'/hr')+'</option>';}).join('');
+  $('te-atty').innerHTML='<option value="">— Select timekeeper —</option>'+Object.keys(PEOPLE).map(function(k){var p=PEOPLE[k];return '<option value="'+esc(p.full)+'" data-rate="'+p.rate+'">'+esc(p.full+', '+p.title)+'</option>';}).join('');
   $('te-date').value=todayIso();
   calToday();
   renderMatters();renderSlips();renderReminders();renderDeadlines();renderDash();renderClientDates();
