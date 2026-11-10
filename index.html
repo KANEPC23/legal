@@ -400,6 +400,38 @@ html,body{height:100%;font-family:'Open Sans',sans-serif;background:var(--cream)
 .pay-btn{width:100%;padding:12px;background:var(--burg);color:#fff;border:none;border-radius:9px;font:600 14px 'Open Sans',sans-serif;cursor:pointer;margin-top:12px;}
 .pay-btn:hover{background:var(--burg-light);}
 
+/* ══ INTEGRATIONS ══ */
+.sys-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:18px;}
+.sys-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px;}
+.sys-card.on{border-color:var(--s-tx);box-shadow:inset 0 0 0 1px var(--s-tx);}
+.sys-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;}
+.sys-logo{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:13px;flex-shrink:0;}
+.sys-name{font-size:14px;font-weight:600;color:var(--tp);}
+.sys-access{font-size:11px;color:var(--tm);margin-top:2px;line-height:1.45;}
+.sys-tag{font-size:10px;padding:2px 8px;border-radius:8px;white-space:nowrap;}
+.sys-note{font-size:12px;color:var(--ts);line-height:1.5;}
+.sys-acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:4px;}
+.sync-tbl{width:100%;border-collapse:collapse;font-size:13px;}
+.sync-tbl th{text-align:left;font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--tm);padding:0 10px 8px;border-bottom:1px solid var(--border);}
+.sync-tbl td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:middle;}
+.sync-tbl tr:last-child td{border-bottom:none;}
+.sync-tbl select{padding:6px 8px;font-size:12px;width:auto;}
+.sor{font-size:11px;color:var(--ts);}
+.log-item{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font-size:12px;line-height:1.45;}
+.log-item:last-child{border-bottom:none;}
+.log-ic{width:18px;text-align:center;flex-shrink:0;}
+.sec-list{list-style:none;font-size:12px;color:var(--ts);line-height:1.55;}
+.sec-list li{padding:5px 0 5px 22px;position:relative;}
+.sec-list li::before{content:'🔒';position:absolute;left:0;top:5px;font-size:11px;}
+.scope-list{list-style:none;margin:8px 0 12px;font-size:13px;}
+.scope-list li{padding:6px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;gap:8px;}
+.scope-list li:last-child{border-bottom:none;}
+.ps-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:10px 0 4px;}
+.ps-strip div{background:var(--cream);border-radius:8px;padding:9px 11px;}
+.ps-strip b{display:block;font-size:17px;font-weight:600;color:var(--tp);font-variant-numeric:tabular-nums;}
+.ps-strip span{font-size:10px;color:var(--tm);text-transform:uppercase;letter-spacing:.06em;}
+@media(max-width:720px){.sys-grid{grid-template-columns:1fr;}.ps-strip{grid-template-columns:1fr 1fr;}}
+
 /* TOAST */
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--slate);color:#fff;font-size:13px;padding:11px 18px;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:all .25s;z-index:500;max-width:calc(100vw - 32px);}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
@@ -605,6 +637,7 @@ html,body{height:100%;font-family:'Open Sans',sans-serif;background:var(--cream)
     <button class="tab" data-tab="messages" onclick="showTab('messages',this)">⊠ &nbsp;Messages <span class="notif">2</span></button>
     <button class="tab court-tab" data-tab="court" onclick="showTab('court',this)"><span class="tdot"></span>&nbsp; Argument Day</button>
     <button class="tab" data-tab="contacts" onclick="showTab('contacts',this)">⊕ &nbsp;Contacts</button>
+    <button class="tab" data-tab="integrations" onclick="showTab('integrations',this)">⇄ &nbsp;Integrations</button>
   </div>
 
   <div class="tabs-bar" id="tabs-client" style="display:none;">
@@ -635,6 +668,7 @@ html,body{height:100%;font-family:'Open Sans',sans-serif;background:var(--cream)
           <div id="dash-deadlines"></div>
         </div>
       </div>
+      <div class="card" style="margin-top:16px" id="dash-ps"></div>
     </div>
 
     <!-- MATTERS -->
@@ -952,6 +986,30 @@ html,body{height:100%;font-family:'Open Sans',sans-serif;background:var(--cream)
       </div>
     </div>
 
+    <!-- INTEGRATIONS -->
+    <div class="panel" id="panel-integrations">
+      <div class="section-lbl">Practice management system — pick one system of record</div>
+      <div class="sys-grid" id="sys-grid"></div>
+      <div class="two-col" style="grid-template-columns:1fr 340px;align-items:start">
+        <div>
+          <div class="card" style="margin-bottom:16px" id="sync-card"></div>
+          <div class="card"><div class="card-title" style="margin-bottom:6px">Sync log</div><div id="sync-log"></div></div>
+        </div>
+        <div class="card">
+          <div class="card-title" style="margin-bottom:8px">How the connection is secured</div>
+          <ul class="sec-list">
+            <li>You sign in on the vendor's own page (OAuth). The portal never sees your password.</li>
+            <li>Access tokens are encrypted (AES-GCM) and stored server-side only — never in this browser, never in the app bundle.</li>
+            <li>The browser talks to our proxy; only the proxy talks to the vendor, and it returns data — never the token.</li>
+            <li>Least privilege: only the scopes shown at connect time. No delete permissions.</li>
+            <li>Webhooks are signature-verified before any record changes.</li>
+            <li>Disconnect here or revoke from the vendor's side at any time.</li>
+          </ul>
+          <div style="font-size:11px;color:var(--tm);margin-top:10px;line-height:1.5">Demo: connections and syncs are simulated in this browser. No credentials are requested or stored, and nothing leaves the device.</div>
+        </div>
+      </div>
+    </div>
+
     <!-- CONTACTS -->
     <div class="panel" id="panel-contacts">
       <div class="section-lbl" style="margin-bottom:12px;">Firm</div>
@@ -1063,6 +1121,15 @@ html,body{height:100%;font-family:'Open Sans',sans-serif;background:var(--cream)
     <div class="modal" role="dialog" aria-modal="true" aria-label="Payment" onclick="event.stopPropagation()" style="width:min(420px,100%)">
       <div class="modal-hd"><div><h3>Secure payment</h3><div style="font-size:11px;color:var(--tm);margin-top:2px">Demo preview of the processor's hosted checkout</div></div><button class="md-close" style="color:var(--tm)" onclick="closeModal('hc-overlay')" aria-label="Close">×</button></div>
       <div class="modal-bd" id="hc-body"></div>
+    </div>
+  </div>
+
+  <!-- CONNECT MODAL -->
+  <div class="modal-overlay" id="int-overlay" onclick="closeModal('int-overlay')">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="int-title" onclick="event.stopPropagation()" style="width:min(480px,100%)">
+      <div class="modal-hd"><div><h3 id="int-title">Connect</h3><div style="font-size:12px;color:var(--tm);margin-top:2px" id="int-sub"></div></div><button class="md-close" style="color:var(--tm)" onclick="closeModal('int-overlay')" aria-label="Close">×</button></div>
+      <div class="modal-bd" id="int-body"></div>
+      <div class="modal-ft" id="int-foot"></div>
     </div>
   </div>
 
@@ -1369,6 +1436,8 @@ function showTab(id,el){
   $('panel-'+id).classList.add('active');
   el.classList.add('active');
   if(id==='docket')renderCal();
+  if(id==='integrations')renderIntegrations();
+  if(id==='dashboard')renderDashPs();
 }
 function goTab(id){showTab(id,document.querySelector('#tabs-atty .tab[data-tab="'+id+'"]'));window.scrollTo(0,0);}
 function showClientTab(id,el){
@@ -1539,6 +1608,7 @@ function mdTab(tab){
       +'<dt>Opposing counsel</dt><dd>'+esc(m.opp)+'</dd>'
       +'<dt>Opened</dt><dd>'+m.opened+'</dd>'
       +'<dt>Status</dt><dd><span class="badge '+m.st[0]+'">'+esc(m.st[1])+'</span></dd>'
+      +'<dt>Practice system</dt><dd>'+(INT.active?'Linked · '+esc(SYSTEMS[INT.active].name)+' #'+m.id.replace('-','')+'0 · synced '+agoText(INT.lastSync):'<span style="color:var(--tm)">Not linked — <a href="#" onclick="closeMatter();goTab(\'integrations\');return false" style="color:var(--i-tx)">connect a system</a></span>')+'</dd>'
       +'</dl></div>';
   } else if(tab==='events'){
     var evs=DOCKET.filter(function(e){return e.m===m.id;}).sort(byDate);
@@ -1736,6 +1806,107 @@ function openHosted(id){
 }
 function hostedPay(id,method){closeModal('hc-overlay');simulatePaid(id,method);}
 
+/* ── integrations: Clio / MyCase / LEAP / ProLaw ──
+   DEMO ONLY: connections and syncs are simulated; no credentials, no network.
+   Production follows the Kane PC Secure API Integration standard: OAuth tokens
+   AES-GCM encrypted in a service-role-only table, a <vendor>-proxy Edge Function
+   per system, the browser calls the proxy only, signed webhooks, least scope. */
+var SYSTEMS={
+  clio:{name:'Clio Manage',logo:'C',color:'#1F6FD1',tag:['b-paid','Best API'],access:'Public REST API (v4) · OAuth 2.0 · webhooks',
+    note:'Matters, contacts, calendar, time (activities) and bills are all available. Best fit for a full two-way sync.',
+    scopes:[['Matters','read'],['Contacts','read'],['Calendar entries','read / write'],['Activities (time entries)','write'],['Bills','read']]},
+  mycase:{name:'MyCase',logo:'M',color:'#3B7D4F',tag:['b-viewed','Advanced plan'],access:'Open API · Advanced plan only · credentials issued by MyCase Support',
+    note:'Workable once the firm is on the Advanced tier and MyCase issues API credentials.',
+    scopes:[['Cases','read'],['Contacts','read'],['Events','read / write'],['Time entries','write'],['Invoices','read']]},
+  leap:{name:'LEAP',logo:'L',color:'#C2410C',tag:['b-sent','Partner-gated'],access:'Partner API via LEAP developer console · Zapier as fallback',
+    note:'Requires LEAP partner approval. Zapier covers simple one-way flows in the meantime.',
+    scopes:[['Matters','read'],['Cards (contacts)','read'],['Calendar','read / write'],['Time entries','write']]},
+  prolaw:{name:'ProLaw',logo:'P',color:'#E8730C',tag:['b-draft','Current system'],access:'Desktop / on-premises · no cloud API — sync bridge to be scoped',
+    note:'Her current system. Bridge option for the transition: scheduled export/import of matters, events and time until the firm moves.',
+    scopes:[['Matters','read (export)'],['Events','read (export)'],['Transactions (time)','write (import file)']]}
+};
+var SYNC_OBJ=[['matters','Matters','pull'],['contacts','Contacts & referring counsel','pull'],['calendar','Deadlines & calendar','two'],['time','Time entries','push'],['bills','Invoices & payments','pull']];
+var DIR_LBL={pull:'← Pull into portal',push:'Push to system →',two:'⇄ Two-way',off:'Off'};
+var INT=store('ps-demo-int')||{active:null,dirs:{},log:[],lastSync:null,pushedSlips:0,first:true};
+function saveInt(){store('ps-demo-int',INT);}
+function intLog(ic,text){INT.log.unshift({ic:ic,text:text,at:Date.now()});INT.log=INT.log.slice(0,14);}
+function pendingTime(){return Math.max(0,(INT.seedPushed?0:3)+SLIPS.length-INT.pushedSlips);}
+function openConnect(key){
+  var sy=SYSTEMS[key];
+  if(INT.active&&INT.active!==key){toast('Disconnect '+SYSTEMS[INT.active].name+' first — one system of record at a time.');return;}
+  $('int-title').textContent='Connect '+sy.name;
+  $('int-sub').textContent=sy.access;
+  $('int-body').innerHTML='<div style="font-size:13px;line-height:1.55">Hasapidis Law Offices Portal is requesting <b>only</b> these permissions in '+esc(sy.name)+':</div>'
+    +'<ul class="scope-list">'+sy.scopes.map(function(sc){return '<li><span>'+esc(sc[0])+'</span><span class="sor">'+esc(sc[1])+'</span></li>';}).join('')+'<li><span>Delete anything</span><span class="sor" style="color:var(--d-tx)">not requested</span></li></ul>'
+    +'<div class="guard op">'+(key==='prolaw'?'ProLaw has no cloud sign-in. In production, a small connector on the firm\'s server exports and imports on a schedule — scoped with the firm\'s IT.':'Next you sign in on '+esc(sy.name)+'\'s own page. The access token is encrypted and stored on our server — never in this browser.')+'</div>';
+  $('int-foot').innerHTML='<button class="btn-secondary" onclick="closeModal(\'int-overlay\')">Cancel</button><button class="btn-primary" onclick="authorize(\''+key+'\')">'+(key==='prolaw'?'Set up bridge (demo)':'Authorize (demo)')+'</button>';
+  $('int-overlay').classList.add('open');document.body.style.overflow='hidden';
+}
+function authorize(key){
+  closeModal('int-overlay');
+  INT.active=key;INT.dirs={};SYNC_OBJ.forEach(function(o){INT.dirs[o[0]]=o[2];});
+  if(key==='prolaw'){INT.dirs.calendar='pull';INT.dirs.bills='off';INT.dirs.contacts='pull';}
+  if(key==='leap'){INT.dirs.bills='off';}
+  INT.first=true;INT.seedPushed=false;INT.pushedSlips=0;
+  intLog('✓','Connected to '+SYSTEMS[key].name+' — '+SYSTEMS[key].scopes.length+' scopes granted');
+  saveInt();runSync();
+}
+function disconnect(){
+  if(!INT.active)return;
+  if(!confirm('Disconnect '+SYSTEMS[INT.active].name+'? The stored token is revoked and deleted. Portal data stays as it is.'))return;
+  intLog('⏏','Disconnected from '+SYSTEMS[INT.active].name+' — token revoked and deleted');
+  INT.active=null;INT.lastSync=null;saveInt();renderIntegrations();renderDashPs();
+  toast('Disconnected.');
+}
+function setDir(obj,val){INT.dirs[obj]=val;intLog('⚙',SYNC_OBJ.filter(function(o){return o[0]===obj;})[0][1]+' set to '+DIR_LBL[val]);saveInt();renderIntegrations();}
+function runSync(){
+  if(!INT.active)return;
+  var sy=SYSTEMS[INT.active],d=INT.dirs,n=0;
+  if(d.matters!=='off'){intLog('←','Matters: '+MATTERS.length+' linked, 0 new, 1 updated');n++;}
+  if(d.contacts!=='off'){intLog('←','Contacts & referring counsel: 9 matched');n++;}
+  if(d.calendar!=='off'){var dl=DOCKET.filter(function(e){return !e.done&&e.type!=='filing';}).length;intLog(d.calendar==='pull'?'←':'⇄','Deadlines & calendar: '+dl+' open items '+(d.calendar==='pull'?'pulled':'in sync')+' (chained deadlines carry their rule citation)');n++;}
+  if(d.time!=='off'&&d.time!=='pull'){var pt=pendingTime();intLog('→','Time entries: '+pt+' pushed to '+sy.name+(INT.active==='prolaw'?' (import file staged)':'')+' — 0 rejected');INT.pushedSlips=SLIPS.length;INT.seedPushed=true;n++;}
+  if(d.bills!=='off'){intLog('←','Invoices & payments: '+INVOICES.length+' reconciled');n++;}
+  if(INT.first){intLog('⚠','Conflict: 214-031 description edited in both systems — kept '+sy.name+' (system of record for matters); portal edit saved here for review');INT.first=false;}
+  INT.lastSync=Date.now();saveInt();renderIntegrations();renderDashPs();
+  toast('Synced with '+sy.name+' — '+n+' object types.');
+}
+function agoText(t){if(!t)return 'never';var m=Math.round((Date.now()-t)/60000);return m<1?'just now':m<60?m+' min ago':Math.round(m/60)+' hr ago';}
+function renderIntegrations(){
+  $('sys-grid').innerHTML=Object.keys(SYSTEMS).map(function(k){var sy=SYSTEMS[k],on=INT.active===k;
+    return '<div class="sys-card'+(on?' on':'')+'"><div class="sys-top"><div style="display:flex;gap:10px;align-items:flex-start"><div class="sys-logo" style="background:'+sy.color+'">'+sy.logo+'</div><div><div class="sys-name">'+esc(sy.name)+'</div><div class="sys-access">'+esc(sy.access)+'</div></div></div>'
+      +'<span class="badge '+(on?'b-paid':sy.tag[0])+' sys-tag">'+(on?'Connected':esc(sy.tag[1]))+'</span></div>'
+      +'<div class="sys-note">'+esc(sy.note)+'</div><div class="sys-acts">'
+      +(on?'<button class="mini-btn pri" onclick="runSync()">⟳ Sync now</button><button class="mini-btn ghost" onclick="disconnect()">Disconnect</button>'
+          :'<button class="mini-btn'+(k==='clio'?' pri':'')+'" onclick="openConnect(\''+k+'\')">'+(k==='prolaw'?'Set up bridge':'Connect')+'</button>')
+      +'</div></div>';}).join('');
+  if(INT.active){var sy=SYSTEMS[INT.active];
+    $('sync-card').innerHTML='<div class="bill-head"><div><div class="card-title" style="margin:0">Sync settings — '+esc(sy.name)+'</div><div style="font-size:11px;color:var(--tm);margin-top:3px">Last sync '+agoText(INT.lastSync)+' · real-time via webhooks, plus a nightly full reconcile</div></div><button class="btn-primary" style="padding:8px 14px;font-size:12px" onclick="runSync()">⟳ Sync now</button></div>'
+      +'<div style="overflow-x:auto"><table class="sync-tbl"><thead><tr><th>Data</th><th>Direction</th><th class="hide-sm">System of record</th></tr></thead><tbody>'
+      +SYNC_OBJ.map(function(o){var v=INT.dirs[o[0]]||'off';
+        var sor=v==='push'?'Portal':v==='off'?'—':o[0]==='calendar'&&v==='two'?'Portal (rules engine)':sy.name;
+        return '<tr><td>'+esc(o[1])+'</td><td><select class="form-select" aria-label="Direction for '+esc(o[1])+'" onchange="setDir(\''+o[0]+'\',this.value)">'
+          +['pull','push','two','off'].map(function(dv){return '<option value="'+dv+'"'+(dv===v?' selected':'')+'>'+DIR_LBL[dv]+'</option>';}).join('')
+          +'</select></td><td class="hide-sm sor">'+esc(sor)+'</td></tr>';}).join('')
+      +'</tbody></table></div>';
+  } else {
+    $('sync-card').innerHTML='<div class="card-title" style="margin-bottom:6px">Sync settings</div><div style="font-size:13px;color:var(--ts);line-height:1.6">Connect a practice management system above to choose what flows each way. The usual setup: <b>pull</b> matters, contacts and invoices from the practice system; <b>push</b> timer-captured time entries to it; keep <b>deadlines two-way</b> so the portal\'s appellate rules engine and the firm calendar always agree.</div>';
+  }
+  $('sync-log').innerHTML=INT.log.length?INT.log.map(function(l){return '<div class="log-item"><span class="log-ic">'+esc(l.ic)+'</span><div style="flex:1">'+esc(l.text)+'<div class="feed-time">'+new Date(l.at).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})+'</div></div></div>';}).join(''):'<div style="font-size:12px;color:var(--tm)">No sync activity yet.</div>';
+}
+function renderDashPs(){
+  var el=$('dash-ps');
+  if(!INT.active){
+    el.innerHTML='<div class="bill-head" style="margin:0"><div><div class="card-title" style="margin:0">Practice System</div><div style="font-size:12px;color:var(--tm);margin-top:3px">Not connected — connect Clio, MyCase or LEAP, or bridge ProLaw, to sync matters, deadlines and time.</div></div><button class="btn-primary" style="padding:8px 14px;font-size:12px" onclick="goTab(\'integrations\')">⇄ Connect a system</button></div>';
+    return;
+  }
+  var sy=SYSTEMS[INT.active],dl=DOCKET.filter(function(e){return !e.done&&e.type!=='filing';}).length;
+  el.innerHTML='<div class="bill-head" style="margin:0"><div style="display:flex;gap:10px;align-items:center"><div class="sys-logo" style="background:'+sy.color+';width:30px;height:30px;font-size:12px">'+sy.logo+'</div><div><div class="card-title" style="margin:0">'+esc(sy.name)+' <span class="badge b-paid" style="font-size:10px;vertical-align:middle">Connected</span></div><div style="font-size:12px;color:var(--tm);margin-top:2px">Last sync '+agoText(INT.lastSync)+'</div></div></div>'
+    +'<div class="bill-acts"><button class="mini-btn pri" onclick="runSync()">⟳ Sync now</button><button class="mini-btn" onclick="goTab(\'integrations\')">Manage</button></div></div>'
+    +'<div class="ps-strip"><div><b>'+MATTERS.length+'</b><span>Matters linked</span></div><div><b>'+dl+'</b><span>Deadlines synced</span></div>'
+    +'<div><b style="color:'+(pendingTime()?'var(--burg)':'var(--tp)')+'">'+pendingTime()+'</b><span>Time entries to push</span></div><div><b>'+INVOICES.length+'</b><span>Invoices reconciled</span></div></div>';
+}
+
 /* ── time entry ── */
 function setSelectByValue(id,val){var el=$(id);for(var i=0;i<el.options.length;i++)if(el.options[i].value===val){el.selectedIndex=i;return;}}
 function slipData(){
@@ -1783,7 +1954,7 @@ function slipReady(){
 }
 function recordSlip(d){
   SLIPS.push({whoFull:d.atty,m:d.m.id,hrs:d.hours,rate:d.rate,code:d.code||'Uncoded',at:Date.now()});
-  store('ps-demo-slips',SLIPS);renderSlips();PENDING_LOG='';
+  store('ps-demo-slips',SLIPS);renderSlips();PENDING_LOG='';if(typeof renderDashPs==='function')renderDashPs();
 }
 function emailSlip(){
   var d=slipReady();if(!d)return;
@@ -1812,7 +1983,7 @@ function clearForm(){
 
 /* ── boot ── */
 document.addEventListener('click',function(){closeTmrPop();});
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeTmrPop();closeMatter();closeModal('pl-overlay');closeModal('hc-overlay');}});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeTmrPop();closeMatter();closeModal('pl-overlay');closeModal('hc-overlay');closeModal('int-overlay');}});
 window.addEventListener('storage',function(e){if(e.key==='ps-demo-timers'){TS=store('ps-demo-timers')||{timers:[]};renderTimer(true);renderMatters();if($('md-overlay').classList.contains('open'))renderMdActions();}});
 (function init(){
   seedDocket();
@@ -1821,7 +1992,7 @@ window.addEventListener('storage',function(e){if(e.key==='ps-demo-timers'){TS=st
   $('te-date').value=todayIso();
   calToday();
   seedBilling();
-  renderMatters();renderSlips();renderReminders();renderDeadlines();renderDash();renderClientDates();renderBilling();
+  renderMatters();renderSlips();renderReminders();renderDeadlines();renderDash();renderClientDates();renderBilling();renderIntegrations();renderDashPs();
   renderTimer();tick();setInterval(tick,1000);
 })();
 </script>
